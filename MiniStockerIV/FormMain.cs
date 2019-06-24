@@ -568,6 +568,7 @@ namespace MiniStockerIV
         {
             //GUI 訊息處理器
             GUICmdCtrl Comm = new GUICmdCtrl();
+            Comm.Start();
 
 
             this.Text = this.Text + " (" + category + " Version: " + version + ")";
@@ -2297,6 +2298,12 @@ namespace MiniStockerIV
             string msg = "SET IO " + tbDNMIO_Set.Text + ":";
             rtbMsg.AppendText(msg + api.I7565DNM_SETIO("7", tbDNMIO_Set.Text, uint.Parse(tbDNMVal_Set.Text)) + "\n");
             //1001
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string cmd = "$1MCR:MARCO_TEST/112345/TEST;";
+            sendCommand(cmd);
         }
     }
 }

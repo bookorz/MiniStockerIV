@@ -203,6 +203,13 @@
             this.pnlIO = new System.Windows.Forms.Panel();
             this.tabVersion = new System.Windows.Forms.TabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tabTest = new System.Windows.Forms.TabPage();
+            this.tbDNMVal_Set = new System.Windows.Forms.TextBox();
+            this.tbDNMIO_Set = new System.Windows.Forms.TextBox();
+            this.btnTestDNMSetIO = new System.Windows.Forms.Button();
+            this.tbDNMIO_Get = new System.Windows.Forms.TextBox();
+            this.btnTestDNMGetIO = new System.Windows.Forms.Button();
+            this.btnTestDNMConn = new System.Windows.Forms.Button();
             this.btnClearMsg = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -213,13 +220,7 @@
             this.btnRestart = new System.Windows.Forms.Button();
             this.btnHold = new System.Windows.Forms.Button();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
-            this.tabTest = new System.Windows.Forms.TabPage();
-            this.btnTestDNMConn = new System.Windows.Forms.Button();
-            this.btnTestDNMGetIO = new System.Windows.Forms.Button();
-            this.tbDNMIO_Get = new System.Windows.Forms.TextBox();
-            this.btnTestDNMSetIO = new System.Windows.Forms.Button();
-            this.tbDNMIO_Set = new System.Windows.Forms.TextBox();
-            this.tbDNMVal_Set = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -244,8 +245,8 @@
             this.groupBox17.SuspendLayout();
             this.tabIO.SuspendLayout();
             this.tabVersion.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.tabTest.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMode
@@ -2488,6 +2489,76 @@
             this.richTextBox1.Text = "2019/05/13 \n1.0.1 : Initial version";
             this.richTextBox1.WordWrap = false;
             // 
+            // tabTest
+            // 
+            this.tabTest.Controls.Add(this.tbDNMVal_Set);
+            this.tabTest.Controls.Add(this.tbDNMIO_Set);
+            this.tabTest.Controls.Add(this.button1);
+            this.tabTest.Controls.Add(this.btnTestDNMSetIO);
+            this.tabTest.Controls.Add(this.tbDNMIO_Get);
+            this.tabTest.Controls.Add(this.btnTestDNMGetIO);
+            this.tabTest.Controls.Add(this.btnTestDNMConn);
+            this.tabTest.Location = new System.Drawing.Point(4, 33);
+            this.tabTest.Name = "tabTest";
+            this.tabTest.Size = new System.Drawing.Size(987, 683);
+            this.tabTest.TabIndex = 13;
+            this.tabTest.Text = "Test";
+            this.tabTest.UseVisualStyleBackColor = true;
+            // 
+            // tbDNMVal_Set
+            // 
+            this.tbDNMVal_Set.Location = new System.Drawing.Point(269, 137);
+            this.tbDNMVal_Set.Name = "tbDNMVal_Set";
+            this.tbDNMVal_Set.Size = new System.Drawing.Size(100, 28);
+            this.tbDNMVal_Set.TabIndex = 1;
+            this.tbDNMVal_Set.Text = "0";
+            // 
+            // tbDNMIO_Set
+            // 
+            this.tbDNMIO_Set.Location = new System.Drawing.Point(163, 137);
+            this.tbDNMIO_Set.Name = "tbDNMIO_Set";
+            this.tbDNMIO_Set.Size = new System.Drawing.Size(100, 28);
+            this.tbDNMIO_Set.TabIndex = 1;
+            this.tbDNMIO_Set.Text = "1901";
+            // 
+            // btnTestDNMSetIO
+            // 
+            this.btnTestDNMSetIO.Location = new System.Drawing.Point(18, 137);
+            this.btnTestDNMSetIO.Name = "btnTestDNMSetIO";
+            this.btnTestDNMSetIO.Size = new System.Drawing.Size(119, 35);
+            this.btnTestDNMSetIO.TabIndex = 0;
+            this.btnTestDNMSetIO.Text = "Set IO";
+            this.btnTestDNMSetIO.UseVisualStyleBackColor = true;
+            this.btnTestDNMSetIO.Click += new System.EventHandler(this.btnTestDNMSetIO_Click);
+            // 
+            // tbDNMIO_Get
+            // 
+            this.tbDNMIO_Get.Location = new System.Drawing.Point(163, 76);
+            this.tbDNMIO_Get.Name = "tbDNMIO_Get";
+            this.tbDNMIO_Get.Size = new System.Drawing.Size(100, 28);
+            this.tbDNMIO_Get.TabIndex = 1;
+            this.tbDNMIO_Get.Text = "1900";
+            // 
+            // btnTestDNMGetIO
+            // 
+            this.btnTestDNMGetIO.Location = new System.Drawing.Point(18, 76);
+            this.btnTestDNMGetIO.Name = "btnTestDNMGetIO";
+            this.btnTestDNMGetIO.Size = new System.Drawing.Size(119, 35);
+            this.btnTestDNMGetIO.TabIndex = 0;
+            this.btnTestDNMGetIO.Text = "Get IO";
+            this.btnTestDNMGetIO.UseVisualStyleBackColor = true;
+            this.btnTestDNMGetIO.Click += new System.EventHandler(this.btnTestDNMGetIO_Click);
+            // 
+            // btnTestDNMConn
+            // 
+            this.btnTestDNMConn.Location = new System.Drawing.Point(18, 23);
+            this.btnTestDNMConn.Name = "btnTestDNMConn";
+            this.btnTestDNMConn.Size = new System.Drawing.Size(119, 35);
+            this.btnTestDNMConn.TabIndex = 0;
+            this.btnTestDNMConn.Text = "DNM 連線";
+            this.btnTestDNMConn.UseVisualStyleBackColor = true;
+            this.btnTestDNMConn.Click += new System.EventHandler(this.btnTestDNMConn_Click);
+            // 
             // btnClearMsg
             // 
             this.btnClearMsg.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2615,74 +2686,15 @@
             this.hint.InitialDelay = 50;
             this.hint.ReshowDelay = 10;
             // 
-            // tabTest
+            // button1
             // 
-            this.tabTest.Controls.Add(this.tbDNMVal_Set);
-            this.tabTest.Controls.Add(this.tbDNMIO_Set);
-            this.tabTest.Controls.Add(this.btnTestDNMSetIO);
-            this.tabTest.Controls.Add(this.tbDNMIO_Get);
-            this.tabTest.Controls.Add(this.btnTestDNMGetIO);
-            this.tabTest.Controls.Add(this.btnTestDNMConn);
-            this.tabTest.Location = new System.Drawing.Point(4, 33);
-            this.tabTest.Name = "tabTest";
-            this.tabTest.Size = new System.Drawing.Size(987, 683);
-            this.tabTest.TabIndex = 13;
-            this.tabTest.Text = "Test";
-            this.tabTest.UseVisualStyleBackColor = true;
-            // 
-            // btnTestDNMConn
-            // 
-            this.btnTestDNMConn.Location = new System.Drawing.Point(18, 23);
-            this.btnTestDNMConn.Name = "btnTestDNMConn";
-            this.btnTestDNMConn.Size = new System.Drawing.Size(119, 35);
-            this.btnTestDNMConn.TabIndex = 0;
-            this.btnTestDNMConn.Text = "DNM 連線";
-            this.btnTestDNMConn.UseVisualStyleBackColor = true;
-            this.btnTestDNMConn.Click += new System.EventHandler(this.btnTestDNMConn_Click);
-            // 
-            // btnTestDNMGetIO
-            // 
-            this.btnTestDNMGetIO.Location = new System.Drawing.Point(18, 76);
-            this.btnTestDNMGetIO.Name = "btnTestDNMGetIO";
-            this.btnTestDNMGetIO.Size = new System.Drawing.Size(119, 35);
-            this.btnTestDNMGetIO.TabIndex = 0;
-            this.btnTestDNMGetIO.Text = "Get IO";
-            this.btnTestDNMGetIO.UseVisualStyleBackColor = true;
-            this.btnTestDNMGetIO.Click += new System.EventHandler(this.btnTestDNMGetIO_Click);
-            // 
-            // tbDNMIO_Get
-            // 
-            this.tbDNMIO_Get.Location = new System.Drawing.Point(163, 76);
-            this.tbDNMIO_Get.Name = "tbDNMIO_Get";
-            this.tbDNMIO_Get.Size = new System.Drawing.Size(100, 28);
-            this.tbDNMIO_Get.TabIndex = 1;
-            this.tbDNMIO_Get.Text = "1900";
-            // 
-            // btnTestDNMSetIO
-            // 
-            this.btnTestDNMSetIO.Location = new System.Drawing.Point(18, 137);
-            this.btnTestDNMSetIO.Name = "btnTestDNMSetIO";
-            this.btnTestDNMSetIO.Size = new System.Drawing.Size(119, 35);
-            this.btnTestDNMSetIO.TabIndex = 0;
-            this.btnTestDNMSetIO.Text = "Set IO";
-            this.btnTestDNMSetIO.UseVisualStyleBackColor = true;
-            this.btnTestDNMSetIO.Click += new System.EventHandler(this.btnTestDNMSetIO_Click);
-            // 
-            // tbDNMIO_Set
-            // 
-            this.tbDNMIO_Set.Location = new System.Drawing.Point(163, 137);
-            this.tbDNMIO_Set.Name = "tbDNMIO_Set";
-            this.tbDNMIO_Set.Size = new System.Drawing.Size(100, 28);
-            this.tbDNMIO_Set.TabIndex = 1;
-            this.tbDNMIO_Set.Text = "1901";
-            // 
-            // tbDNMVal_Set
-            // 
-            this.tbDNMVal_Set.Location = new System.Drawing.Point(269, 137);
-            this.tbDNMVal_Set.Name = "tbDNMVal_Set";
-            this.tbDNMVal_Set.Size = new System.Drawing.Size(100, 28);
-            this.tbDNMVal_Set.TabIndex = 1;
-            this.tbDNMVal_Set.Text = "0";
+            this.button1.Location = new System.Drawing.Point(18, 195);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 35);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Test Marco";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormMain
             // 
@@ -2731,10 +2743,10 @@
             this.groupBox17.PerformLayout();
             this.tabIO.ResumeLayout(false);
             this.tabVersion.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.tabTest.ResumeLayout(false);
             this.tabTest.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2931,6 +2943,7 @@
         private System.Windows.Forms.TextBox tbDNMIO_Set;
         private System.Windows.Forms.Button btnTestDNMSetIO;
         private System.Windows.Forms.TextBox tbDNMVal_Set;
+        private System.Windows.Forms.Button button1;
     }
 }
 

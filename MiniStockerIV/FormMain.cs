@@ -2302,8 +2302,38 @@ namespace MiniStockerIV
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string cmd = "$1MCR:MARCO_TEST/112345/TEST;";
+            string cmd = "$1MCR:MARCO_TEST/12345/TEST;";
             sendCommand(cmd);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            FormMainUpdate.LogUpdate("Robot1Controller 連線中!!");
+            FormMainUpdate.LogUpdate("Robot1Controller 連線成功!!");
+            FormMainUpdate.LogUpdate("Aligner1Controller 連線中!!");
+            FormMainUpdate.LogUpdate("Aligner1Controller 連線成功!!");
+
+            FormMainUpdate.LogUpdate("2019-06-24 12:03:36,830 Robot1Controller=>Send:$1CMD:HOME_");
+            FormMainUpdate.LogUpdate("2019-06-24 12:03:36,835 Robot1Controller<=Receive:$1ACK:HOME_");
+            FormMainUpdate.LogUpdate("2019-06-24 12:03:40,129 Robot1Controller<=Receive:$1FIN:HOME_:00000000");
+            FormMainUpdate.LogUpdate("2019-06-24 12:03:40,130 Aligner1Controller=>Send:$3CMD:ORG__");
+            FormMainUpdate.LogUpdate("2019-06-24 12:03:40,134 Aligner1Controller<=Receive:$1ACK:ORG__");
+            FormMainUpdate.LogUpdate("2019-06-24 12:03:42,638 Aligner1Controller<=Receive:$1FIN:ORG__:00000000");
+            FormMainUpdate.LogUpdate("2019-06-24 12:03:42,639 Aligner1Controller=>Send:$3CMD:HOME_");
+            FormMainUpdate.LogUpdate("2019-06-24 12:03:42,642 Aligner1Controller<=Receive:$1ACK:HOME_");
+            FormMainUpdate.LogUpdate("2019-06-24 12:03:43,638 Aligner1Controller<=Receive:$1FIN:HOME_:00000000");
+            FormMainUpdate.LogUpdate("2019-06-24 12:04:57,830 Robot1Controller=>Send:$1CMD:PUT__:121,001,2,0");
+            FormMainUpdate.LogUpdate("2019-06-24 12:04:57,835 Robot1Controller<=Receive:$1ACK:PUT__");
+            FormMainUpdate.LogUpdate("2019-06-24 12:04:59,128 Robot1Controller<=Receive:$1FIN:PUT__:00000000");
+            FormMainUpdate.LogUpdate("2019-06-24 12:04:59,130 Aligner1Controller=>Send:$3CMD:WHLD_:1");
+            FormMainUpdate.LogUpdate("2019-06-24 12:04:59,134 Aligner1Controller<=Receive:$1ACK:WHLD_");
+            FormMainUpdate.LogUpdate("2019-06-24 12:05:01,638 Aligner1Controller<=Receive:$1FIN:WHLD_:9380a000");
+            string desc = "未定義異常";
+            string axis = "";
+            error_codes.TryGetValue("9380A000", out desc);
+            //FormMainUpdate.LogUpdate("異常描述:" + desc + axis);
+            logUpdate("異常描述:" + desc + axis);
         }
     }
 }

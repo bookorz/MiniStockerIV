@@ -96,7 +96,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="cmd_list.csv" />
+    <None Include="cmd_list.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="error_code.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -23,23 +23,18 @@ namespace MiniStockerIV
     public partial class FormMain : Form, IConnectionReport
     {
 
-        public API api = new API();//測試用
+        I7565DNM dnm = new I7565DNM("7");//測試用
         const string _CUSTOMER_SERVICE = "客服";
         const string _CUSTOMER = "Customer";
         const string _RD = "RD";
         string version = "1.0.3";
         string category = _CUSTOMER_SERVICE;
         
-        //TcpCommClient ctrlSTK;
-        //TcpCommClient ctrlWHR;
-        //TcpCommClient ctrlCTU;
         Boolean isCmdFin = true;
         Boolean isPause = false;
         Boolean isScriptRunning = false;
         Boolean autoMode = false;
         Button[] autoBtns;
-        //private string[] ptzDir = new string[2] { "Face", "Face" };
-        private string[] ptzPos = new string[2] { "Odd", "Even" };
         //private int dirIdx = 0;
         private int posIdx = 0;
         int intCmdTimeOut = 300000;//default 5 mins
@@ -254,10 +249,13 @@ namespace MiniStockerIV
                     device_name = lblCtrlName5.Text;
                     break;
             }
+            if (device_name.Equals(""))
+                return;//未定義連線，不處理
             DeviceConfig config = new DeviceConfig();
             config.IPAdress = ip;
             config.Port = port;
             config.ConnectionType = "Socket";
+            logUpdate("----------" + device_name + "----------");
             connDevice(device_name, config);
 
         }
@@ -425,8 +423,8 @@ namespace MiniStockerIV
                 factor = factor.Substring(0, factor.Length - 3) + "000";
             }
             error_codes.TryGetValue(factor.ToUpper(), out desc);
-            //FormMainUpdate.LogUpdate("異常描述:" + desc + axis);
-            logUpdate("異常描述:" + desc + axis);
+            desc = desc == null ? factor.ToUpper() : desc;
+            logUpdate("異常描述: " + desc + axis);
         }
 
         void IConnectionReport.On_Connection_Connecting(string Msg)
@@ -1909,6 +1907,7 @@ namespace MiniStockerIV
 
         private void logUpdate(string log)
         {
+            //FormMainUpdate.LogUpdate(log);
             ThreadPool.QueueUserWorkItem(new WaitCallback(updateLog), log);
         }
 
@@ -2125,7 +2124,7 @@ namespace MiniStockerIV
             catch (Exception e)
             {
                 //FormMainUpdate.LogUpdate(e.Message);
-                logUpdate(e.Message);
+                logUpdate(e.Message + " " + e.StackTrace );
             }
         }
         private void Initial_Command()
@@ -2332,7 +2331,7 @@ namespace MiniStockerIV
         private void btnTestDNMConn_Click(object sender, EventArgs e)
         {
             rtbMsg.AppendText("api.I7565DNM_INIT(\"7\", null):");
-            rtbMsg.AppendText(api.I7565DNM_INIT("7", null).ToString() + "\n");
+            rtbMsg.AppendText(dnm.I7565DNM_INIT(null).ToString() + "\n");
             //10026: COM PORT 不存在
         }
 
@@ -2343,13 +2342,13 @@ namespace MiniStockerIV
             //rtbMsg.AppendText("Read Module 1:" + api.KUMA_GETIO("7", "1")[0] + "\n");
             //rtbMsg.AppendText("Read Module 9:" + api.KUMA_GETIO("7", "9")[0] + "\n");
             //rtbMsg.AppendText("Read Module 19:" + api.KUMA_GETIO("7", "19")[0] + "\n");
-            rtbMsg.AppendText("Read IO  " + tbDNMIO_Get.Text + ":" + api.I7565DNM_GETIO("7", tbDNMIO_Get.Text) + "\n");
+            rtbMsg.AppendText("Read IO  " + tbDNMIO_Get.Text + ":" + dnm.I7565DNM_GETIO(tbDNMIO_Get.Text) + "\n");
         }
 
         private void btnTestDNMSetIO_Click(object sender, EventArgs e)
         {
             string msg = "SET IO " + tbDNMIO_Set.Text + ":";
-            rtbMsg.AppendText(msg + api.I7565DNM_SETIO("7", tbDNMIO_Set.Text, uint.Parse(tbDNMVal_Set.Text)) + "\n");
+            rtbMsg.AppendText(msg + dnm.I7565DNM_SETIO(tbDNMIO_Set.Text, uint.Parse(tbDNMVal_Set.Text)) + "\n");
             //1001
         }
 
@@ -2387,6 +2386,18 @@ namespace MiniStockerIV
             error_codes.TryGetValue("9380A000", out desc);
             //FormMainUpdate.LogUpdate("異常描述:" + desc + axis);
             logUpdate("異常描述:" + desc + axis);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string cmd = "$1MCR:MARCO_SET/12345/TEST;";
+            sendCommand(cmd);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string cmd = "$1MCR:MARCO_GET/12345/TEST;";
+            sendCommand(cmd);
         }
     }
 }

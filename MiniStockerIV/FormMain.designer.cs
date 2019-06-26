@@ -204,34 +204,36 @@
             this.tabVersion = new System.Windows.Forms.TabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabTest = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
             this.tbDNMVal_Set = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tbDNMIO_Set = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.btnLogin = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnTestDNMSetIO = new System.Windows.Forms.Button();
             this.tbDNMIO_Get = new System.Windows.Forms.TextBox();
             this.btnTestDNMGetIO = new System.Windows.Forms.Button();
             this.btnTestDNMConn = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.btnClearMsg = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.rtbMsg = new System.Windows.Forms.RichTextBox();
             this.btnAbort = new System.Windows.Forms.Button();
-            this.btnRestart = new System.Windows.Forms.Button();
             this.btnHold = new System.Windows.Forms.Button();
+            this.btnRestart = new System.Windows.Forms.Button();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.button5 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -2513,6 +2515,8 @@
             this.tabTest.Controls.Add(this.dateTimePicker1);
             this.tabTest.Controls.Add(this.checkBox4);
             this.tabTest.Controls.Add(this.checkBox3);
+            this.tabTest.Controls.Add(this.button8);
+            this.tabTest.Controls.Add(this.button7);
             this.tabTest.Controls.Add(this.button1);
             this.tabTest.Controls.Add(this.checkBox2);
             this.tabTest.Controls.Add(this.checkBox1);
@@ -2527,6 +2531,17 @@
             this.tabTest.Text = "Test";
             this.tabTest.UseVisualStyleBackColor = true;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(655, 290);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(27, 19);
+            this.label14.TabIndex = 25;
+            this.label14.Text = "To";
+            this.label14.Visible = false;
+            // 
             // tbDNMVal_Set
             // 
             this.tbDNMVal_Set.Location = new System.Drawing.Point(269, 137);
@@ -2535,6 +2550,17 @@
             this.tbDNMVal_Set.TabIndex = 1;
             this.tbDNMVal_Set.Text = "0";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(393, 290);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(126, 19);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Log Date From";
+            this.label10.Visible = false;
+            // 
             // tbDNMIO_Set
             // 
             this.tbDNMIO_Set.Location = new System.Drawing.Point(163, 137);
@@ -2542,6 +2568,18 @@
             this.tbDNMIO_Set.Size = new System.Drawing.Size(100, 28);
             this.tbDNMIO_Set.TabIndex = 1;
             this.tbDNMIO_Set.Text = "1901";
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(815, 313);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(78, 26);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "Export";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Visible = false;
+            this.button5.Click += new System.EventHandler(this.button3_Click);
             // 
             // button3
             // 
@@ -2553,18 +2591,67 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // btnLogin
+            // button4
             // 
-            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogin.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(120, 657);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(108, 32);
-            this.btnLogin.TabIndex = 18;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Visible = false;
-            this.btnLogin.Click += new System.EventHandler(this.login);
+            this.button4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(815, 283);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(78, 26);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "Query";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
+            this.button4.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(688, 288);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(110, 26);
+            this.dateTimePicker2.TabIndex = 24;
+            this.dateTimePicker2.Value = new System.DateTime(2019, 6, 25, 0, 0, 0, 0);
+            this.dateTimePicker2.Visible = false;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(525, 288);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(110, 26);
+            this.dateTimePicker1.TabIndex = 24;
+            this.dateTimePicker1.Value = new System.DateTime(2019, 6, 25, 0, 0, 0, 0);
+            this.dateTimePicker1.Visible = false;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox4.Location = new System.Drawing.Point(700, 316);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(109, 23);
+            this.checkBox4.TabIndex = 23;
+            this.checkBox4.Text = "LoadPort2";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.Visible = false;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox3.Location = new System.Drawing.Point(586, 316);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(109, 23);
+            this.checkBox3.TabIndex = 23;
+            this.checkBox3.Text = "LoadPort1";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.Visible = false;
             // 
             // button1
             // 
@@ -2575,6 +2662,34 @@
             this.button1.Text = "Test Marco";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(480, 316);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(100, 23);
+            this.checkBox2.TabIndex = 23;
+            this.checkBox2.Text = "Aligner1";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Visible = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(392, 316);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(82, 23);
+            this.checkBox1.TabIndex = 23;
+            this.checkBox1.Text = "Robot1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             // 
             // btnTestDNMSetIO
             // 
@@ -2613,6 +2728,19 @@
             this.btnTestDNMConn.Text = "DNM 連線";
             this.btnTestDNMConn.UseVisualStyleBackColor = true;
             this.btnTestDNMConn.Click += new System.EventHandler(this.btnTestDNMConn_Click);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogin.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(120, 657);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(108, 32);
+            this.btnLogin.TabIndex = 18;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Visible = false;
+            this.btnLogin.Click += new System.EventHandler(this.login);
             // 
             // btnClearMsg
             // 
@@ -2690,22 +2818,6 @@
             this.btnAbort.Visible = false;
             this.btnAbort.Click += new System.EventHandler(this.btnAbort_Click);
             // 
-            // btnRestart
-            // 
-            this.btnRestart.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnRestart.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRestart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRestart.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestart.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnRestart.Location = new System.Drawing.Point(107, 21);
-            this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(92, 32);
-            this.btnRestart.TabIndex = 21;
-            this.btnRestart.Text = "RESTR";
-            this.btnRestart.UseVisualStyleBackColor = false;
-            this.btnRestart.Visible = false;
-            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
-            // 
             // btnHold
             // 
             this.btnHold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -2722,6 +2834,22 @@
             this.btnHold.Visible = false;
             this.btnHold.Click += new System.EventHandler(this.btnHold_Click);
             // 
+            // btnRestart
+            // 
+            this.btnRestart.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnRestart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRestart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRestart.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestart.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRestart.Location = new System.Drawing.Point(107, 21);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(92, 32);
+            this.btnRestart.TabIndex = 21;
+            this.btnRestart.Text = "RESTR";
+            this.btnRestart.UseVisualStyleBackColor = false;
+            this.btnRestart.Visible = false;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
+            // 
             // hint
             // 
             this.hint.AutomaticDelay = 50;
@@ -2729,129 +2857,25 @@
             this.hint.InitialDelay = 50;
             this.hint.ReshowDelay = 10;
             // 
-            // checkBox1
+            // button7
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(392, 316);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(82, 23);
-            this.checkBox1.TabIndex = 23;
-            this.checkBox1.Text = "Robot1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.Visible = false;
+            this.button7.Location = new System.Drawing.Point(30, 253);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(119, 35);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "SetIO Marco";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // checkBox2
+            // button8
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(480, 316);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(100, 23);
-            this.checkBox2.TabIndex = 23;
-            this.checkBox2.Text = "Aligner1";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.Visible = false;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(586, 316);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(109, 23);
-            this.checkBox3.TabIndex = 23;
-            this.checkBox3.Text = "LoadPort1";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.Visible = false;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.Location = new System.Drawing.Point(700, 316);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(109, 23);
-            this.checkBox4.TabIndex = 23;
-            this.checkBox4.Text = "LoadPort2";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.Visible = false;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(525, 288);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(110, 26);
-            this.dateTimePicker1.TabIndex = 24;
-            this.dateTimePicker1.Value = new System.DateTime(2019, 6, 25, 0, 0, 0, 0);
-            this.dateTimePicker1.Visible = false;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(393, 290);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(126, 19);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Log Date From";
-            this.label10.Visible = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(655, 290);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(27, 19);
-            this.label14.TabIndex = 25;
-            this.label14.Text = "To";
-            this.label14.Visible = false;
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(815, 283);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(78, 26);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Query";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(688, 288);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(110, 26);
-            this.dateTimePicker2.TabIndex = 24;
-            this.dateTimePicker2.Value = new System.DateTime(2019, 6, 25, 0, 0, 0, 0);
-            this.dateTimePicker2.Visible = false;
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(815, 313);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(78, 26);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Export";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Visible = false;
-            this.button5.Click += new System.EventHandler(this.button3_Click);
+            this.button8.Location = new System.Drawing.Point(30, 316);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(119, 35);
+            this.button8.TabIndex = 0;
+            this.button8.Text = "GETIO Marco";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // FormMain
             // 
@@ -3112,6 +3136,8 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
     }
 }
 

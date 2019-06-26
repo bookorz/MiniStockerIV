@@ -351,13 +351,13 @@ namespace MiniStockerIV
                     case "CAN":
                         //$1CAN:Message*|Factor/Place;
                         startIdx = msg.IndexOf("|") + 1;
-                        factorLen = msg.LastIndexOf("/") > startIdx ? msg.LastIndexOf("/") - startIdx : msg.Length - startIdx;
+                        factorLen = msg.LastIndexOf("/") > startIdx ? msg.LastIndexOf("/") - startIdx : msg.Length - startIdx -1;
                         break;
                     case "ABS":
                         //$1ABS:Message*|ERROR/Factor/Place;
                         //$1ABS:LOAD/Pnxx/ARM1|ERROR/CLAMPON/ARM1;
                         startIdx = msg.IndexOf("|ERROR/") + 7;
-                        factorLen = msg.LastIndexOf("/") > startIdx ? msg.LastIndexOf("/") - startIdx : msg.Length - startIdx;
+                        factorLen = msg.LastIndexOf("/") > startIdx ? msg.LastIndexOf("/") - startIdx : msg.Length - startIdx -1;//去掉;
                         break;
                 }
                 factor = msg.Substring(startIdx, factorLen);
@@ -371,7 +371,60 @@ namespace MiniStockerIV
             }
             string desc = "未定義異常";
             string axis = "";
-            error_codes.TryGetValue(factor, out desc);
+            if (factor.EndsWith("00") && factor.StartsWith("9"))
+            {
+                axis = factor.Substring(factor.Length - 3, 3);
+                switch (axis)
+                {
+                    case "000":
+                        axis = "R軸";
+                        break;
+                    case "100":
+                        axis = "L軸";
+                        break;
+                    case "200":
+                        axis = "S軸";
+                        break;
+                    case "300":
+                        axis = "Z軸";
+                        break;
+                    case "400":
+                        axis = "X軸";
+                        break;
+                    case "500":
+                        axis = "R1軸";
+                        break;
+                    case "600":
+                        axis = "L1軸";
+                        break;
+                    case "700":
+                        axis = "S1軸";
+                        break;
+                    case "800":
+                        axis = "Z1軸";
+                        break;
+                    case "900":
+                        axis = "X1軸";
+                        break;
+                    case "A00":
+                        axis = "R2軸";
+                        break;
+                    case "B00":
+                        axis = "L2軸";
+                        break;
+                    case "C00":
+                        axis = "S2軸";
+                        break;
+                    case "D00":
+                        axis = "Z2軸";
+                        break;
+                    case "E00":
+                        axis = "X2軸";
+                        break;
+                }
+                factor = factor.Substring(0, factor.Length - 3) + "000";
+            }
+            error_codes.TryGetValue(factor.ToUpper(), out desc);
             //FormMainUpdate.LogUpdate("異常描述:" + desc + axis);
             logUpdate("異常描述:" + desc + axis);
         }

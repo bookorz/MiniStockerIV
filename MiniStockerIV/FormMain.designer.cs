@@ -2509,7 +2509,6 @@
             this.tabTest.Controls.Add(this.button5);
             this.tabTest.Controls.Add(this.button3);
             this.tabTest.Controls.Add(this.button4);
-            this.tabTest.Controls.Add(this.btnLogin);
             this.tabTest.Controls.Add(this.dateTimePicker2);
             this.tabTest.Controls.Add(this.dateTimePicker1);
             this.tabTest.Controls.Add(this.checkBox4);
@@ -2558,7 +2557,7 @@
             // 
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(466, 608);
+            this.btnLogin.Location = new System.Drawing.Point(120, 657);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(108, 32);
             this.btnLogin.TabIndex = 18;
@@ -2636,6 +2635,7 @@
             this.groupBox6.Controls.Add(this.btnAbort);
             this.groupBox6.Controls.Add(this.btnHold);
             this.groupBox6.Controls.Add(this.btnRestart);
+            this.groupBox6.Controls.Add(this.btnLogin);
             this.groupBox6.Location = new System.Drawing.Point(1005, 12);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(549, 720);

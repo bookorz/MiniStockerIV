@@ -2399,5 +2399,19 @@ namespace MiniStockerIV
             string cmd = "$1MCR:MARCO_GET/12345/TEST;";
             sendCommand(cmd);
         }
+
+        private void btnFoupRotServoOn_Click(object sender, EventArgs e)
+        {
+            string cmd = "$1MCR:ROBOT_SERVO_ON;";
+            sendCommand(cmd);
+        }
+
+        private void btnFoupRotOrg_Click(object sender, EventArgs e)
+        {
+
+            string cmd = "$1MCR:ROBOT_ORG;";
+            sendCommand(cmd);
+
+        }
     }
 }

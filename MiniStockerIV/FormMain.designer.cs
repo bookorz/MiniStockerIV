@@ -215,6 +215,8 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -232,8 +234,8 @@
             this.btnHold = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnFoupRotServoOn = new System.Windows.Forms.Button();
+            this.btnFoupRotOrg = new System.Windows.Forms.Button();
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -1250,7 +1252,7 @@
             this.groupBox46.Controls.Add(this.groupBox47);
             this.groupBox46.Location = new System.Drawing.Point(475, 3);
             this.groupBox46.Name = "groupBox46";
-            this.groupBox46.Size = new System.Drawing.Size(472, 564);
+            this.groupBox46.Size = new System.Drawing.Size(509, 564);
             this.groupBox46.TabIndex = 39;
             this.groupBox46.TabStop = false;
             this.groupBox46.Text = "FOUP Robot Area";
@@ -1263,11 +1265,13 @@
             this.groupBox1.Controls.Add(this.groupBox49);
             this.groupBox1.Controls.Add(this.btnFoupRotReset);
             this.groupBox1.Controls.Add(this.btnFoupRotCarry);
+            this.groupBox1.Controls.Add(this.btnFoupRotOrg);
             this.groupBox1.Controls.Add(this.btnFoupRotHome);
+            this.groupBox1.Controls.Add(this.btnFoupRotServoOn);
             this.groupBox1.Controls.Add(this.btnFoupRotInit);
             this.groupBox1.Location = new System.Drawing.Point(6, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(409, 255);
+            this.groupBox1.Size = new System.Drawing.Size(480, 255);
             this.groupBox1.TabIndex = 79;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Robot";
@@ -1359,7 +1363,7 @@
             this.btnFoupRotAuto.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnFoupRotAuto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFoupRotAuto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoupRotAuto.Location = new System.Drawing.Point(166, 144);
+            this.btnFoupRotAuto.Location = new System.Drawing.Point(166, 142);
             this.btnFoupRotAuto.Name = "btnFoupRotAuto";
             this.btnFoupRotAuto.Size = new System.Drawing.Size(68, 39);
             this.btnFoupRotAuto.TabIndex = 19;
@@ -1444,7 +1448,7 @@
             this.btnFoupRotReset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFoupRotReset.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFoupRotReset.ForeColor = System.Drawing.Color.Black;
-            this.btnFoupRotReset.Location = new System.Drawing.Point(218, 209);
+            this.btnFoupRotReset.Location = new System.Drawing.Point(195, 209);
             this.btnFoupRotReset.Name = "btnFoupRotReset";
             this.btnFoupRotReset.Size = new System.Drawing.Size(87, 39);
             this.btnFoupRotReset.TabIndex = 29;
@@ -1456,19 +1460,20 @@
             // 
             this.btnFoupRotCarry.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFoupRotCarry.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoupRotCarry.Location = new System.Drawing.Point(166, 99);
+            this.btnFoupRotCarry.Location = new System.Drawing.Point(404, 53);
             this.btnFoupRotCarry.Name = "btnFoupRotCarry";
             this.btnFoupRotCarry.Size = new System.Drawing.Size(68, 39);
             this.btnFoupRotCarry.TabIndex = 19;
             this.btnFoupRotCarry.Text = "Carry";
             this.btnFoupRotCarry.UseVisualStyleBackColor = true;
+            this.btnFoupRotCarry.Visible = false;
             this.btnFoupRotCarry.Click += new System.EventHandler(this.btnFoupRotCarry_Click);
             // 
             // btnFoupRotHome
             // 
             this.btnFoupRotHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFoupRotHome.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoupRotHome.Location = new System.Drawing.Point(311, 210);
+            this.btnFoupRotHome.Location = new System.Drawing.Point(381, 210);
             this.btnFoupRotHome.Name = "btnFoupRotHome";
             this.btnFoupRotHome.Size = new System.Drawing.Size(87, 39);
             this.btnFoupRotHome.TabIndex = 19;
@@ -1482,7 +1487,7 @@
             this.btnFoupRotInit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFoupRotInit.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFoupRotInit.ForeColor = System.Drawing.Color.Black;
-            this.btnFoupRotInit.Location = new System.Drawing.Point(125, 209);
+            this.btnFoupRotInit.Location = new System.Drawing.Point(102, 209);
             this.btnFoupRotInit.Name = "btnFoupRotInit";
             this.btnFoupRotInit.Size = new System.Drawing.Size(87, 39);
             this.btnFoupRotInit.TabIndex = 29;
@@ -2653,6 +2658,26 @@
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.Visible = false;
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(30, 316);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(119, 35);
+            this.button8.TabIndex = 0;
+            this.button8.Text = "GETIO Marco";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(30, 253);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(119, 35);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "SetIO Marco";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(18, 195);
@@ -2857,25 +2882,31 @@
             this.hint.InitialDelay = 50;
             this.hint.ReshowDelay = 10;
             // 
-            // button7
+            // btnFoupRotServoOn
             // 
-            this.button7.Location = new System.Drawing.Point(30, 253);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(119, 35);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "SetIO Marco";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btnFoupRotServoOn.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnFoupRotServoOn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFoupRotServoOn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFoupRotServoOn.ForeColor = System.Drawing.Color.Black;
+            this.btnFoupRotServoOn.Location = new System.Drawing.Point(9, 210);
+            this.btnFoupRotServoOn.Name = "btnFoupRotServoOn";
+            this.btnFoupRotServoOn.Size = new System.Drawing.Size(87, 39);
+            this.btnFoupRotServoOn.TabIndex = 29;
+            this.btnFoupRotServoOn.Text = "Servo On";
+            this.btnFoupRotServoOn.UseVisualStyleBackColor = false;
+            this.btnFoupRotServoOn.Click += new System.EventHandler(this.btnFoupRotServoOn_Click);
             // 
-            // button8
+            // btnFoupRotOrg
             // 
-            this.button8.Location = new System.Drawing.Point(30, 316);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(119, 35);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "GETIO Marco";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.btnFoupRotOrg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFoupRotOrg.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFoupRotOrg.Location = new System.Drawing.Point(288, 209);
+            this.btnFoupRotOrg.Name = "btnFoupRotOrg";
+            this.btnFoupRotOrg.Size = new System.Drawing.Size(87, 39);
+            this.btnFoupRotOrg.TabIndex = 19;
+            this.btnFoupRotOrg.Text = "Org";
+            this.btnFoupRotOrg.UseVisualStyleBackColor = true;
+            this.btnFoupRotOrg.Click += new System.EventHandler(this.btnFoupRotOrg_Click);
             // 
             // FormMain
             // 
@@ -3138,6 +3169,8 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnFoupRotServoOn;
+        private System.Windows.Forms.Button btnFoupRotOrg;
     }
 }
 

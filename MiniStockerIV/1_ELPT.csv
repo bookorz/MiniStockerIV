@@ -1,0 +1,78 @@
+﻿1,101,A1_Present_Sensor1,A部① FOUP在席確認Sensor 1,IN
+1,102,A1_Present_Sensor2,A部① FOUP在席確認Sensor 2,IN
+1,103,A1_Present_Sensor3,A部① FOUP在席確認Sensor 3,IN
+1,104,A1_Clamp_Sensor_Left,A部① 左夾持Sensor,IN
+1,105,A1_UnClamp_Sensor_Left,A部① 左鬆開Sensor,IN
+1,106,A1_Clamp_Sensor_Right,A部① 右夾持Sensor,IN
+1,107,A1_UnClamp_Sensor_Right,A部① 右鬆開Sensor,IN
+1,108,A1_Standby_Position_Sensor,A部① 待機位置確認sensor,IN
+1,109,A1_Avoid_Position_Sensor,A部① 迴避位置確認sensor,IN
+1,110,A1_Forward_Position_Sensor,A部① 前進位置確認sensor,IN
+1,111,A2_Standby_Position_Sensor,A部② 待機位置確認sensor,IN
+1,112,A2_Avoid_Position_Sensor,A部② 迴避位置確認sensor,IN
+1,113,A2_Forward_Position_Sensor,A部② 前進位置確認sensor,IN
+1,114,A1_Present_Sensor4,A部① FOUP在席確認Sensor 4,IN
+1,115,A2_Present_Sensor4,A部② FOUP在席確認Sensor 4,IN
+1,201,A2_Present_Sensor1,A部② FOUP在席確認Sensor 1,IN
+1,202,A2_Present_Sensor2,A部② FOUP在席確認Sensor 2,IN
+1,203,A2_Present_Sensor3,A部② FOUP在席確認Sensor 3,IN
+1,204,A2_Clamp_Sensor_Left,A部② 左夾持Sensor,IN
+1,205,A2_UnClamp_Sensor_Left,A部② 左鬆開Sensor,IN
+1,206,A2_Clamp_Sensor_Right,A部② 右夾持Sensor,IN
+1,207,A2_UnClamp_Sensor_Right,A部② 右鬆開Sensor,IN
+1,704,A1_Shtter_Open_Sensor,A部① Shutter 開,IN
+1,705,A1_Shtter_Close_Sensor,A部① Shutter 關,IN
+1,706,A2_Shtter_Open_Sensor,A部② Shutter 開,IN
+1,707,A2_Shtter_Close_Sensor,A部② Shutter 關,IN
+1,710,A_Area_Sensor,A部 Area Sensor,IN
+1,711,A1_Operator_Access_Signal,A部① Operator作業中,IN
+1,712,A2_Operator_Access_Signal,A部② Operator作業中,IN
+1,900,A1_Lock,A部① Lock機構夾持,OUT
+1,901,A1_Unlock,A部① Lock機構放開,OUT
+1,902,A2_Lock,A部② Lock機構夾持,OUT
+1,903,A2_Unlock,A部② Lock機構放開,OUT
+1,904,A1_Shtter_Open,A部① Shutter 開,OUT
+1,905,A1_Shtter_Close,A部① Shutter 關,OUT
+1,906,A2_Shtter_Open,A部② Shutter 開,OUT
+1,907,A2_Shtter_Close,A部② Shutter 關,OUT
+1,1500,Pause,PAUSE,OUT
+1,1502,A1_Operator_Access,A1 Operator Access,OUT
+1,1503,A1_Presence_On,A1 PRESENCE-(Y),OUT
+1,1504,A1_Placement_On,A1 PLACEMENT-(G),OUT
+1,1505,A1_Auto_On,A1 AUTO-(R),OUT
+1,1506,A1_Reserve_On,A1 RESERVE-(Y),OUT
+1,1507,A1_Load_On,A1 LOAD-(G),OUT
+1,1508,A1_Unload_On,A1 UNLOAD-(G),OUT
+1,1509,A2_Operator_Access,A2 Operator Access,OUT
+1,1510,A2_Presence_On,A2 PRESENCE-(Y),OUT
+1,1511,A2_Placement_On,A2 PLACEMENT-(G),OUT
+1,1512,A2_Auto_On,A2 AUTO-(R),OUT
+1,1513,A2_Reserve_On,A2 RESERVE-(Y),OUT
+1,1514,A2_Load_On,A2 LOAD-(G),OUT
+1,1515,A2_Unload_On,A2 UNLOAD-(G),OUT
+1,2000,A1-ORG-S,A1-ORG-S,IN
+1,2001,A1-INP,A1-INP,IN
+1,2002,A1-READY,A1-READY,IN
+1,2003,A1-SERVO-S,A1-SERVO-S,IN
+1,2004,A1-PRGSEL0-S,A1-PRGSEL0-S,IN
+1,2005,A1-PRGSEL1-S,A1-PRGSEL1-S,IN
+1,2008,A1-ORG,A1-ORG,OUT
+1,2009,A1-/SERVO,A1-/SERVO,OUT
+1,2010,A1-ALM_RESET,A1-ALM_RESET,OUT
+1,2011,A1-START,A1-START,OUT
+1,2012,A1-PRGSEL0,A1-PRGSEL0,OUT
+1,2013,A1-PRGSEL1,A1-PRGSEL1,OUT
+1,2014,A1-ORG-S,A1-ORG-S,OUT
+1,2100,A2-ORG-S,A2-ORG-S,IN
+1,2101,A2-INP,A2-INP,IN
+1,2102,A2-READY,A2-READY,IN
+1,2103,A2-SERVO-S,A2-SERVO-S,IN
+1,2104,A2-PRGSEL0-S,A2-PRGSEL0-S,IN
+1,2105,A2-PRGSEL1-S,A2-PRGSEL1-S,IN
+1,2108,A2-ORG,A2-ORG,OUT
+1,2109,A2-/SERVO,A2-/SERVO,OUT
+1,2110,A2-ALM_RESET,A2-ALM_RESET,OUT
+1,2111,A2-START,A2-START,OUT
+1,2112,A2-PRGSEL0,A2-PRGSEL0,OUT
+1,2113,A2-PRGSEL1,A2-PRGSEL1,OUT
+1,2114,A2-ORG-S,A2-ORG-S,OUT

@@ -337,8 +337,10 @@ namespace MiniStockerIV.UI_Update
                 string address = msg.Substring(1,1);
                 //$1ACK:RIO__:no,vl[CR]
                 //AddressNo + "_" + ID + "_" + Type
-                string id_i = address + "_" + msg.Substring(12, msg.IndexOf("/") - 12) + "_IN";
-                string id_o = address + "_" + msg.Substring(12, msg.IndexOf("/") - 12) + "_OUT";
+                //$1INF:GET_RELIO/103/0;
+                string ioNo = msg.Split('/')[1];
+                string id_i = address + "_" + ioNo + "_IN";
+                string id_o = address + "_" + ioNo + "_OUT";
 
                 if (form == null)
                     return;
@@ -354,14 +356,14 @@ namespace MiniStockerIV.UI_Update
                     lbl_o = form.Controls.Find(id_o, true).FirstOrDefault() as Label;
                     if(lbl_i != null)
                     {
-                        if (msg.EndsWith("ON;"))
+                        if (msg.EndsWith("1;"))
                             lbl_i.ForeColor = Color.LimeGreen;
                         else
                             lbl_i.ForeColor = Color.Red;
                     }
                     if (lbl_o != null)
                     {
-                        if (msg.EndsWith("ON;"))
+                        if (msg.EndsWith("1;"))
                             lbl_o.ForeColor = Color.LimeGreen;
                         else
                             lbl_o.ForeColor = Color.Red;

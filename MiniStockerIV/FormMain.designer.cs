@@ -121,7 +121,9 @@
             this.btnFoupRotPutWait = new System.Windows.Forms.Button();
             this.btnFoupRotReset = new System.Windows.Forms.Button();
             this.btnFoupRotCarry = new System.Windows.Forms.Button();
+            this.btnFoupRotOrg = new System.Windows.Forms.Button();
             this.btnFoupRotHome = new System.Windows.Forms.Button();
+            this.btnFoupRotServoOn = new System.Windows.Forms.Button();
             this.btnFoupRotInit = new System.Windows.Forms.Button();
             this.groupBox47 = new System.Windows.Forms.GroupBox();
             this.btnSTKRefresh = new System.Windows.Forms.Button();
@@ -204,6 +206,16 @@
             this.tabVersion = new System.Windows.Forms.TabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabTest = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lblValue = new System.Windows.Forms.Label();
+            this.btnBit8 = new System.Windows.Forms.Button();
+            this.btnBit7 = new System.Windows.Forms.Button();
+            this.btnBit6 = new System.Windows.Forms.Button();
+            this.btnBit5 = new System.Windows.Forms.Button();
+            this.btnBit4 = new System.Windows.Forms.Button();
+            this.btnBit3 = new System.Windows.Forms.Button();
+            this.btnBit2 = new System.Windows.Forms.Button();
+            this.btnBit1 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.tbDNMVal_Set = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -215,6 +227,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -234,8 +247,6 @@
             this.btnHold = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
-            this.btnFoupRotServoOn = new System.Windows.Forms.Button();
-            this.btnFoupRotOrg = new System.Windows.Forms.Button();
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -1230,15 +1241,21 @@
             // 
             // tabStocker
             // 
+            this.tabStocker.Controls.Add(this.tbE1RFID);
+            this.tabStocker.Controls.Add(this.label64);
             this.tabStocker.Controls.Add(this.groupBox46);
+            this.tabStocker.Controls.Add(this.tbE2RFID);
             this.tabStocker.Controls.Add(this.groupBox24);
+            this.tabStocker.Controls.Add(this.label68);
             this.tabStocker.Controls.Add(this.groupBox25);
             this.tabStocker.Controls.Add(this.groupBox22);
             this.tabStocker.Controls.Add(this.groupBox17);
             this.tabStocker.Controls.Add(this.label44);
             this.tabStocker.Controls.Add(this.label63);
+            this.tabStocker.Controls.Add(this.btnE1ReadID);
             this.tabStocker.Controls.Add(this.label62);
             this.tabStocker.Controls.Add(this.label43);
+            this.tabStocker.Controls.Add(this.btnE2ReadID);
             this.tabStocker.Location = new System.Drawing.Point(4, 33);
             this.tabStocker.Name = "tabStocker";
             this.tabStocker.Size = new System.Drawing.Size(987, 683);
@@ -1469,6 +1486,18 @@
             this.btnFoupRotCarry.Visible = false;
             this.btnFoupRotCarry.Click += new System.EventHandler(this.btnFoupRotCarry_Click);
             // 
+            // btnFoupRotOrg
+            // 
+            this.btnFoupRotOrg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFoupRotOrg.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFoupRotOrg.Location = new System.Drawing.Point(288, 209);
+            this.btnFoupRotOrg.Name = "btnFoupRotOrg";
+            this.btnFoupRotOrg.Size = new System.Drawing.Size(87, 39);
+            this.btnFoupRotOrg.TabIndex = 19;
+            this.btnFoupRotOrg.Text = "Org";
+            this.btnFoupRotOrg.UseVisualStyleBackColor = true;
+            this.btnFoupRotOrg.Click += new System.EventHandler(this.btnFoupRotOrg_Click);
+            // 
             // btnFoupRotHome
             // 
             this.btnFoupRotHome.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1480,6 +1509,20 @@
             this.btnFoupRotHome.Text = "Home";
             this.btnFoupRotHome.UseVisualStyleBackColor = true;
             this.btnFoupRotHome.Click += new System.EventHandler(this.btnFoupRotHome_Click);
+            // 
+            // btnFoupRotServoOn
+            // 
+            this.btnFoupRotServoOn.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnFoupRotServoOn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFoupRotServoOn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFoupRotServoOn.ForeColor = System.Drawing.Color.Black;
+            this.btnFoupRotServoOn.Location = new System.Drawing.Point(9, 210);
+            this.btnFoupRotServoOn.Name = "btnFoupRotServoOn";
+            this.btnFoupRotServoOn.Size = new System.Drawing.Size(87, 39);
+            this.btnFoupRotServoOn.TabIndex = 29;
+            this.btnFoupRotServoOn.Text = "Servo On";
+            this.btnFoupRotServoOn.UseVisualStyleBackColor = false;
+            this.btnFoupRotServoOn.Click += new System.EventHandler(this.btnFoupRotServoOn_Click);
             // 
             // btnFoupRotInit
             // 
@@ -1967,6 +2010,7 @@
             // btnI2UnLoad
             // 
             this.btnI2UnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2UnLoad.Enabled = false;
             this.btnI2UnLoad.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnI2UnLoad.Location = new System.Drawing.Point(209, 23);
             this.btnI2UnLoad.Name = "btnI2UnLoad";
@@ -1993,6 +2037,7 @@
             // btnI2Load
             // 
             this.btnI2Load.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Load.Enabled = false;
             this.btnI2Load.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnI2Load.Location = new System.Drawing.Point(118, 23);
             this.btnI2Load.Name = "btnI2Load";
@@ -2034,6 +2079,7 @@
             // btnI1UnLoad
             // 
             this.btnI1UnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1UnLoad.Enabled = false;
             this.btnI1UnLoad.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnI1UnLoad.Location = new System.Drawing.Point(209, 21);
             this.btnI1UnLoad.Name = "btnI1UnLoad";
@@ -2075,6 +2121,7 @@
             // btnI1Load
             // 
             this.btnI1Load.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Load.Enabled = false;
             this.btnI1Load.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnI1Load.Location = new System.Drawing.Point(118, 21);
             this.btnI1Load.Name = "btnI1Load";
@@ -2087,16 +2134,13 @@
             // groupBox22
             // 
             this.groupBox22.Controls.Add(this.btnE2Init);
-            this.groupBox22.Controls.Add(this.tbE2RFID);
             this.groupBox22.Controls.Add(this.btnE2Clamp);
-            this.groupBox22.Controls.Add(this.label68);
             this.groupBox22.Controls.Add(this.btnE2Reset);
             this.groupBox22.Controls.Add(this.btnE2MoveOut);
             this.groupBox22.Controls.Add(this.btnE2MoveIn);
             this.groupBox22.Controls.Add(this.btnE2CloseShutter);
             this.groupBox22.Controls.Add(this.btnE2OpenShutter);
             this.groupBox22.Controls.Add(this.btnE2Auto);
-            this.groupBox22.Controls.Add(this.btnE2ReadID);
             this.groupBox22.Controls.Add(this.btnE2UnClamp);
             this.groupBox22.Location = new System.Drawing.Point(4, 239);
             this.groupBox22.Name = "groupBox22";
@@ -2124,10 +2168,11 @@
             // 
             this.tbE2RFID.Enabled = false;
             this.tbE2RFID.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbE2RFID.Location = new System.Drawing.Point(65, 114);
+            this.tbE2RFID.Location = new System.Drawing.Point(480, 635);
             this.tbE2RFID.Name = "tbE2RFID";
             this.tbE2RFID.Size = new System.Drawing.Size(159, 30);
             this.tbE2RFID.TabIndex = 38;
+            this.tbE2RFID.Visible = false;
             // 
             // btnE2Clamp
             // 
@@ -2148,12 +2193,13 @@
             this.label68.Enabled = false;
             this.label68.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label68.ForeColor = System.Drawing.Color.White;
-            this.label68.Location = new System.Drawing.Point(8, 116);
+            this.label68.Location = new System.Drawing.Point(423, 637);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(51, 23);
             this.label68.TabIndex = 37;
             this.label68.Text = " RFID";
             this.label68.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label68.Visible = false;
             // 
             // btnE2Reset
             // 
@@ -2197,6 +2243,7 @@
             // btnE2CloseShutter
             // 
             this.btnE2CloseShutter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE2CloseShutter.Enabled = false;
             this.btnE2CloseShutter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnE2CloseShutter.Location = new System.Drawing.Point(230, 68);
             this.btnE2CloseShutter.Name = "btnE2CloseShutter";
@@ -2209,6 +2256,7 @@
             // btnE2OpenShutter
             // 
             this.btnE2OpenShutter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE2OpenShutter.Enabled = false;
             this.btnE2OpenShutter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnE2OpenShutter.Location = new System.Drawing.Point(230, 22);
             this.btnE2OpenShutter.Name = "btnE2OpenShutter";
@@ -2236,12 +2284,13 @@
             // 
             this.btnE2ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnE2ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE2ReadID.Location = new System.Drawing.Point(6, 22);
+            this.btnE2ReadID.Location = new System.Drawing.Point(427, 590);
             this.btnE2ReadID.Name = "btnE2ReadID";
             this.btnE2ReadID.Size = new System.Drawing.Size(106, 39);
             this.btnE2ReadID.TabIndex = 19;
             this.btnE2ReadID.Text = "Read RFID";
             this.btnE2ReadID.UseVisualStyleBackColor = true;
+            this.btnE2ReadID.Visible = false;
             this.btnE2ReadID.Click += new System.EventHandler(this.btnE2ReadID_Click);
             // 
             // btnE2UnClamp
@@ -2258,8 +2307,6 @@
             // 
             // groupBox17
             // 
-            this.groupBox17.Controls.Add(this.tbE1RFID);
-            this.groupBox17.Controls.Add(this.label64);
             this.groupBox17.Controls.Add(this.btnE1Init);
             this.groupBox17.Controls.Add(this.btnE1Clamp);
             this.groupBox17.Controls.Add(this.btnE1Reset);
@@ -2268,7 +2315,6 @@
             this.groupBox17.Controls.Add(this.btnE1CloseShutter);
             this.groupBox17.Controls.Add(this.btnE1OpenShutter);
             this.groupBox17.Controls.Add(this.btnE1Auto);
-            this.groupBox17.Controls.Add(this.btnE1ReadID);
             this.groupBox17.Controls.Add(this.btnE1UnClamp);
             this.groupBox17.Location = new System.Drawing.Point(4, 73);
             this.groupBox17.Name = "groupBox17";
@@ -2281,10 +2327,11 @@
             // 
             this.tbE1RFID.Enabled = false;
             this.tbE1RFID.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbE1RFID.Location = new System.Drawing.Point(65, 113);
+            this.tbE1RFID.Location = new System.Drawing.Point(171, 630);
             this.tbE1RFID.Name = "tbE1RFID";
             this.tbE1RFID.Size = new System.Drawing.Size(159, 30);
             this.tbE1RFID.TabIndex = 38;
+            this.tbE1RFID.Visible = false;
             // 
             // label64
             // 
@@ -2293,12 +2340,13 @@
             this.label64.Enabled = false;
             this.label64.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label64.ForeColor = System.Drawing.Color.White;
-            this.label64.Location = new System.Drawing.Point(8, 115);
+            this.label64.Location = new System.Drawing.Point(114, 632);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(51, 23);
             this.label64.TabIndex = 37;
             this.label64.Text = " RFID";
             this.label64.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label64.Visible = false;
             // 
             // btnE1Init
             // 
@@ -2369,6 +2417,7 @@
             // btnE1CloseShutter
             // 
             this.btnE1CloseShutter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE1CloseShutter.Enabled = false;
             this.btnE1CloseShutter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnE1CloseShutter.Location = new System.Drawing.Point(230, 68);
             this.btnE1CloseShutter.Name = "btnE1CloseShutter";
@@ -2381,6 +2430,7 @@
             // btnE1OpenShutter
             // 
             this.btnE1OpenShutter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE1OpenShutter.Enabled = false;
             this.btnE1OpenShutter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnE1OpenShutter.Location = new System.Drawing.Point(230, 22);
             this.btnE1OpenShutter.Name = "btnE1OpenShutter";
@@ -2408,12 +2458,13 @@
             // 
             this.btnE1ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnE1ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE1ReadID.Location = new System.Drawing.Point(6, 22);
+            this.btnE1ReadID.Location = new System.Drawing.Point(99, 585);
             this.btnE1ReadID.Name = "btnE1ReadID";
             this.btnE1ReadID.Size = new System.Drawing.Size(106, 39);
             this.btnE1ReadID.TabIndex = 19;
             this.btnE1ReadID.Text = "Read RFID";
             this.btnE1ReadID.UseVisualStyleBackColor = true;
+            this.btnE1ReadID.Visible = false;
             this.btnE1ReadID.Click += new System.EventHandler(this.btnE1ReadID_Click);
             // 
             // btnE1UnClamp
@@ -2509,6 +2560,16 @@
             // 
             // tabTest
             // 
+            this.tabTest.Controls.Add(this.label15);
+            this.tabTest.Controls.Add(this.lblValue);
+            this.tabTest.Controls.Add(this.btnBit8);
+            this.tabTest.Controls.Add(this.btnBit7);
+            this.tabTest.Controls.Add(this.btnBit6);
+            this.tabTest.Controls.Add(this.btnBit5);
+            this.tabTest.Controls.Add(this.btnBit4);
+            this.tabTest.Controls.Add(this.btnBit3);
+            this.tabTest.Controls.Add(this.btnBit2);
+            this.tabTest.Controls.Add(this.btnBit1);
             this.tabTest.Controls.Add(this.label14);
             this.tabTest.Controls.Add(this.tbDNMVal_Set);
             this.tabTest.Controls.Add(this.label10);
@@ -2520,6 +2581,7 @@
             this.tabTest.Controls.Add(this.dateTimePicker1);
             this.tabTest.Controls.Add(this.checkBox4);
             this.tabTest.Controls.Add(this.checkBox3);
+            this.tabTest.Controls.Add(this.button9);
             this.tabTest.Controls.Add(this.button8);
             this.tabTest.Controls.Add(this.button7);
             this.tabTest.Controls.Add(this.button1);
@@ -2536,11 +2598,117 @@
             this.tabTest.Text = "Test";
             this.tabTest.UseVisualStyleBackColor = true;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(601, 48);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(53, 21);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Value:";
+            // 
+            // lblValue
+            // 
+            this.lblValue.AutoSize = true;
+            this.lblValue.Location = new System.Drawing.Point(655, 48);
+            this.lblValue.Name = "lblValue";
+            this.lblValue.Size = new System.Drawing.Size(37, 21);
+            this.lblValue.TabIndex = 27;
+            this.lblValue.Text = "255";
+            // 
+            // btnBit8
+            // 
+            this.btnBit8.Location = new System.Drawing.Point(525, 253);
+            this.btnBit8.Name = "btnBit8";
+            this.btnBit8.Size = new System.Drawing.Size(36, 29);
+            this.btnBit8.TabIndex = 26;
+            this.btnBit8.Text = "1";
+            this.hint.SetToolTip(this.btnBit8, "Bit 8");
+            this.btnBit8.UseVisualStyleBackColor = true;
+            this.btnBit8.Click += new System.EventHandler(this.btnOutBit_Click);
+            // 
+            // btnBit7
+            // 
+            this.btnBit7.Location = new System.Drawing.Point(525, 219);
+            this.btnBit7.Name = "btnBit7";
+            this.btnBit7.Size = new System.Drawing.Size(36, 29);
+            this.btnBit7.TabIndex = 26;
+            this.btnBit7.Text = "1";
+            this.hint.SetToolTip(this.btnBit7, "Bit 7");
+            this.btnBit7.UseVisualStyleBackColor = true;
+            this.btnBit7.Click += new System.EventHandler(this.btnOutBit_Click);
+            // 
+            // btnBit6
+            // 
+            this.btnBit6.Location = new System.Drawing.Point(525, 184);
+            this.btnBit6.Name = "btnBit6";
+            this.btnBit6.Size = new System.Drawing.Size(36, 29);
+            this.btnBit6.TabIndex = 26;
+            this.btnBit6.Text = "1";
+            this.hint.SetToolTip(this.btnBit6, "Bit 6");
+            this.btnBit6.UseVisualStyleBackColor = true;
+            this.btnBit6.Click += new System.EventHandler(this.btnOutBit_Click);
+            // 
+            // btnBit5
+            // 
+            this.btnBit5.Location = new System.Drawing.Point(525, 149);
+            this.btnBit5.Name = "btnBit5";
+            this.btnBit5.Size = new System.Drawing.Size(36, 29);
+            this.btnBit5.TabIndex = 26;
+            this.btnBit5.Text = "1";
+            this.hint.SetToolTip(this.btnBit5, "Bit 5");
+            this.btnBit5.UseVisualStyleBackColor = true;
+            this.btnBit5.Click += new System.EventHandler(this.btnOutBit_Click);
+            // 
+            // btnBit4
+            // 
+            this.btnBit4.Location = new System.Drawing.Point(525, 114);
+            this.btnBit4.Name = "btnBit4";
+            this.btnBit4.Size = new System.Drawing.Size(36, 29);
+            this.btnBit4.TabIndex = 26;
+            this.btnBit4.Text = "1";
+            this.hint.SetToolTip(this.btnBit4, "Bit 4");
+            this.btnBit4.UseVisualStyleBackColor = true;
+            this.btnBit4.Click += new System.EventHandler(this.btnOutBit_Click);
+            // 
+            // btnBit3
+            // 
+            this.btnBit3.Location = new System.Drawing.Point(525, 79);
+            this.btnBit3.Name = "btnBit3";
+            this.btnBit3.Size = new System.Drawing.Size(36, 29);
+            this.btnBit3.TabIndex = 26;
+            this.btnBit3.Text = "1";
+            this.hint.SetToolTip(this.btnBit3, "Bit 3");
+            this.btnBit3.UseVisualStyleBackColor = true;
+            this.btnBit3.Click += new System.EventHandler(this.btnOutBit_Click);
+            // 
+            // btnBit2
+            // 
+            this.btnBit2.Location = new System.Drawing.Point(525, 44);
+            this.btnBit2.Name = "btnBit2";
+            this.btnBit2.Size = new System.Drawing.Size(36, 29);
+            this.btnBit2.TabIndex = 26;
+            this.btnBit2.Text = "1";
+            this.hint.SetToolTip(this.btnBit2, "Bit 2");
+            this.btnBit2.UseVisualStyleBackColor = true;
+            this.btnBit2.Click += new System.EventHandler(this.btnOutBit_Click);
+            // 
+            // btnBit1
+            // 
+            this.btnBit1.Location = new System.Drawing.Point(525, 9);
+            this.btnBit1.Name = "btnBit1";
+            this.btnBit1.Size = new System.Drawing.Size(36, 29);
+            this.btnBit1.TabIndex = 26;
+            this.btnBit1.Text = "1";
+            this.hint.SetToolTip(this.btnBit1, "Bit 1");
+            this.btnBit1.UseVisualStyleBackColor = true;
+            this.btnBit1.Click += new System.EventHandler(this.btnOutBit_Click);
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(655, 290);
+            this.label14.Location = new System.Drawing.Point(655, 306);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(27, 19);
             this.label14.TabIndex = 25;
@@ -2559,7 +2727,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(393, 290);
+            this.label10.Location = new System.Drawing.Point(393, 306);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(126, 19);
             this.label10.TabIndex = 25;
@@ -2577,7 +2745,7 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(815, 313);
+            this.button5.Location = new System.Drawing.Point(815, 329);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(78, 26);
             this.button5.TabIndex = 0;
@@ -2599,7 +2767,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(815, 283);
+            this.button4.Location = new System.Drawing.Point(815, 299);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(78, 26);
             this.button4.TabIndex = 0;
@@ -2614,7 +2782,7 @@
             this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
             this.dateTimePicker2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(688, 288);
+            this.dateTimePicker2.Location = new System.Drawing.Point(688, 304);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(110, 26);
             this.dateTimePicker2.TabIndex = 24;
@@ -2627,7 +2795,7 @@
             this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
             this.dateTimePicker1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(525, 288);
+            this.dateTimePicker1.Location = new System.Drawing.Point(525, 304);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(110, 26);
             this.dateTimePicker1.TabIndex = 24;
@@ -2638,7 +2806,7 @@
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.Location = new System.Drawing.Point(700, 316);
+            this.checkBox4.Location = new System.Drawing.Point(700, 332);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(109, 23);
             this.checkBox4.TabIndex = 23;
@@ -2650,13 +2818,23 @@
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(586, 316);
+            this.checkBox3.Location = new System.Drawing.Point(586, 332);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(109, 23);
             this.checkBox3.TabIndex = 23;
             this.checkBox3.Text = "LoadPort1";
             this.checkBox3.UseVisualStyleBackColor = true;
             this.checkBox3.Visible = false;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(30, 368);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(119, 35);
+            this.button9.TabIndex = 0;
+            this.button9.Text = "GET Foups";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button8
             // 
@@ -2694,7 +2872,7 @@
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(480, 316);
+            this.checkBox2.Location = new System.Drawing.Point(480, 332);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(100, 23);
             this.checkBox2.TabIndex = 23;
@@ -2708,7 +2886,7 @@
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(392, 316);
+            this.checkBox1.Location = new System.Drawing.Point(392, 332);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(82, 23);
             this.checkBox1.TabIndex = 23;
@@ -2882,32 +3060,6 @@
             this.hint.InitialDelay = 50;
             this.hint.ReshowDelay = 10;
             // 
-            // btnFoupRotServoOn
-            // 
-            this.btnFoupRotServoOn.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.btnFoupRotServoOn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFoupRotServoOn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoupRotServoOn.ForeColor = System.Drawing.Color.Black;
-            this.btnFoupRotServoOn.Location = new System.Drawing.Point(9, 210);
-            this.btnFoupRotServoOn.Name = "btnFoupRotServoOn";
-            this.btnFoupRotServoOn.Size = new System.Drawing.Size(87, 39);
-            this.btnFoupRotServoOn.TabIndex = 29;
-            this.btnFoupRotServoOn.Text = "Servo On";
-            this.btnFoupRotServoOn.UseVisualStyleBackColor = false;
-            this.btnFoupRotServoOn.Click += new System.EventHandler(this.btnFoupRotServoOn_Click);
-            // 
-            // btnFoupRotOrg
-            // 
-            this.btnFoupRotOrg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFoupRotOrg.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoupRotOrg.Location = new System.Drawing.Point(288, 209);
-            this.btnFoupRotOrg.Name = "btnFoupRotOrg";
-            this.btnFoupRotOrg.Size = new System.Drawing.Size(87, 39);
-            this.btnFoupRotOrg.TabIndex = 19;
-            this.btnFoupRotOrg.Text = "Org";
-            this.btnFoupRotOrg.UseVisualStyleBackColor = true;
-            this.btnFoupRotOrg.Click += new System.EventHandler(this.btnFoupRotOrg_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2950,9 +3102,7 @@
             this.groupBox24.ResumeLayout(false);
             this.groupBox25.ResumeLayout(false);
             this.groupBox22.ResumeLayout(false);
-            this.groupBox22.PerformLayout();
             this.groupBox17.ResumeLayout(false);
-            this.groupBox17.PerformLayout();
             this.tabIO.ResumeLayout(false);
             this.tabVersion.ResumeLayout(false);
             this.tabTest.ResumeLayout(false);
@@ -3171,6 +3321,17 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnFoupRotServoOn;
         private System.Windows.Forms.Button btnFoupRotOrg;
+        private System.Windows.Forms.Button btnBit8;
+        private System.Windows.Forms.Button btnBit7;
+        private System.Windows.Forms.Button btnBit6;
+        private System.Windows.Forms.Button btnBit5;
+        private System.Windows.Forms.Button btnBit4;
+        private System.Windows.Forms.Button btnBit3;
+        private System.Windows.Forms.Button btnBit2;
+        private System.Windows.Forms.Button btnBit1;
+        private System.Windows.Forms.Label lblValue;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button9;
     }
 }
 

@@ -123,7 +123,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(320, 543);
+            this.tabPage6.Size = new System.Drawing.Size(300, 543);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "OUT";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -145,6 +145,7 @@
             this.cbUseIOName.TabIndex = 2;
             this.cbUseIOName.Text = "Use IO Name";
             this.cbUseIOName.UseVisualStyleBackColor = true;
+            this.cbUseIOName.Visible = false;
             // 
             // gbIO_2
             // 

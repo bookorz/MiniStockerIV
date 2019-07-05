@@ -41,18 +41,18 @@ namespace MiniStockerIV
             key = key.Substring(0, key.LastIndexOf("_"));
             string address = key.Split('_')[0];
             string io = key.Split('_')[1];
-            string ioCmd = cbUseIOName.Checked ? "SET:NMEIO:" : "SET:RELIO:";
+            string ioCmd = cbUseIOName.Checked ? "MCR:SET_NMEIO/" : "MCR:SET_RELIO/";
             string cmd = "$" + address + ioCmd + io + "/";
             switch (type.ToUpper())
             {
                 case "ON":
                     FormMainUpdate.Update_IO(key, "ON");
-                    cmd = cmd + "ON;";
+                    cmd = cmd + "1;";
                     break;
 
                 case "OFF":
                     FormMainUpdate.Update_IO(key, "OFF");
-                    cmd = cmd + "OFF;";
+                    cmd = cmd + "0;";
                     break;
             }
             sendCommand(cmd);
@@ -333,7 +333,7 @@ namespace MiniStockerIV
                     else if (!foo.Text.Equals("■"))
                     {
                         string address = foo.Name.Split('_')[0];
-                        Console.WriteLine(foo.Name);
+                        //Console.WriteLine(foo.Name);
                         string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
                         getRELIO(address, rio);
                     }
@@ -343,16 +343,25 @@ namespace MiniStockerIV
 
         private void getNMEIO(string address, string name)
         {
-            string cmd = "$" + address + "GET:NMEIO:" + name + ";";
+            string cmd = "$" + address + "MCR:GET_NMEIO/" + name + ";";
             sendCommand(cmd);
         }
 
         private void getRELIO(string address, string id)
         {
-            string cmd = "$" + address + "GET:RELIO:" + id + ";";
+            string cmd = "$" + address + "MCR:GET_RELIO/" + id + ";";
             sendCommand(cmd);
         }
-
+        private void setRELIO(string address, string id, string value)
+        {
+            string cmd = "$" + address + "MCR:SET_RELIO/" + id + "/" + value + ";";
+            sendCommand(cmd);
+        }
+        private void setRELIOS(string address, string id, string value)
+        {
+            string cmd = "$" + address + "MCR:SET_RELIOS/" + id + "/" + value + ";";
+            sendCommand(cmd);
+        }
         private void QryIOByName( TabControl tc, Panel p_in, Panel p_out)
         {
             if (tc.SelectedTab.Text.Equals("IN"))
@@ -407,29 +416,125 @@ namespace MiniStockerIV
 
         private void btnQryIO1_Click(object sender, EventArgs e)
         {
-            if (cbUseIOName.Checked)
-                //QryIOByName("1", tabIOControl1, Category1_I_List, Category1_O_List);
-                QryIOByName( tabIOControl1, Category1_I_List, Category1_O_List);
+            if (tabIOControl1.SelectedTab.Text.Equals("IN"))
+            {
+                string cmd = "$1MCR:I7565DNM_REFRESH;";
+                sendCommand(cmd);
+                if (cbUseIOName.Checked)
+                    //QryIOByName("1", tabIOControl1, Category1_I_List, Category1_O_List);
+                    QryIOByName(tabIOControl1, Category1_I_List, Category1_O_List);
+                else
+                    QryIO(tabIOControl1, Category1_I_List, Category1_O_List);
+            }
             else
-                QryIO(tabIOControl1, Category1_I_List, Category1_O_List);
+            {
+                Dictionary<string, string> ioMap = new Dictionary<string, string>();
+                foreach (Control foo in Category1_O_List.Controls)
+                {
+                    if (!foo.GetType().Name.Equals("Label"))
+                    {
+                        continue;
+                    }
+                    else if (!foo.Text.Equals("■"))
+                    {
+                        string address = foo.Name.Split('_')[0];
+                        //Console.WriteLine(foo.Name);
+                        string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
+                        if (ioMap.ContainsKey(address))
+                            ioMap[address] = ioMap[address] + ";" + rio;
+                        else
+                            ioMap[address] = rio;
+                        string key = foo.Name.Substring(0, foo.Name.LastIndexOf("_"));
+                        FormMainUpdate.Update_IO(key, "OFF");
+                    }
+                }
+                foreach (KeyValuePair<string, string> ios in ioMap)
+                {
+                    setRELIOS(ios.Key, ios.Value, "0");//clear output
+                }
+            }
         }
 
         private void btnQryIO2_Click(object sender, EventArgs e)
         {
-            if (cbUseIOName.Checked)
-                QryIOByName(tabIOControl2, Category2_I_List, Category2_O_List);
+            if (tabIOControl2.SelectedTab.Text.Equals("IN"))
+            {
+                string cmd = "$1MCR:I7565DNM_REFRESH;";
+                sendCommand(cmd);
+                if (cbUseIOName.Checked)
+                    QryIOByName(tabIOControl2, Category2_I_List, Category2_O_List);
                 //QryIOByName("2", tabIOControl2, Category2_I_List, Category2_O_List);
+                else
+                    QryIO(tabIOControl2, Category2_I_List, Category2_O_List);
+            }
             else
-                QryIO(tabIOControl2, Category2_I_List, Category2_O_List);
+            {
+                Dictionary<string, string> ioMap = new Dictionary<string, string>();
+                foreach (Control foo in Category2_O_List.Controls)
+                {
+                    if (!foo.GetType().Name.Equals("Label"))
+                    {
+                        continue;
+                    }
+                    else if (!foo.Text.Equals("■"))
+                    {
+                        string address = foo.Name.Split('_')[0];
+                        //Console.WriteLine(foo.Name);
+                        string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
+                        if (ioMap.ContainsKey(address))
+                            ioMap[address] = ioMap[address] + ";" + rio;
+                        else
+                            ioMap[address] = rio;
+                        string key = foo.Name.Substring(0, foo.Name.LastIndexOf("_"));
+                        FormMainUpdate.Update_IO(key, "OFF");
+                    }
+                }
+                foreach (KeyValuePair<string, string> ios in ioMap)
+                {
+                    setRELIOS(ios.Key, ios.Value, "0");//clear output
+                }
+            }
         }
 
         private void btnQryIO3_Click(object sender, EventArgs e)
         {
-            if (cbUseIOName.Checked)
-                QryIOByName(tabIOControl3, Category3_I_List, Category3_O_List);
+            if (tabIOControl3.SelectedTab.Text.Equals("IN"))
+            {
+                string cmd = "$1MCR:I7565DNM_REFRESH;";
+                sendCommand(cmd);
+                if (cbUseIOName.Checked)
+                    QryIOByName(tabIOControl3, Category3_I_List, Category3_O_List);
                 //QryIOByName("3", tabIOControl3, Category3_I_List, Category3_O_List);
+                else
+                    QryIO(tabIOControl3, Category3_I_List, Category3_O_List);
+            }
             else
-                QryIO(tabIOControl3, Category3_I_List, Category3_O_List);
+            {
+                Dictionary<string, string> ioMap = new Dictionary<string, string>();
+                foreach (Control foo in Category3_O_List.Controls)
+                {
+                    if (!foo.GetType().Name.Equals("Label"))
+                    {
+                        continue;
+                    }
+                    else if (!foo.Text.Equals("■"))
+                    {
+                        string address = foo.Name.Split('_')[0];
+                        //Console.WriteLine(foo.Name);
+                        string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
+                        if (ioMap.ContainsKey(address))
+                            ioMap[address] = ioMap[address] + ";" + rio;
+                        else
+                            ioMap[address] = rio;
+                        string key = foo.Name.Substring(0, foo.Name.LastIndexOf("_"));
+                        FormMainUpdate.Update_IO(key, "OFF");
+                    }
+                }
+                foreach (KeyValuePair<string, string> ios in ioMap)
+                {
+                    setRELIOS(ios.Key, ios.Value, "0");//clear output
+                }
+            }
         }
     }
 }

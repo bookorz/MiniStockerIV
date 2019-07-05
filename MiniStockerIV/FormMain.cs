@@ -23,6 +23,7 @@ namespace MiniStockerIV
     public partial class FormMain : Form, IConnectionReport
     {
 
+        byte ODATA_0;
         I7565DNM dnm = new I7565DNM("7");//測試用
         const string _CUSTOMER_SERVICE = "客服";
         const string _CUSTOMER = "Customer";
@@ -309,13 +310,13 @@ namespace MiniStockerIV
                         //string cmd = replyMsg.Substring(6, replyMsg.IndexOf("/") - 6);//取INF: 後到第一個/的資料
                         switch (func)
                         {
-                            case "FOUPS"://動作成功結束
+                            case "GET_FOUPS"://動作成功結束
                                 setFoupPresenceByFoups(replyMsg);//UPDATE 畫面在席狀況
                                 break;
-                            case "RELIO":
+                            case "GET_RELIO":
                                 FormMainUpdate.IOUpdate(replyMsg);
                                 break;
-                            case "NMEIO":
+                            case "GET_NMEIO":
                                 FormMainUpdate.IONameUpdate(replyMsg);
                                 break;
                         }
@@ -461,37 +462,31 @@ namespace MiniStockerIV
             string cmd = getELPTClamp(Const.STK_ELPT1, Const.STATUS_ON);
             sendCommand(cmd);
         }
-        /// <summary>
-        /// $1MCR:ELPT_CLAMP/LTP/STATUS;[CR]
-        /// LPT：    
-        ///     1 = ELPT1
-        ///     2 = ELPT2
-        /// STATUS：    
-        ///      ON = CLAMP
-        ///     OFF = UNCLAMP
-        /// </summary>
-        /// <param name="port">指定 port</param>
-        /// <param name="status">clamp 狀態</param>
-        /// <returns></returns>
+
         private string getELPTClamp(string port, string status)
         {
             string cmd = "";
             switch (port)
             {
                 case Const.STK_ELPT1:
-                    cmd = "$1MCR:ELPT_CLAMP/1";//呼叫 Marco 指令:ILPT_OPEN, 參數: 1(ILPT1)
+                    cmd = "$1MCR:ELPT_CLAMP/P1;";//呼叫 Marco 指令:ELPT_CLAMP, 參數: P1(ELPT1)
                     break;
                 case Const.STK_ELPT2:
-                    cmd = "$1MCR:ELPT_CLAMP/2";//呼叫 Marco 指令:ILPT_OPEN, 參數: 2(ILPT2)
+                    cmd = "$1MCR:ELPT_CLAMP/P2;";//呼叫 Marco 指令:ELPT_CLAMP, 參數: P2(ELPT2)
                     break;
             }
-            switch (status)
+            return cmd;
+        }
+        private string getELPTUnClamp(string port, string status)
+        {
+            string cmd = "";
+            switch (port)
             {
-                case Const.STATUS_ON:
-                    cmd = cmd + "/ON;";//SET ON
+                case Const.STK_ELPT1:
+                    cmd = "$1MCR:ELPT_UNCLAMP/P1;";//呼叫 Marco 指令:ELPT_UNCLAMP, 參數: P1(ELPT1)
                     break;
-                case Const.STATUS_OFF:
-                    cmd = cmd + "/OFF;";//SET OFF
+                case Const.STK_ELPT2:
+                    cmd = "$1MCR:ELPT_UNCLAMP/P2;";//呼叫 Marco 指令:ELPT_UNCLAMP, 參數: P2(ELPT2)
                     break;
             }
             return cmd;
@@ -505,13 +500,13 @@ namespace MiniStockerIV
 
         private void btnE1UnClamp_Click(object sender, EventArgs e)
         {
-            string cmd = getELPTClamp(Const.STK_ELPT1, Const.STATUS_OFF);
+            string cmd = getELPTUnClamp(Const.STK_ELPT1, Const.STATUS_OFF);
             sendCommand(cmd);
         }
 
         private void btnE2UnClamp_Click(object sender, EventArgs e)
         {
-            string cmd = getELPTClamp(Const.STK_ELPT2, Const.STATUS_OFF);
+            string cmd = getELPTUnClamp(Const.STK_ELPT2, Const.STATUS_OFF);
             sendCommand(cmd);
         }
 
@@ -703,23 +698,24 @@ namespace MiniStockerIV
         /// <returns></returns>
         private string getELPTMove(string port, string status)
         {
+            string marco = "";
             string cmd = "";
-            switch (port)
-            {
-                case Const.STK_ELPT1:
-                    cmd = "$1MCR:ELPT_MOVE/1";//呼叫 Marco 指令:ELPT_MOVE, 參數: 1(ELPT1)
-                    break;
-                case Const.STK_ELPT2:
-                    cmd = "$1MCR:ELPT_MOVE/2";//呼叫 Marco 指令:ELPT_MOVE, 參數: 2(ELPT2)
-                    break;
-            }
             switch (status)
             {
                 case Const.POSITION_ELPT_STOCK_IN:
-                    cmd = cmd + "/IN;";//Move in stocker
+                    marco = "ELPT_MOVEIN";//Move in stocker
                     break;
                 case Const.POSITION_ELPT_STOCK_OUT:
-                    cmd = cmd + "/OUT;";//Move Out stocker
+                    marco = "ELPT_MOVEOUT";//Move Out stocker
+                    break;
+            }
+            switch (port)
+            {
+                case Const.STK_ELPT1:
+                    cmd = "$1MCR:" + marco + "/P1;";//呼叫 Marco 指令:ELPT_MOVE, 參數: 1(ELPT1)
+                    break;
+                case Const.STK_ELPT2:
+                    cmd = "$1MCR:" + marco + "/P2;";//呼叫 Marco 指令:ELPT_MOVE, 參數: 2(ELPT2)
                     break;
             }
             return cmd;
@@ -2337,12 +2333,8 @@ namespace MiniStockerIV
 
         private void btnTestDNMGetIO_Click(object sender, EventArgs e)
         {
-            string msg = "GET IO " + tbDNMIO_Get.Text + ":";
-            //debug 用
-            //rtbMsg.AppendText("Read Module 1:" + api.KUMA_GETIO("7", "1")[0] + "\n");
-            //rtbMsg.AppendText("Read Module 9:" + api.KUMA_GETIO("7", "9")[0] + "\n");
-            //rtbMsg.AppendText("Read Module 19:" + api.KUMA_GETIO("7", "19")[0] + "\n");
-            rtbMsg.AppendText("Read IO  " + tbDNMIO_Get.Text + ":" + dnm.I7565DNM_GETIO(tbDNMIO_Get.Text) + "\n");
+            string cmd = "$1MCR:MARCO_GET/" + tbDNMIO_Get.Text + ";";
+            sendCommand(cmd);
         }
 
         private void btnTestDNMSetIO_Click(object sender, EventArgs e)
@@ -2412,6 +2404,70 @@ namespace MiniStockerIV
             string cmd = "$1MCR:ROBOT_ORG;";
             sendCommand(cmd);
 
+        }
+
+        private void btnOutBit_Click(object sender, EventArgs e)
+        {
+            byte y = 0x0;
+            switch (((Button)sender).Name)
+            {
+                case "btnBit1":
+                    y = 0x1;
+                    break;
+                case "btnBit2":
+                    y = 0x2;
+                    break;
+                case "btnBit3":
+                    y = 0x4;
+                    break;
+                case "btnBit4":
+                    y = 0x8;
+                    break;
+                case "btnBit5":
+                    y = 0x10;
+                    break;
+                case "btnBit6":
+                    y = 0x20;
+                    break;
+                case "btnBit7":
+                    y = 0x40;
+                    break;
+                case "btnBit8":
+                    y = 0x80;
+                    break;
+            }
+            Load_Button(ref ODATA_0, y, (Button)sender);
+            lblValue.Text = ODATA_0.ToString();
+        }
+
+        private void Load_Button(ref byte X , byte Y, Button btn)
+        {
+            try
+            {
+                X = (byte)(X & ~Y);
+                if (btn.Text == "1")
+                {
+                    btn.Text = "0";
+                    X = (byte)(X | Y);
+                }
+                else
+                {
+                    btn.Text = "1";
+                }
+                MessageBox.Show(btn.Name.ToString() + "=[" + X.ToString() + "]");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+                
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string cmd = "$1MCR:GET_FOUPS;";
+            sendCommand(cmd);
         }
     }
 }

@@ -1,0 +1,84 @@
+﻿1,300,B1_Wafer Protrusion Detect,B1Wafer 突出檢知,IN
+1,301,B1_Present_Sensor1,B1 FOUP在席確認Sensor 1,IN
+1,302,B1_Present_Sensor2,B1 FOUP在席確認Sensor 2,IN
+1,303,B1_Present_Sensor3,B1 FOUP在席確認Sensor 3,IN
+1,304,B1_Slider_Forward_Sensor,B1 FOUP前後 Slider前進端,IN
+1,305,B1_Slider_Backward_Sensor,B1 FOUP前後 Slider後退端,IN
+1,306,B1_Clamp_Sensor,B1 FOUP Clamp,IN
+1,307,B1_Unclamp_Sensor,B1 FOUP Unclamp,IN
+1,308,B2_Wafer Protrusion Detect,B2 Wafer 突出檢知,IN
+1,309,B2_Present_Sensor1,B2 FOUP在席確認Sensor 1,IN
+1,310,B2_Present_Sensor2,B2 FOUP在席確認Sensor 2,IN
+1,311,B2_Present_Sensor3,B2 FOUP在席確認Sensor 3,IN
+1,312,B2_Slider_Forward_Sensor,B2 FOUP前後 Slider前進端,IN
+1,313,B2_Slider_Backward_Sensor,B2 FOUP前後 Slider後退端,IN
+1,314,B2_Clamp_Sensor,B2 FOUP Clamp,IN
+1,315,B2_Unclamp_Sensor,B2 FOUP Unclamp,IN
+1,400,B1_Door_Latch_Sensor,B1蓋取出機構Lock(垂直),IN
+1,401,B1_Door_Unlatch_Sensor,B1蓋取出機構unlock(水平),IN
+1,402,B1_Door_Open_Forward_Sensor,B1蓋Open機構前進端,IN
+1,403,B1_Door_Open_Backward_Sensor,B1蓋Open機構後退端,IN
+1,404,B1_Door_Open_Left_Sensor,B1蓋Open機構左側端,IN
+1,405,B1_Door_Open_Right_Sensor,B1蓋Open機構右側端,IN
+1,406,B1_Door_Open_Sealing_Position,B1蓋Open機構密封位置,IN
+1,407,B1_Door_Open_Loosen Position,B1蓋Open機構鬆開位置,IN
+1,408,B2_Door_Latch_Sensor,B2蓋取出機構Lock(垂直),IN
+1,409,B2_Door_Unlatch_Sensor,B2蓋取出機構unlock(水平),IN
+1,410,B2_Door_Open_Forward,B2蓋Open機構前進端,IN
+1,411,B2_Door_Open_Backward,B2蓋Open機構後退端,IN
+1,412,B2_Door_Open_Left,B2蓋Open機構左側端,IN
+1,413,B2_Door_Open_Right,B2蓋Open機構右側端,IN
+1,414,B2_Door_Open_Sealing_Position,B2蓋Open機構密封位置,IN
+1,415,B2_Door_Open_Loosen Position,B2蓋Open機構鬆開位置,IN
+1,702,B1_Door_Vacuum_Sensor,B1真空壓力Sensor(蓋板吸著確認),IN
+1,703,B2_Door_Vacuum_Sensor,B2真空壓力Sensor(蓋板吸著確認),IN
+1,1100,B1_Slider_Forward,B1FOUP前後Slider 前進,OUT
+1,1101,B1_Slider_Backward,B1FOUP前後Slider 後退,OUT
+1,1102,B1_Door_Latch,B1蓋取出機構 Lock(垂直),OUT
+1,1103,B1_Door_Unlatch,B1蓋取出機構 unlock(水平),OUT
+1,1104,B1_Door_Open_Backward,B1蓋OPEN機構 後退,OUT
+1,1105,B1_Door_Open_Forward,B1蓋OPEN機構 前進,OUT
+1,1106,B1_Door_Open_Left,B1蓋OPEN機構 左側,OUT
+1,1107,B1_Door_Open_Right,B1蓋OPEN機構 右側,OUT
+1,1108,B1_Clamp,B1FOUP Clamp,OUT
+1,1109,B1_Unclamp,B1FOUP unclamp,OUT
+1,1110,B1_Door_Open_Sealing,B1蓋Open機構密封,OUT
+1,1111,B1_Door_Open_Loosen,B1蓋Open機構鬆開,OUT
+1,1112,B1_Purge,B1Purge 排氣,OUT
+1,1200,B2_Slider_Forward,B2 FOUP前後Slider 前進,OUT
+1,1201,B2_Slider_Backward,B2 FOUP前後Slider 後退,OUT
+1,1202,B2_Door_Latch,B2 蓋取出機構 Lock(垂直),OUT
+1,1203,B2_Door_Unlatch,B2 蓋取出機構 unlock(水平),OUT
+1,1204,B2_Door_Open_Backward,B2 蓋OPEN機構 後退,OUT
+1,1205,B2_Door_Open_Forward,B2 蓋OPEN機構 前進,OUT
+1,1206,B2_Door_Open_Left,B2 蓋OPEN機構 左側,OUT
+1,1207,B2_Door_Open_Right,B2 蓋OPEN機構 右側,OUT
+1,1208,B2_Clamp,B2 FOUP Clamp,OUT
+1,1209,B2_Unclamp,B2 FOUP unclamp,OUT
+1,1210,B2_Door_Open_Sealing,B2 蓋Open 機構密封,OUT
+1,1211,B2_Door_Open_Loosen,B2 蓋Open 機構鬆開,OUT
+1,1212,B2_Purge,B2 Purge 排氣,OUT
+1,1300,Wafer Detect#1,Wafer Detect#1,IN
+1,1301,Wafer Detect#2,Wafer Detect#2,IN
+1,1302,Wafer Detect#3,Wafer Detect#3,IN
+1,1303,Wafer Detect#4,Wafer Detect#4,IN
+1,1304,Wafer Detect#5,Wafer Detect#5,IN
+1,1305,Wafer Detect#6,Wafer Detect#6,IN
+1,1306,WTM_Alarm_signal,WTM Alarm signal,IN
+1,1307,WTM_ARM_Home Signal,WTM ARM Home Signal,IN
+1,1308,WTM_Stop_Signal,WTM Stop Signal,IN
+1,1309,WTM_Origin_Signal,WTM Origin Signal,IN
+1,1310,WTM_Running_Signal,WTM Running Signal,IN
+1,1311,Boat_Interlock_To_WTM,Boat Interlock To WTM,IN
+1,1312,B1_Exhaust_氣缸(排氣位),B1 Exhaust 氣缸(排氣位),IN
+1,1313,B1_Exhaust_氣缸(封閉位),B1 Exhaust 氣缸(封閉位),IN
+1,1314,B2_Exhaust_氣缸(排氣位),B2 Exhaust 氣缸(排氣位),IN
+1,1315,B2_Exhaust_氣缸(封閉位),B2 Exhaust 氣缸(封閉位),IN
+1,1401,B1_N2_Box_Purge_On,B1N2 BOX Purge ON,OUT
+1,1402,B1_Door_Vacuum_Off,B1蓋吸著 OFF,OUT
+1,1403,B1_Door_Vacuum_On,B1蓋吸著 ON,OUT
+1,1404,B1_Door_Open_Interlock,B1Door Open Interlock To WTM,OUT
+1,1409,B2_N2_Box_Purge_On,B2 N2 BOX Purge ON,OUT
+1,1410,B2_Door_Vacuum_Off,B2 蓋吸著 OFF,OUT
+1,1411,B2_Door_Vacuum_On,B2 蓋吸著 ON,OUT
+1,1412,B2_Door_Open_Interlock,B2 Door Open Interlock To WTM,OUT

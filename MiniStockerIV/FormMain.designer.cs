@@ -247,6 +247,13 @@
             this.btnHold = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
+            this.btnE1ServoOn = new System.Windows.Forms.Button();
+            this.btnE1ServoOff = new System.Windows.Forms.Button();
+            this.btnE2ServoOn = new System.Windows.Forms.Button();
+            this.btnE2ServoOff = new System.Windows.Forms.Button();
+            this.btnE1Org = new System.Windows.Forms.Button();
+            this.btnE2Org = new System.Windows.Forms.Button();
+            this.btnCheckSlave = new System.Windows.Forms.Button();
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -2134,6 +2141,9 @@
             // groupBox22
             // 
             this.groupBox22.Controls.Add(this.btnE2Init);
+            this.groupBox22.Controls.Add(this.btnE2Org);
+            this.groupBox22.Controls.Add(this.btnE2ServoOff);
+            this.groupBox22.Controls.Add(this.btnE2ServoOn);
             this.groupBox22.Controls.Add(this.btnE2Clamp);
             this.groupBox22.Controls.Add(this.btnE2Reset);
             this.groupBox22.Controls.Add(this.btnE2MoveOut);
@@ -2271,7 +2281,7 @@
             this.btnE2Auto.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnE2Auto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnE2Auto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE2Auto.Location = new System.Drawing.Point(6, 68);
+            this.btnE2Auto.Location = new System.Drawing.Point(118, 113);
             this.btnE2Auto.Name = "btnE2Auto";
             this.btnE2Auto.Size = new System.Drawing.Size(106, 39);
             this.btnE2Auto.TabIndex = 19;
@@ -2308,6 +2318,9 @@
             // groupBox17
             // 
             this.groupBox17.Controls.Add(this.btnE1Init);
+            this.groupBox17.Controls.Add(this.btnE1Org);
+            this.groupBox17.Controls.Add(this.btnE1ServoOff);
+            this.groupBox17.Controls.Add(this.btnE1ServoOn);
             this.groupBox17.Controls.Add(this.btnE1Clamp);
             this.groupBox17.Controls.Add(this.btnE1Reset);
             this.groupBox17.Controls.Add(this.btnE1MoveOut);
@@ -2445,7 +2458,7 @@
             this.btnE1Auto.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnE1Auto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnE1Auto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE1Auto.Location = new System.Drawing.Point(6, 67);
+            this.btnE1Auto.Location = new System.Drawing.Point(118, 112);
             this.btnE1Auto.Name = "btnE1Auto";
             this.btnE1Auto.Size = new System.Drawing.Size(106, 39);
             this.btnE1Auto.TabIndex = 19;
@@ -2966,6 +2979,7 @@
             this.groupBox6.Controls.Add(this.btnAbort);
             this.groupBox6.Controls.Add(this.btnHold);
             this.groupBox6.Controls.Add(this.btnRestart);
+            this.groupBox6.Controls.Add(this.btnCheckSlave);
             this.groupBox6.Controls.Add(this.btnLogin);
             this.groupBox6.Location = new System.Drawing.Point(1005, 12);
             this.groupBox6.Name = "groupBox6";
@@ -3059,6 +3073,90 @@
             this.hint.AutoPopDelay = 15000;
             this.hint.InitialDelay = 50;
             this.hint.ReshowDelay = 10;
+            // 
+            // btnE1ServoOn
+            // 
+            this.btnE1ServoOn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE1ServoOn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE1ServoOn.Location = new System.Drawing.Point(6, 22);
+            this.btnE1ServoOn.Name = "btnE1ServoOn";
+            this.btnE1ServoOn.Size = new System.Drawing.Size(106, 39);
+            this.btnE1ServoOn.TabIndex = 19;
+            this.btnE1ServoOn.Text = "Servo On";
+            this.btnE1ServoOn.UseVisualStyleBackColor = true;
+            this.btnE1ServoOn.Click += new System.EventHandler(this.btnE1ServoOn_Click);
+            // 
+            // btnE1ServoOff
+            // 
+            this.btnE1ServoOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE1ServoOff.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE1ServoOff.Location = new System.Drawing.Point(6, 68);
+            this.btnE1ServoOff.Name = "btnE1ServoOff";
+            this.btnE1ServoOff.Size = new System.Drawing.Size(106, 39);
+            this.btnE1ServoOff.TabIndex = 19;
+            this.btnE1ServoOff.Text = "Servo Off";
+            this.btnE1ServoOff.UseVisualStyleBackColor = true;
+            this.btnE1ServoOff.Click += new System.EventHandler(this.btnE1ServoOff_Click);
+            // 
+            // btnE2ServoOn
+            // 
+            this.btnE2ServoOn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE2ServoOn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE2ServoOn.Location = new System.Drawing.Point(6, 21);
+            this.btnE2ServoOn.Name = "btnE2ServoOn";
+            this.btnE2ServoOn.Size = new System.Drawing.Size(106, 39);
+            this.btnE2ServoOn.TabIndex = 19;
+            this.btnE2ServoOn.Text = "Servo On";
+            this.btnE2ServoOn.UseVisualStyleBackColor = true;
+            this.btnE2ServoOn.Click += new System.EventHandler(this.btnE2ServoOn_Click);
+            // 
+            // btnE2ServoOff
+            // 
+            this.btnE2ServoOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE2ServoOff.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE2ServoOff.Location = new System.Drawing.Point(6, 67);
+            this.btnE2ServoOff.Name = "btnE2ServoOff";
+            this.btnE2ServoOff.Size = new System.Drawing.Size(106, 39);
+            this.btnE2ServoOff.TabIndex = 19;
+            this.btnE2ServoOff.Text = "Servo Off";
+            this.btnE2ServoOff.UseVisualStyleBackColor = true;
+            this.btnE2ServoOff.Click += new System.EventHandler(this.btnE2ServoOff_Click);
+            // 
+            // btnE1Org
+            // 
+            this.btnE1Org.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE1Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE1Org.Location = new System.Drawing.Point(6, 112);
+            this.btnE1Org.Name = "btnE1Org";
+            this.btnE1Org.Size = new System.Drawing.Size(106, 39);
+            this.btnE1Org.TabIndex = 19;
+            this.btnE1Org.Text = "Org";
+            this.btnE1Org.UseVisualStyleBackColor = true;
+            this.btnE1Org.Click += new System.EventHandler(this.btnE1Org_Click);
+            // 
+            // btnE2Org
+            // 
+            this.btnE2Org.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE2Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE2Org.Location = new System.Drawing.Point(6, 112);
+            this.btnE2Org.Name = "btnE2Org";
+            this.btnE2Org.Size = new System.Drawing.Size(106, 39);
+            this.btnE2Org.TabIndex = 19;
+            this.btnE2Org.Text = "Org";
+            this.btnE2Org.UseVisualStyleBackColor = true;
+            this.btnE2Org.Click += new System.EventHandler(this.btnE2Org_Click);
+            // 
+            // btnCheckSlave
+            // 
+            this.btnCheckSlave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCheckSlave.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckSlave.Location = new System.Drawing.Point(430, 20);
+            this.btnCheckSlave.Name = "btnCheckSlave";
+            this.btnCheckSlave.Size = new System.Drawing.Size(113, 39);
+            this.btnCheckSlave.TabIndex = 19;
+            this.btnCheckSlave.Text = "Check Slave";
+            this.btnCheckSlave.UseVisualStyleBackColor = true;
+            this.btnCheckSlave.Click += new System.EventHandler(this.btnCheckSlave_Click);
             // 
             // FormMain
             // 
@@ -3332,6 +3430,13 @@
         private System.Windows.Forms.Label lblValue;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnE1ServoOff;
+        private System.Windows.Forms.Button btnE1ServoOn;
+        private System.Windows.Forms.Button btnE2ServoOff;
+        private System.Windows.Forms.Button btnE2ServoOn;
+        private System.Windows.Forms.Button btnE2Org;
+        private System.Windows.Forms.Button btnE1Org;
+        private System.Windows.Forms.Button btnCheckSlave;
     }
 }
 

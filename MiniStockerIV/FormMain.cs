@@ -171,7 +171,6 @@ namespace MiniStockerIV
             }
             else
             {
-                //FormMainUpdate.LogUpdate(cmd);
                 logUpdate(cmd);
                 currentCmd = cmd;
                 device.Send(cmd + "\r");
@@ -267,7 +266,7 @@ namespace MiniStockerIV
             string[] MsgAry = ((string)Msg).Split(new string[] { "\r" }, StringSplitOptions.None);
             foreach (string replyMsg in MsgAry)
             {
-                string msg = replyMsg.Split('/')[0];
+                string msg = replyMsg.Split('/')[0].Replace(";","").Replace("|ERROR","");
                 string msgType = msg.Substring(2, 3);
                 int lastIdx = msg.LastIndexOf(":") > 5 ? msg.LastIndexOf(":") : msg.Length;
                 string func = msg.Substring(6, lastIdx - 6);// 前六碼為固定前修飾詞, 例如 $1CMD: $2MCR:
@@ -294,6 +293,12 @@ namespace MiniStockerIV
                         setIsRunning(false);//ABS stop script
                         isScriptRunning = false;
                         isCmdFin = true;
+                        switch (func)
+                        {
+                            case "CHECK_DNM_SLAVE":
+                                logUpdate("Device Net Slave NG");
+                                break;
+                        }
                         break;
                     case "EVT"://事件發報
                         showError(replyMsg);
@@ -318,6 +323,9 @@ namespace MiniStockerIV
                                 break;
                             case "GET_NMEIO":
                                 FormMainUpdate.IONameUpdate(replyMsg);
+                                break;
+                            case "CHECK_DNM_SLAVE":
+                                logUpdate("Device Net Slave OK");
                                 break;
                         }
                         if (!isScriptRunning)
@@ -364,9 +372,7 @@ namespace MiniStockerIV
             }
             catch (Exception e)
             {
-                //FormMainUpdate.LogUpdate("異常資訊解析失敗");
-                Console.WriteLine(e.StackTrace);
-                logUpdate("異常資訊解析失敗");
+                logUpdate("異常資訊解析失敗" + e.StackTrace);
             }
             string desc = "未定義異常";
             string axis = "";
@@ -430,26 +436,22 @@ namespace MiniStockerIV
 
         void IConnectionReport.On_Connection_Connecting(string Msg)
         {
-            //FormMainUpdate.LogUpdate("連線中!!");
             logUpdate("連線中!!");
         }
 
         void IConnectionReport.On_Connection_Connected(object Msg)
         {
-            //FormMainUpdate.LogUpdate("連線成功!!");
             logUpdate("連線成功!!");
         }
 
         void IConnectionReport.On_Connection_Disconnected(string Msg)
         {
-            FormMainUpdate.LogUpdate("斷線");
-            //throw new NotImplementedException();
+            logUpdate("斷線!!");
         }
 
         void IConnectionReport.On_Connection_Error(string Msg)
         {
-            FormMainUpdate.LogUpdate("連線異常");
-            //throw new NotImplementedException();
+            logUpdate("連線異常!!");
         }
 
         private void btnE2ReadID_Click(object sender, EventArgs e)
@@ -1898,13 +1900,17 @@ namespace MiniStockerIV
         private void updateLog(object data)
         {
             FormMainUpdate.Log(data.ToString());
-            FormMainUpdate.LogUpdate(data.ToString());
+            lock (rtbMsg)
+            {
+                FormMainUpdate.LogUpdate(data.ToString());
+            }
         }
 
         private void logUpdate(string log)
         {
             //FormMainUpdate.LogUpdate(log);
-            ThreadPool.QueueUserWorkItem(new WaitCallback(updateLog), log);
+            //ThreadPool.QueueUserWorkItem(new WaitCallback(updateLog), log);//順序錯誤~ 先 MARK 掉
+            updateLog(log);
         }
 
         private void runScript(object data)
@@ -1916,8 +1922,9 @@ namespace MiniStockerIV
             while (cnt <= repeatTimes && !FormMainUpdate.isAlarmSet && isScriptRunning)
             {
                 Thread.Sleep(20);//讓畫面有時間更新, 順序不錯亂
-                FormMainUpdate.Log("**************  Run Script: " + cnt + "  **************");
-                FormMainUpdate.LogUpdate("\n**************  Run Script: " + cnt + "  **************");//不另起多執行緒
+                updateLog("**************  Run Script: " + cnt + "  **************");
+                //FormMainUpdate.Log("**************  Run Script: " + cnt + "  **************");
+                //FormMainUpdate.LogUpdate("\n**************  Run Script: " + cnt + "  **************");//不另起多執行緒
                 //logUpdate("\n**************  Run Script: " + cnt + "  **************");
                 ThreadPool.QueueUserWorkItem(new WaitCallback(updateCont), cnt);
                 foreach (CmdScript element in Command.oCmdScript)
@@ -1940,6 +1947,7 @@ namespace MiniStockerIV
                     isCmdFin = false;
                     //FormMainUpdate.LogUpdate("\n**************  Script Commnad Start  **************");//此 Log 會比動作指令還晚出現, 所以取消
                     //logUpdate("\n**************  Script Commnad Start  **************");
+                    //Thread.Sleep(100);//KUMA TRY 指令間隔
                     sendCommand(cmd);
                     SpinWait.SpinUntil(() => isCmdFin, intCmdTimeOut);// wait for command complete       
                     if (!isCmdFin)
@@ -2352,27 +2360,26 @@ namespace MiniStockerIV
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //FormMainUpdate.LogUpdate("Robot1Controller 連線中!!");
+            //FormMainUpdate.LogUpdate("Robot1Controller 連線成功!!");
+            //FormMainUpdate.LogUpdate("Aligner1Controller 連線中!!");
+            //FormMainUpdate.LogUpdate("Aligner1Controller 連線成功!!");
 
-            FormMainUpdate.LogUpdate("Robot1Controller 連線中!!");
-            FormMainUpdate.LogUpdate("Robot1Controller 連線成功!!");
-            FormMainUpdate.LogUpdate("Aligner1Controller 連線中!!");
-            FormMainUpdate.LogUpdate("Aligner1Controller 連線成功!!");
-
-            FormMainUpdate.LogUpdate("2019-06-24 12:03:36,830 Robot1Controller=>Send:$1CMD:HOME_");
-            FormMainUpdate.LogUpdate("2019-06-24 12:03:36,835 Robot1Controller<=Receive:$1ACK:HOME_");
-            FormMainUpdate.LogUpdate("2019-06-24 12:03:40,129 Robot1Controller<=Receive:$1FIN:HOME_:00000000");
-            FormMainUpdate.LogUpdate("2019-06-24 12:03:40,130 Aligner1Controller=>Send:$3CMD:ORG__");
-            FormMainUpdate.LogUpdate("2019-06-24 12:03:40,134 Aligner1Controller<=Receive:$1ACK:ORG__");
-            FormMainUpdate.LogUpdate("2019-06-24 12:03:42,638 Aligner1Controller<=Receive:$1FIN:ORG__:00000000");
-            FormMainUpdate.LogUpdate("2019-06-24 12:03:42,639 Aligner1Controller=>Send:$3CMD:HOME_");
-            FormMainUpdate.LogUpdate("2019-06-24 12:03:42,642 Aligner1Controller<=Receive:$1ACK:HOME_");
-            FormMainUpdate.LogUpdate("2019-06-24 12:03:43,638 Aligner1Controller<=Receive:$1FIN:HOME_:00000000");
-            FormMainUpdate.LogUpdate("2019-06-24 12:04:57,830 Robot1Controller=>Send:$1CMD:PUT__:121,001,2,0");
-            FormMainUpdate.LogUpdate("2019-06-24 12:04:57,835 Robot1Controller<=Receive:$1ACK:PUT__");
-            FormMainUpdate.LogUpdate("2019-06-24 12:04:59,128 Robot1Controller<=Receive:$1FIN:PUT__:00000000");
-            FormMainUpdate.LogUpdate("2019-06-24 12:04:59,130 Aligner1Controller=>Send:$3CMD:WHLD_:1");
-            FormMainUpdate.LogUpdate("2019-06-24 12:04:59,134 Aligner1Controller<=Receive:$1ACK:WHLD_");
-            FormMainUpdate.LogUpdate("2019-06-24 12:05:01,638 Aligner1Controller<=Receive:$1FIN:WHLD_:9380a000");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:03:36,830 Robot1Controller=>Send:$1CMD:HOME_");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:03:36,835 Robot1Controller<=Receive:$1ACK:HOME_");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:03:40,129 Robot1Controller<=Receive:$1FIN:HOME_:00000000");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:03:40,130 Aligner1Controller=>Send:$3CMD:ORG__");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:03:40,134 Aligner1Controller<=Receive:$1ACK:ORG__");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:03:42,638 Aligner1Controller<=Receive:$1FIN:ORG__:00000000");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:03:42,639 Aligner1Controller=>Send:$3CMD:HOME_");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:03:42,642 Aligner1Controller<=Receive:$1ACK:HOME_");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:03:43,638 Aligner1Controller<=Receive:$1FIN:HOME_:00000000");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:04:57,830 Robot1Controller=>Send:$1CMD:PUT__:121,001,2,0");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:04:57,835 Robot1Controller<=Receive:$1ACK:PUT__");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:04:59,128 Robot1Controller<=Receive:$1FIN:PUT__:00000000");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:04:59,130 Aligner1Controller=>Send:$3CMD:WHLD_:1");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:04:59,134 Aligner1Controller<=Receive:$1ACK:WHLD_");
+            //FormMainUpdate.LogUpdate("2019-06-24 12:05:01,638 Aligner1Controller<=Receive:$1FIN:WHLD_:9380a000");
             string desc = "未定義異常";
             string axis = "";
             error_codes.TryGetValue("9380A000", out desc);
@@ -2467,6 +2474,86 @@ namespace MiniStockerIV
         private void button9_Click(object sender, EventArgs e)
         {
             string cmd = "$1MCR:GET_FOUPS;";
+            sendCommand(cmd);
+        }
+
+        private void btnE1ServoOn_Click(object sender, EventArgs e)
+        {
+            string cmd = getELPTServo(Const.STK_ELPT1, Const.STATUS_ON);
+            sendCommand(cmd);
+        }
+
+        private void btnE1ServoOff_Click(object sender, EventArgs e)
+        {
+            string cmd = getELPTServo(Const.STK_ELPT1, Const.STATUS_OFF);
+            sendCommand(cmd);
+        }
+        
+        private string getELPTOrg(string port)
+        {
+            string cmd = "";
+            switch (port)
+            {
+                case Const.STK_ELPT1:
+                    cmd = "$1MCR:ELPT_ORG/P1;";//呼叫 Marco 指令:ELPT_ORG, 參數: P1(ELPT1)
+                    break;
+                case Const.STK_ELPT2:
+                    cmd = "$1MCR:ELPT_ORG/P2;";//呼叫 Marco 指令:ELPT_ORG, 參數: P2(ELPT2)
+                    break;
+            }
+            return cmd;
+        }
+        private string getELPTServo(string port, string status)
+        {
+            string cmd = "";
+            switch (port)
+            {
+                case Const.STK_ELPT1:
+                    cmd = "$1MCR:ELPT_SERVO/P1";//呼叫 Marco 指令:ELPT_SERVO, 參數: P1(ELPT1)
+                    break;
+                case Const.STK_ELPT2:
+                    cmd = "$1MCR:ELPT_SERVO/P2";//呼叫 Marco 指令:ELPT_SERVO, 參數: P2(ELPT2)
+                    break;
+            }
+            switch (status)
+            {
+                case Const.STATUS_ON:
+                    cmd = cmd + "/1;";//Servo on
+                    break;
+                case Const.STATUS_OFF:
+                    cmd = cmd + "/0;";//Servo off
+                    break;
+            }
+            return cmd;
+        }
+
+        private void btnE2ServoOn_Click(object sender, EventArgs e)
+        {
+            string cmd = getELPTServo(Const.STK_ELPT2, Const.STATUS_ON);
+            sendCommand(cmd);
+        }
+
+        private void btnE2ServoOff_Click(object sender, EventArgs e)
+        {
+            string cmd = getELPTServo(Const.STK_ELPT2, Const.STATUS_OFF);
+            sendCommand(cmd);
+        }
+
+        private void btnE1Org_Click(object sender, EventArgs e)
+        {
+            string cmd = getELPTOrg(Const.STK_ELPT1);
+            sendCommand(cmd);
+        }
+
+        private void btnE2Org_Click(object sender, EventArgs e)
+        {
+            string cmd = getELPTOrg(Const.STK_ELPT2);
+            sendCommand(cmd);
+        }
+
+        private void btnCheckSlave_Click(object sender, EventArgs e)
+        {
+            string cmd = "$1MCR:CHECK_DNM_SLAVE;";
             sendCommand(cmd);
         }
     }

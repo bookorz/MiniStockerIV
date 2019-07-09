@@ -99,9 +99,7 @@ namespace MiniStockerIV
             }
             else
             {
-                //FormMainUpdate.LogUpdate(cmd);
                 logUpdate(cmd);
-                //currentCmd = cmd;kuma
                 device.Send(cmd + "\r"); //暫時先不送指令, 先跳
             }
         }
@@ -112,7 +110,8 @@ namespace MiniStockerIV
         }
         private void logUpdate(string log)
         {
-            ThreadPool.QueueUserWorkItem(new WaitCallback(updateLog), log);
+            //ThreadPool.QueueUserWorkItem(new WaitCallback(updateLog), log);
+            updateLog(log);
         }
         private void InsertIO(string AddressNo, string ID, string Name, string desc, string Type, Panel P)
         {

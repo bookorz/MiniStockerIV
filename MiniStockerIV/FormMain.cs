@@ -255,7 +255,8 @@ namespace MiniStockerIV
             config.IPAdress = ip;
             config.Port = port;
             config.ConnectionType = "Socket";
-            logUpdate("----------" + device_name + "----------");
+            config.DeviceName = device_name;
+            //logUpdate("----------" + device_name + "----------");
             connDevice(device_name, config);
 
         }
@@ -368,7 +369,7 @@ namespace MiniStockerIV
                         break;
                 }
                 factor = msg.Substring(startIdx, factorLen);
-                Console.WriteLine(factor);
+                //Console.WriteLine(factor);
             }
             catch (Exception e)
             {
@@ -436,22 +437,22 @@ namespace MiniStockerIV
 
         void IConnectionReport.On_Connection_Connecting(string Msg)
         {
-            logUpdate("連線中!!");
+            logUpdate(Msg);
         }
 
         void IConnectionReport.On_Connection_Connected(object Msg)
         {
-            logUpdate("連線成功!!");
+            logUpdate(Msg.ToString());
         }
 
         void IConnectionReport.On_Connection_Disconnected(string Msg)
         {
-            logUpdate("斷線!!");
+            logUpdate(Msg);
         }
 
         void IConnectionReport.On_Connection_Error(string Msg)
         {
-            logUpdate("連線異常!!");
+            logUpdate(Msg);
         }
 
         private void btnE2ReadID_Click(object sender, EventArgs e)
@@ -647,7 +648,7 @@ namespace MiniStockerIV
             form.AutoScroll = true;
             pnlIO.Controls.Add(form);
             form.Show();
-           
+            ThreadPool.QueueUserWorkItem(new WaitCallback(runScript));// Script 執行續建立
         }
 
         private void hideGUI()
@@ -1887,10 +1888,10 @@ namespace MiniStockerIV
                 return;
             }
             isScriptRunning = false;//取消 Script 執行中
-            Thread.Sleep(300);
+            Thread.Sleep(500);
             setIsRunning(true);//set Script 執行中
             isScriptRunning = true;//set Script 執行中
-            ThreadPool.QueueUserWorkItem(new WaitCallback(runScript));
+            //ThreadPool.QueueUserWorkItem(new WaitCallback(runScript));
         }
 
         private void updateCont(object data)
@@ -1900,10 +1901,10 @@ namespace MiniStockerIV
         private void updateLog(object data)
         {
             FormMainUpdate.Log(data.ToString());
-            lock (rtbMsg)
-            {
-                FormMainUpdate.LogUpdate(data.ToString());
-            }
+            //lock (rtbMsg)
+            //{
+            //    FormMainUpdate.LogUpdate(data.ToString());
+            //}
         }
 
         private void logUpdate(string log)
@@ -1915,6 +1916,27 @@ namespace MiniStockerIV
 
         private void runScript(object data)
         {
+            while (true)
+            {
+                while (!isScriptRunning)
+                {
+                    SpinWait.SpinUntil(() => isScriptRunning, 99999999);// 60000
+                    if (!isScriptRunning)
+                    {
+                        Console.WriteLine("Script is not running ~ SpinWait Again!!");
+                    }
+                }
+                if (!FormMainUpdate.isAlarmSet && isScriptRunning)
+                {
+                    runScript();
+                }
+            }
+        }
+
+        private void runScript()
+        {
+            Random crandom = new Random();
+            string txn_id = crandom.Next(1, 999999999).ToString();
             int repeatTimes = 0;
             int.TryParse(tbTimes.Text, out repeatTimes);
             //The efem motion is not allowed when the alarm occurs,please reset alarm first.
@@ -1945,9 +1967,7 @@ namespace MiniStockerIV
 
                     string cmd = element.Command;
                     isCmdFin = false;
-                    //FormMainUpdate.LogUpdate("\n**************  Script Commnad Start  **************");//此 Log 會比動作指令還晚出現, 所以取消
-                    //logUpdate("\n**************  Script Commnad Start  **************");
-                    //Thread.Sleep(100);//KUMA TRY 指令間隔
+                    //updateLog("kuma:" + txn_id);//kuma
                     sendCommand(cmd);
                     SpinWait.SpinUntil(() => isCmdFin, intCmdTimeOut);// wait for command complete       
                     if (!isCmdFin)
@@ -2215,12 +2235,12 @@ namespace MiniStockerIV
                 if (password.Equals(config_password))
                 {
                     isAdmin = true;
-                    MessageBox.Show("Success!! Change to administrator mode.");
+                    MessageBox.Show("Success!! Change to administrator mode.","Notice",MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
                 }
                 else
                 {
                     isAdmin = false;
-                    MessageBox.Show("Login fail! Change to normal mode.");
+                    MessageBox.Show("Login fail! Change to normal mode.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             hideGUI();

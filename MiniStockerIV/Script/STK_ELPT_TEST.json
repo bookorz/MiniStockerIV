@@ -1,0 +1,50 @@
+[
+  {
+    "Seq": 1,
+    "Command": "$1MCR:ELPT_CLAMP/P1;"
+  },
+  {
+    "Seq": 2,
+    "Command": "$1MCR:ELPT_MOVEIN/P1;"
+  },
+  {
+    "Seq": 3,
+    "Command": "$1MCR:ELPT_UNCLAMP/P1;"
+  },
+  {
+    "Seq": 4,
+    "Command": "$1MCR:ELPT_CLAMP/P1;"
+  },
+  {
+    "Seq": 5,
+    "Command": "$1MCR:ELPT_MOVEOUT/P1;"
+  },
+  {
+    "Seq": 6,
+    "Command": "$1MCR:ELPT_UNCLAMP/P1;"
+  },
+  {
+    "Seq": 7,
+    "Command": "$1MCR:ELPT_CLAMP/P2;"
+  },
+  {
+    "Seq": 8,
+    "Command": "$1MCR:ELPT_MOVEIN/P2;"
+  },
+  {
+    "Seq": 9,
+    "Command": "$1MCR:ELPT_UNCLAMP/P2;"
+  },
+  {
+    "Seq": 10,
+    "Command": "$1MCR:ELPT_CLAMP/P2;"
+  },
+  {
+    "Seq": 11,
+    "Command": "$1MCR:ELPT_MOVEOUT/P2;"
+  },
+  {
+    "Seq": 12,
+    "Command": "$1MCR:ELPT_UNCLAMP/P2;"
+  }
+]

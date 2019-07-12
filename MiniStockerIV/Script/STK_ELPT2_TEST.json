@@ -1,0 +1,26 @@
+[
+  {
+    "Seq": 1,
+    "Command": "$1MCR:ELPT_CLAMP/P2;"
+  },
+  {
+    "Seq": 2,
+    "Command": "$1MCR:ELPT_MOVEIN/P2;"
+  },
+  {
+    "Seq": 3,
+    "Command": "$1MCR:ELPT_UNCLAMP/P2;"
+  },
+  {
+    "Seq": 4,
+    "Command": "$1MCR:ELPT_CLAMP/P2;"
+  },
+  {
+    "Seq": 5,
+    "Command": "$1MCR:ELPT_MOVEOUT/P2;"
+  },
+  {
+    "Seq": 6,
+    "Command": "$1MCR:ELPT_UNCLAMP/P2;"
+  }
+]

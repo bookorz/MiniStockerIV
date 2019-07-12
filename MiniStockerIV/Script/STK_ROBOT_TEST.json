@@ -1,0 +1,18 @@
+[
+  {
+    "Seq": 1,
+    "Command": "$1MCR:ROBOT_GET/BF13;"
+  },
+  {
+    "Seq": 2,
+    "Command": "$1MCR:ROBOT_PUT/BF23;"
+  },
+  {
+    "Seq": 3,
+    "Command": "$1MCR:ROBOT_GET/BF23;"
+  },
+  {
+    "Seq": 4,
+    "Command": "$1MCR:ROBOT_PUT/BF13;"
+  }
+]

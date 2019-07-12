@@ -1,0 +1,10 @@
+[
+  {
+    "Seq": 1,
+    "Command": "$1MCR:ELPT_MOVEIN/P2;"
+  },
+  {
+    "Seq": 2,
+    "Command": "$1MCR:ELPT_MOVEOUT/P2;"
+  }
+]

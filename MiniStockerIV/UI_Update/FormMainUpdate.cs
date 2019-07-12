@@ -409,77 +409,77 @@ namespace MiniStockerIV.UI_Update
         }
 
         //static object obj = new object();
-        public static void LogUpdate(string msg)
-        {
-            //lock (obj)
-            //{
-                try
-                {
-                    Form form = Application.OpenForms["FormMain"];
-                    RichTextBox W;
-                    TabControl tabMode;
-                    if (form == null)
-                        return;
+        //public static void LogUpdate(string msg)
+        //{
+        //    //lock (obj)
+        //    //{
+        //        try
+        //        {
+        //            Form form = Application.OpenForms["FormMain"];
+        //            RichTextBox W;
+        //            TabControl tabMode;
+        //            if (form == null)
+        //                return;
 
-                    W = form.Controls.Find("rtbMsg", true).FirstOrDefault() as RichTextBox;
-                    tabMode = form.Controls.Find("tabMode", true).FirstOrDefault() as TabControl;
+        //            W = form.Controls.Find("rtbMsg", true).FirstOrDefault() as RichTextBox;
+        //            tabMode = form.Controls.Find("tabMode", true).FirstOrDefault() as TabControl;
 
-                    if (W == null)
-                        return;
+        //            if (W == null)
+        //                return;
 
-                    if (W.InvokeRequired)
-                    {
-                        UpdateLog ph = new UpdateLog(LogUpdate);
-                        //W.BeginInvoke(ph, msg);
-                        W.Invoke(ph, msg);
-                    }
-                    else
-                    {
-                        W.SelectionStart = W.TextLength;
-                        W.SelectionLength = 0;
-                        if (msg.ToUpper().Contains("FIN"))
-                        {
-                            W.SelectionColor = Color.Green;
-                        }
-                        else if (msg.ToUpper().Contains("RECEIVE"))
-                        {
-                            W.SelectionColor = Color.Blue;
-                        }
-                        else if (msg.ToUpper().Contains("CMD") || msg.ToUpper().Contains("GET") || msg.ToUpper().Contains("SET"))
-                        {
-                            W.SelectionColor = Color.Coral;
-                        }
-                        else if (msg.ToUpper().Contains("MCR"))
-                        {
-                            W.SelectionColor = Color.Coral;
-                        }
-                        else if (msg.ToUpper().Contains("異常描述"))
-                        {
-                            W.SelectionColor = Color.Red;
-                        }
-                        else
-                        {
-                            W.SelectionColor = Color.DimGray;
-                        }
-                        W.AppendText(msg + "\n");
-                        W.SelectionColor = W.ForeColor;
+        //            if (W.InvokeRequired)
+        //            {
+        //                UpdateLog ph = new UpdateLog(LogUpdate);
+        //                //W.BeginInvoke(ph, msg);
+        //                W.Invoke(ph, msg);
+        //            }
+        //            else
+        //            {
+        //                W.SelectionStart = W.TextLength;
+        //                W.SelectionLength = 0;
+        //                if (msg.ToUpper().Contains("FIN"))
+        //                {
+        //                    W.SelectionColor = Color.Green;
+        //                }
+        //                else if (msg.ToUpper().Contains("RECEIVE"))
+        //                {
+        //                    W.SelectionColor = Color.Blue;
+        //                }
+        //                else if (msg.ToUpper().Contains("CMD") || msg.ToUpper().Contains("GET") || msg.ToUpper().Contains("SET"))
+        //                {
+        //                    W.SelectionColor = Color.Coral;
+        //                }
+        //                else if (msg.ToUpper().Contains("MCR"))
+        //                {
+        //                    W.SelectionColor = Color.Coral;
+        //                }
+        //                else if (msg.ToUpper().Contains("異常描述"))
+        //                {
+        //                    W.SelectionColor = Color.Red;
+        //                }
+        //                else
+        //                {
+        //                    W.SelectionColor = Color.DimGray;
+        //                }
+        //                W.AppendText(msg + "\n");
+        //                W.SelectionColor = W.ForeColor;
 
-                        W.ScrollToCaret();//移動卷軸到最後
-                        if (W.Lines.Length > 1000)//只保留最後一千行
-                        {
-                            W.Select(0, W.GetFirstCharIndexFromLine(W.Lines.Length - 1000));
-                            W.SelectedText = "";
-                        }
-                        //if (tabMode.SelectedIndex != 0)
-                        //    tabMode.SelectedIndex = 0;
-                    }
-                }
-                catch
-                {
+        //                W.ScrollToCaret();//移動卷軸到最後
+        //                if (W.Lines.Length > 1000)//只保留最後一千行
+        //                {
+        //                    W.Select(0, W.GetFirstCharIndexFromLine(W.Lines.Length - 1000));
+        //                    W.SelectedText = "";
+        //                }
+        //                //if (tabMode.SelectedIndex != 0)
+        //                //    tabMode.SelectedIndex = 0;
+        //            }
+        //        }
+        //        catch
+        //        {
 
-                }
-            //}
-        }
+        //        }
+        //    //}
+        //}
 
         public static void Update_IO(string key,string val)
         {

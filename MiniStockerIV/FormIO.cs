@@ -106,7 +106,7 @@ namespace MiniStockerIV
         private void updateLog(object data)
         {
             FormMainUpdate.Log(data.ToString());
-            FormMainUpdate.LogUpdate(data.ToString());
+            //FormMainUpdate.LogUpdate(data.ToString());
         }
         private void logUpdate(string log)
         {

@@ -2576,5 +2576,108 @@ namespace MiniStockerIV
             string cmd = "$1MCR:CHECK_DNM_SLAVE;";
             sendCommand(cmd);
         }
+
+        private void btnILPT_Click(object sender, EventArgs e)
+        {
+            string func = ((Button)sender).Name;
+            string cmd = "";
+            switch (func)
+            {
+                case "btnI1Clamp":
+                    cmd = "$1MCR:ILPT_CLAMP/P3;";
+                    break;
+                case "btnI2Clamp":
+                    cmd = "$1MCR:ILPT_CLAMP/P4;";
+                    break;
+                case "btnI1UnClamp":
+                    cmd = "$1MCR:ILPT_UNCLAMP/P3;";
+                    break;
+                case "btnI2UnClamp":
+                    cmd = "$1MCR:ILPT_UNCLAMP/P4;";
+                    break;
+                case "btnI1Dock":
+                    cmd = "$1MCR:ILPT_DOCK/P3;";
+                    break;
+                case "btnI2Dock":
+                    cmd = "$1MCR:ILPT_DOCK/P4;";
+                    break;
+                case "btnI1UnDock":
+                    cmd = "$1MCR:ILPT_UNDOCK/P3;";
+                    break;
+                case "btnI2UnDock":
+                    cmd = "$1MCR:ILPT_UNDOCK/P4;";
+                    break;
+                case "btnI1VacOn":
+                    cmd = "$1MCR:ILPT_VAC_ON/P3;";
+                    break;
+                case "btnI2VacOn":
+                    cmd = "$1MCR:ILPT_VAC_ON/P4;";
+                    break;
+                case "btnI1VacOff":
+                    cmd = "$1MCR:ILPT_VAC_OFF/P3;";
+                    break;
+                case "btnI2VacOff":
+                    cmd = "$1MCR:ILPT_VAC_OFF/P4;";
+                    break;
+                case "btnI1LatchRls":
+                    cmd = "$1MCR:ILPT_LATCH_RELEASE/P3;";
+                    break;
+                case "btnI2LatchRls":
+                    cmd = "$1MCR:ILPT_LATCH_RELEASE/P4;";
+                    break;
+                case "btnI1LatchFix":
+                    cmd = "$1MCR:ILPT_LATCH_FIX/P3;";
+                    break;
+                case "btnI2LatchFix":
+                    cmd = "$1MCR:ILPT_LATCH_FIX/P4;";
+                    break;
+                case "btnI1Backward":
+                    cmd = "$1MCR:ILPT_BACKWARD/P3;";
+                    break;
+                case "btnI2Backward":
+                    cmd = "$1MCR:ILPT_BACKWARD/P4;";
+                    break;
+                case "btnI1Forward":
+                    cmd = "$1MCR:ILPT_FORWARD/P3;";
+                    break;
+                case "btnI2Forward":
+                    cmd = "$1MCR:ILPT_FORWARD/P4;";
+                    break;
+                case "btnI1Open":
+                    cmd = "$1MCR:ILPT_OPEN/P3;";
+                    break;
+                case "btnI2Open":
+                    cmd = "$1MCR:ILPT_OPEN/P4;";
+                    break;
+                case "btnI1Close":
+                    cmd = "$1MCR:ILPT_CLOSE/P3;";
+                    break;
+                case "btnI2Close":
+                    cmd = "$1MCR:ILPT_CLOSE/P4;";
+                    break;
+                case "btnI1Left":
+                    cmd = "$1MCR:ILPT_LEFT/P3;";
+                    break;
+                case "btnI2Left":
+                    cmd = "$1MCR:ILPT_LEFT/P4;";
+                    break;
+                case "btnI1Right":
+                    cmd = "$1MCR:ILPT_RIGHT/P3;";
+                    break;
+                case "btnI2Right":
+                    cmd = "$1MCR:ILPT_RIGHT/P4;";
+                    break;
+
+            }
+            if (cmd.Equals(""))
+            {
+                MessageBox.Show(func + " not define!");
+            }
+            else
+            {
+                MessageBox.Show(cmd,"Notice",MessageBoxButtons.OK,MessageBoxIcon.Question);
+                //sendCommand(cmd);
+            }
+        }
     }
 }

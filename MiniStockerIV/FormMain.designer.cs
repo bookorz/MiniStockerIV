@@ -107,6 +107,14 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.btnAutoRun = new System.Windows.Forms.Button();
             this.tabStocker = new System.Windows.Forms.TabPage();
+            this.tbI2Reset = new System.Windows.Forms.Button();
+            this.btnI2Auto = new System.Windows.Forms.Button();
+            this.btnI1Auto = new System.Windows.Forms.Button();
+            this.tbI1Init = new System.Windows.Forms.Button();
+            this.tbI2Init = new System.Windows.Forms.Button();
+            this.tbI1Reset = new System.Windows.Forms.Button();
+            this.tbE1RFID = new System.Windows.Forms.TextBox();
+            this.label64 = new System.Windows.Forms.Label();
             this.groupBox46 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox48 = new System.Windows.Forms.GroupBox();
@@ -115,12 +123,11 @@
             this.btnFoupRotGet = new System.Windows.Forms.Button();
             this.btnFoupRotSwitch = new System.Windows.Forms.Button();
             this.btnFoupRotAuto = new System.Windows.Forms.Button();
+            this.btnFoupRotReset = new System.Windows.Forms.Button();
             this.groupBox49 = new System.Windows.Forms.GroupBox();
             this.cbDestination = new System.Windows.Forms.ComboBox();
             this.btnFoupRotPut = new System.Windows.Forms.Button();
             this.btnFoupRotPutWait = new System.Windows.Forms.Button();
-            this.btnFoupRotReset = new System.Windows.Forms.Button();
-            this.btnFoupRotCarry = new System.Windows.Forms.Button();
             this.btnFoupRotOrg = new System.Windows.Forms.Button();
             this.btnFoupRotHome = new System.Windows.Forms.Button();
             this.btnFoupRotServoOn = new System.Windows.Forms.Button();
@@ -159,35 +166,60 @@
             this.tbPresShelf2_2 = new System.Windows.Forms.TextBox();
             this.tbPresShelf4_3 = new System.Windows.Forms.TextBox();
             this.tbPresShelf1_2 = new System.Windows.Forms.TextBox();
+            this.tbE2RFID = new System.Windows.Forms.TextBox();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
-            this.tbI2Reset = new System.Windows.Forms.Button();
-            this.tbI2Init = new System.Windows.Forms.Button();
             this.btnI2UnLoad = new System.Windows.Forms.Button();
-            this.btnI2Auto = new System.Windows.Forms.Button();
+            this.btnI2LatchFix = new System.Windows.Forms.Button();
             this.btnI2Load = new System.Windows.Forms.Button();
+            this.btnI2LatchRls = new System.Windows.Forms.Button();
+            this.btnI2Close = new System.Windows.Forms.Button();
+            this.btnI2Dock = new System.Windows.Forms.Button();
+            this.btnI2Open = new System.Windows.Forms.Button();
+            this.btnI2Clamp = new System.Windows.Forms.Button();
+            this.btnI2Right = new System.Windows.Forms.Button();
+            this.btnI2UnDock = new System.Windows.Forms.Button();
+            this.btnI2Forward = new System.Windows.Forms.Button();
+            this.btnI2VacOn = new System.Windows.Forms.Button();
+            this.btnI2Left = new System.Windows.Forms.Button();
+            this.btnI2UnClamp = new System.Windows.Forms.Button();
+            this.btnI2VacOff = new System.Windows.Forms.Button();
+            this.btnI2Backward = new System.Windows.Forms.Button();
+            this.label68 = new System.Windows.Forms.Label();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
-            this.tbI1Init = new System.Windows.Forms.Button();
             this.btnI1UnLoad = new System.Windows.Forms.Button();
-            this.tbI1Reset = new System.Windows.Forms.Button();
-            this.btnI1Auto = new System.Windows.Forms.Button();
+            this.btnI1LatchFix = new System.Windows.Forms.Button();
+            this.btnI1LatchRls = new System.Windows.Forms.Button();
+            this.btnI1Close = new System.Windows.Forms.Button();
+            this.btnI1Open = new System.Windows.Forms.Button();
+            this.btnI1Right = new System.Windows.Forms.Button();
+            this.btnI1Forward = new System.Windows.Forms.Button();
+            this.btnI1Left = new System.Windows.Forms.Button();
+            this.btnI1VacOff = new System.Windows.Forms.Button();
+            this.btnI1Backward = new System.Windows.Forms.Button();
+            this.btnI1UnClamp = new System.Windows.Forms.Button();
+            this.btnI1VacOn = new System.Windows.Forms.Button();
+            this.btnI1UnDock = new System.Windows.Forms.Button();
+            this.btnI1Clamp = new System.Windows.Forms.Button();
+            this.btnI1Dock = new System.Windows.Forms.Button();
             this.btnI1Load = new System.Windows.Forms.Button();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.btnE2Init = new System.Windows.Forms.Button();
-            this.tbE2RFID = new System.Windows.Forms.TextBox();
+            this.btnE2Org = new System.Windows.Forms.Button();
+            this.btnE2ServoOff = new System.Windows.Forms.Button();
+            this.btnE2ServoOn = new System.Windows.Forms.Button();
             this.btnE2Clamp = new System.Windows.Forms.Button();
-            this.label68 = new System.Windows.Forms.Label();
             this.btnE2Reset = new System.Windows.Forms.Button();
             this.btnE2MoveOut = new System.Windows.Forms.Button();
             this.btnE2MoveIn = new System.Windows.Forms.Button();
             this.btnE2CloseShutter = new System.Windows.Forms.Button();
             this.btnE2OpenShutter = new System.Windows.Forms.Button();
             this.btnE2Auto = new System.Windows.Forms.Button();
-            this.btnE2ReadID = new System.Windows.Forms.Button();
             this.btnE2UnClamp = new System.Windows.Forms.Button();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.tbE1RFID = new System.Windows.Forms.TextBox();
-            this.label64 = new System.Windows.Forms.Label();
             this.btnE1Init = new System.Windows.Forms.Button();
+            this.btnE1Org = new System.Windows.Forms.Button();
+            this.btnE1ServoOff = new System.Windows.Forms.Button();
+            this.btnE1ServoOn = new System.Windows.Forms.Button();
             this.btnE1Clamp = new System.Windows.Forms.Button();
             this.btnE1Reset = new System.Windows.Forms.Button();
             this.btnE1MoveOut = new System.Windows.Forms.Button();
@@ -195,12 +227,13 @@
             this.btnE1CloseShutter = new System.Windows.Forms.Button();
             this.btnE1OpenShutter = new System.Windows.Forms.Button();
             this.btnE1Auto = new System.Windows.Forms.Button();
-            this.btnE1ReadID = new System.Windows.Forms.Button();
             this.btnE1UnClamp = new System.Windows.Forms.Button();
             this.label44 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
+            this.btnE1ReadID = new System.Windows.Forms.Button();
             this.label62 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
+            this.btnE2ReadID = new System.Windows.Forms.Button();
             this.tabIO = new System.Windows.Forms.TabPage();
             this.pnlIO = new System.Windows.Forms.Panel();
             this.tabVersion = new System.Windows.Forms.TabPage();
@@ -246,14 +279,8 @@
             this.btnAbort = new System.Windows.Forms.Button();
             this.btnHold = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
-            this.hint = new System.Windows.Forms.ToolTip(this.components);
-            this.btnE1ServoOn = new System.Windows.Forms.Button();
-            this.btnE1ServoOff = new System.Windows.Forms.Button();
-            this.btnE2ServoOn = new System.Windows.Forms.Button();
-            this.btnE2ServoOff = new System.Windows.Forms.Button();
-            this.btnE1Org = new System.Windows.Forms.Button();
-            this.btnE2Org = new System.Windows.Forms.Button();
             this.btnCheckSlave = new System.Windows.Forms.Button();
+            this.hint = new System.Windows.Forms.ToolTip(this.components);
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -1248,6 +1275,12 @@
             // 
             // tabStocker
             // 
+            this.tabStocker.Controls.Add(this.tbI2Reset);
+            this.tabStocker.Controls.Add(this.btnI2Auto);
+            this.tabStocker.Controls.Add(this.btnI1Auto);
+            this.tabStocker.Controls.Add(this.tbI1Init);
+            this.tabStocker.Controls.Add(this.tbI2Init);
+            this.tabStocker.Controls.Add(this.tbI1Reset);
             this.tabStocker.Controls.Add(this.tbE1RFID);
             this.tabStocker.Controls.Add(this.label64);
             this.tabStocker.Controls.Add(this.groupBox46);
@@ -1270,13 +1303,126 @@
             this.tabStocker.Text = " Stocker Command";
             this.tabStocker.UseVisualStyleBackColor = true;
             // 
+            // tbI2Reset
+            // 
+            this.tbI2Reset.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.tbI2Reset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tbI2Reset.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbI2Reset.ForeColor = System.Drawing.Color.Black;
+            this.tbI2Reset.Location = new System.Drawing.Point(610, 594);
+            this.tbI2Reset.Name = "tbI2Reset";
+            this.tbI2Reset.Size = new System.Drawing.Size(63, 39);
+            this.tbI2Reset.TabIndex = 29;
+            this.tbI2Reset.Text = "Reset";
+            this.tbI2Reset.UseVisualStyleBackColor = false;
+            this.tbI2Reset.Visible = false;
+            this.tbI2Reset.Click += new System.EventHandler(this.tbI2Reset_Click);
+            // 
+            // btnI2Auto
+            // 
+            this.btnI2Auto.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnI2Auto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Auto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2Auto.Location = new System.Drawing.Point(679, 593);
+            this.btnI2Auto.Name = "btnI2Auto";
+            this.btnI2Auto.Size = new System.Drawing.Size(85, 40);
+            this.btnI2Auto.TabIndex = 19;
+            this.btnI2Auto.Text = "Auto";
+            this.btnI2Auto.UseVisualStyleBackColor = false;
+            this.btnI2Auto.Visible = false;
+            this.btnI2Auto.Click += new System.EventHandler(this.btnI2Auto_Click);
+            // 
+            // btnI1Auto
+            // 
+            this.btnI1Auto.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnI1Auto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Auto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1Auto.Location = new System.Drawing.Point(677, 547);
+            this.btnI1Auto.Name = "btnI1Auto";
+            this.btnI1Auto.Size = new System.Drawing.Size(87, 40);
+            this.btnI1Auto.TabIndex = 19;
+            this.btnI1Auto.Text = "Auto";
+            this.btnI1Auto.UseVisualStyleBackColor = false;
+            this.btnI1Auto.Visible = false;
+            this.btnI1Auto.Click += new System.EventHandler(this.btnI1Auto_Click);
+            // 
+            // tbI1Init
+            // 
+            this.tbI1Init.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.tbI1Init.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tbI1Init.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbI1Init.ForeColor = System.Drawing.Color.Black;
+            this.tbI1Init.Location = new System.Drawing.Point(539, 547);
+            this.tbI1Init.Name = "tbI1Init";
+            this.tbI1Init.Size = new System.Drawing.Size(63, 39);
+            this.tbI1Init.TabIndex = 29;
+            this.tbI1Init.Text = "Init";
+            this.tbI1Init.UseVisualStyleBackColor = false;
+            this.tbI1Init.Visible = false;
+            this.tbI1Init.Click += new System.EventHandler(this.tbI1Init_Click);
+            // 
+            // tbI2Init
+            // 
+            this.tbI2Init.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.tbI2Init.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tbI2Init.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbI2Init.ForeColor = System.Drawing.Color.Black;
+            this.tbI2Init.Location = new System.Drawing.Point(539, 594);
+            this.tbI2Init.Name = "tbI2Init";
+            this.tbI2Init.Size = new System.Drawing.Size(63, 39);
+            this.tbI2Init.TabIndex = 29;
+            this.tbI2Init.Text = "Init";
+            this.tbI2Init.UseVisualStyleBackColor = false;
+            this.tbI2Init.Visible = false;
+            this.tbI2Init.Click += new System.EventHandler(this.tbI2Init_Click);
+            // 
+            // tbI1Reset
+            // 
+            this.tbI1Reset.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.tbI1Reset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tbI1Reset.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbI1Reset.ForeColor = System.Drawing.Color.Black;
+            this.tbI1Reset.Location = new System.Drawing.Point(608, 547);
+            this.tbI1Reset.Name = "tbI1Reset";
+            this.tbI1Reset.Size = new System.Drawing.Size(63, 39);
+            this.tbI1Reset.TabIndex = 29;
+            this.tbI1Reset.Text = "Reset";
+            this.tbI1Reset.UseVisualStyleBackColor = false;
+            this.tbI1Reset.Visible = false;
+            this.tbI1Reset.Click += new System.EventHandler(this.tbI1Reset_Click);
+            // 
+            // tbE1RFID
+            // 
+            this.tbE1RFID.Enabled = false;
+            this.tbE1RFID.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbE1RFID.Location = new System.Drawing.Point(826, 608);
+            this.tbE1RFID.Name = "tbE1RFID";
+            this.tbE1RFID.Size = new System.Drawing.Size(159, 30);
+            this.tbE1RFID.TabIndex = 38;
+            this.tbE1RFID.Visible = false;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.BackColor = System.Drawing.SystemColors.Highlight;
+            this.label64.Enabled = false;
+            this.label64.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label64.ForeColor = System.Drawing.Color.White;
+            this.label64.Location = new System.Drawing.Point(769, 610);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(51, 23);
+            this.label64.TabIndex = 37;
+            this.label64.Text = " RFID";
+            this.label64.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label64.Visible = false;
+            // 
             // groupBox46
             // 
             this.groupBox46.Controls.Add(this.groupBox1);
             this.groupBox46.Controls.Add(this.groupBox47);
-            this.groupBox46.Location = new System.Drawing.Point(475, 3);
+            this.groupBox46.Location = new System.Drawing.Point(538, 3);
             this.groupBox46.Name = "groupBox46";
-            this.groupBox46.Size = new System.Drawing.Size(509, 564);
+            this.groupBox46.Size = new System.Drawing.Size(446, 536);
             this.groupBox46.TabIndex = 39;
             this.groupBox46.TabStop = false;
             this.groupBox46.Text = "FOUP Robot Area";
@@ -1286,16 +1432,15 @@
             this.groupBox1.Controls.Add(this.groupBox48);
             this.groupBox1.Controls.Add(this.btnFoupRotSwitch);
             this.groupBox1.Controls.Add(this.btnFoupRotAuto);
-            this.groupBox1.Controls.Add(this.groupBox49);
             this.groupBox1.Controls.Add(this.btnFoupRotReset);
-            this.groupBox1.Controls.Add(this.btnFoupRotCarry);
+            this.groupBox1.Controls.Add(this.groupBox49);
             this.groupBox1.Controls.Add(this.btnFoupRotOrg);
             this.groupBox1.Controls.Add(this.btnFoupRotHome);
             this.groupBox1.Controls.Add(this.btnFoupRotServoOn);
             this.groupBox1.Controls.Add(this.btnFoupRotInit);
-            this.groupBox1.Location = new System.Drawing.Point(6, 27);
+            this.groupBox1.Location = new System.Drawing.Point(6, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(480, 255);
+            this.groupBox1.Size = new System.Drawing.Size(408, 255);
             this.groupBox1.TabIndex = 79;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Robot";
@@ -1396,6 +1541,20 @@
             this.btnFoupRotAuto.Visible = false;
             this.btnFoupRotAuto.Click += new System.EventHandler(this.btnFoupRotAuto_Click);
             // 
+            // btnFoupRotReset
+            // 
+            this.btnFoupRotReset.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.btnFoupRotReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFoupRotReset.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFoupRotReset.ForeColor = System.Drawing.Color.Black;
+            this.btnFoupRotReset.Location = new System.Drawing.Point(154, 208);
+            this.btnFoupRotReset.Name = "btnFoupRotReset";
+            this.btnFoupRotReset.Size = new System.Drawing.Size(71, 39);
+            this.btnFoupRotReset.TabIndex = 29;
+            this.btnFoupRotReset.Text = "Reset";
+            this.btnFoupRotReset.UseVisualStyleBackColor = false;
+            this.btnFoupRotReset.Click += new System.EventHandler(this.btnFoupRotReset_Click);
+            // 
             // groupBox49
             // 
             this.groupBox49.Controls.Add(this.cbDestination);
@@ -1466,40 +1625,13 @@
             this.btnFoupRotPutWait.UseVisualStyleBackColor = true;
             this.btnFoupRotPutWait.Click += new System.EventHandler(this.btnFoupRotPutWait_Click);
             // 
-            // btnFoupRotReset
-            // 
-            this.btnFoupRotReset.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.btnFoupRotReset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFoupRotReset.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoupRotReset.ForeColor = System.Drawing.Color.Black;
-            this.btnFoupRotReset.Location = new System.Drawing.Point(195, 209);
-            this.btnFoupRotReset.Name = "btnFoupRotReset";
-            this.btnFoupRotReset.Size = new System.Drawing.Size(87, 39);
-            this.btnFoupRotReset.TabIndex = 29;
-            this.btnFoupRotReset.Text = "Reset";
-            this.btnFoupRotReset.UseVisualStyleBackColor = false;
-            this.btnFoupRotReset.Click += new System.EventHandler(this.btnFoupRotReset_Click);
-            // 
-            // btnFoupRotCarry
-            // 
-            this.btnFoupRotCarry.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFoupRotCarry.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoupRotCarry.Location = new System.Drawing.Point(404, 53);
-            this.btnFoupRotCarry.Name = "btnFoupRotCarry";
-            this.btnFoupRotCarry.Size = new System.Drawing.Size(68, 39);
-            this.btnFoupRotCarry.TabIndex = 19;
-            this.btnFoupRotCarry.Text = "Carry";
-            this.btnFoupRotCarry.UseVisualStyleBackColor = true;
-            this.btnFoupRotCarry.Visible = false;
-            this.btnFoupRotCarry.Click += new System.EventHandler(this.btnFoupRotCarry_Click);
-            // 
             // btnFoupRotOrg
             // 
             this.btnFoupRotOrg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFoupRotOrg.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoupRotOrg.Location = new System.Drawing.Point(288, 209);
+            this.btnFoupRotOrg.Location = new System.Drawing.Point(230, 208);
             this.btnFoupRotOrg.Name = "btnFoupRotOrg";
-            this.btnFoupRotOrg.Size = new System.Drawing.Size(87, 39);
+            this.btnFoupRotOrg.Size = new System.Drawing.Size(71, 39);
             this.btnFoupRotOrg.TabIndex = 19;
             this.btnFoupRotOrg.Text = "Org";
             this.btnFoupRotOrg.UseVisualStyleBackColor = true;
@@ -1509,9 +1641,9 @@
             // 
             this.btnFoupRotHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFoupRotHome.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoupRotHome.Location = new System.Drawing.Point(381, 210);
+            this.btnFoupRotHome.Location = new System.Drawing.Point(306, 208);
             this.btnFoupRotHome.Name = "btnFoupRotHome";
-            this.btnFoupRotHome.Size = new System.Drawing.Size(87, 39);
+            this.btnFoupRotHome.Size = new System.Drawing.Size(71, 39);
             this.btnFoupRotHome.TabIndex = 19;
             this.btnFoupRotHome.Text = "Home";
             this.btnFoupRotHome.UseVisualStyleBackColor = true;
@@ -1523,11 +1655,11 @@
             this.btnFoupRotServoOn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFoupRotServoOn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFoupRotServoOn.ForeColor = System.Drawing.Color.Black;
-            this.btnFoupRotServoOn.Location = new System.Drawing.Point(9, 210);
+            this.btnFoupRotServoOn.Location = new System.Drawing.Point(6, 208);
             this.btnFoupRotServoOn.Name = "btnFoupRotServoOn";
-            this.btnFoupRotServoOn.Size = new System.Drawing.Size(87, 39);
+            this.btnFoupRotServoOn.Size = new System.Drawing.Size(70, 39);
             this.btnFoupRotServoOn.TabIndex = 29;
-            this.btnFoupRotServoOn.Text = "Servo On";
+            this.btnFoupRotServoOn.Text = "ServoOn";
             this.btnFoupRotServoOn.UseVisualStyleBackColor = false;
             this.btnFoupRotServoOn.Click += new System.EventHandler(this.btnFoupRotServoOn_Click);
             // 
@@ -1537,9 +1669,9 @@
             this.btnFoupRotInit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFoupRotInit.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFoupRotInit.ForeColor = System.Drawing.Color.Black;
-            this.btnFoupRotInit.Location = new System.Drawing.Point(102, 209);
+            this.btnFoupRotInit.Location = new System.Drawing.Point(81, 208);
             this.btnFoupRotInit.Name = "btnFoupRotInit";
-            this.btnFoupRotInit.Size = new System.Drawing.Size(87, 39);
+            this.btnFoupRotInit.Size = new System.Drawing.Size(70, 39);
             this.btnFoupRotInit.TabIndex = 29;
             this.btnFoupRotInit.Text = "Init";
             this.btnFoupRotInit.UseVisualStyleBackColor = false;
@@ -1580,9 +1712,9 @@
             this.groupBox47.Controls.Add(this.tbPresShelf2_2);
             this.groupBox47.Controls.Add(this.tbPresShelf4_3);
             this.groupBox47.Controls.Add(this.tbPresShelf1_2);
-            this.groupBox47.Location = new System.Drawing.Point(6, 288);
+            this.groupBox47.Location = new System.Drawing.Point(6, 285);
             this.groupBox47.Name = "groupBox47";
-            this.groupBox47.Size = new System.Drawing.Size(460, 235);
+            this.groupBox47.Size = new System.Drawing.Size(427, 235);
             this.groupBox47.TabIndex = 76;
             this.groupBox47.TabStop = false;
             this.groupBox47.Text = "FOUP Presence";
@@ -1970,172 +2102,471 @@
             this.tbPresShelf1_2.Text = "SHELF1-2";
             this.tbPresShelf1_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // tbE2RFID
+            // 
+            this.tbE2RFID.Enabled = false;
+            this.tbE2RFID.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbE2RFID.Location = new System.Drawing.Point(825, 650);
+            this.tbE2RFID.Name = "tbE2RFID";
+            this.tbE2RFID.Size = new System.Drawing.Size(159, 30);
+            this.tbE2RFID.TabIndex = 38;
+            this.tbE2RFID.Visible = false;
+            // 
             // groupBox24
             // 
-            this.groupBox24.Controls.Add(this.tbI2Reset);
-            this.groupBox24.Controls.Add(this.tbI2Init);
             this.groupBox24.Controls.Add(this.btnI2UnLoad);
-            this.groupBox24.Controls.Add(this.btnI2Auto);
+            this.groupBox24.Controls.Add(this.btnI2LatchFix);
             this.groupBox24.Controls.Add(this.btnI2Load);
-            this.groupBox24.Location = new System.Drawing.Point(3, 494);
+            this.groupBox24.Controls.Add(this.btnI2LatchRls);
+            this.groupBox24.Controls.Add(this.btnI2Close);
+            this.groupBox24.Controls.Add(this.btnI2Dock);
+            this.groupBox24.Controls.Add(this.btnI2Open);
+            this.groupBox24.Controls.Add(this.btnI2Clamp);
+            this.groupBox24.Controls.Add(this.btnI2Right);
+            this.groupBox24.Controls.Add(this.btnI2UnDock);
+            this.groupBox24.Controls.Add(this.btnI2Forward);
+            this.groupBox24.Controls.Add(this.btnI2VacOn);
+            this.groupBox24.Controls.Add(this.btnI2Left);
+            this.groupBox24.Controls.Add(this.btnI2UnClamp);
+            this.groupBox24.Controls.Add(this.btnI2VacOff);
+            this.groupBox24.Controls.Add(this.btnI2Backward);
+            this.groupBox24.Location = new System.Drawing.Point(4, 532);
             this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(466, 73);
+            this.groupBox24.Size = new System.Drawing.Size(528, 118);
             this.groupBox24.TabIndex = 17;
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "ILPT2 Area(B2)";
             // 
-            // tbI2Reset
-            // 
-            this.tbI2Reset.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.tbI2Reset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbI2Reset.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbI2Reset.ForeColor = System.Drawing.Color.Black;
-            this.tbI2Reset.Location = new System.Drawing.Point(391, 24);
-            this.tbI2Reset.Name = "tbI2Reset";
-            this.tbI2Reset.Size = new System.Drawing.Size(63, 39);
-            this.tbI2Reset.TabIndex = 29;
-            this.tbI2Reset.Text = "Reset";
-            this.tbI2Reset.UseVisualStyleBackColor = false;
-            this.tbI2Reset.Visible = false;
-            this.tbI2Reset.Click += new System.EventHandler(this.tbI2Reset_Click);
-            // 
-            // tbI2Init
-            // 
-            this.tbI2Init.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.tbI2Init.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbI2Init.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbI2Init.ForeColor = System.Drawing.Color.Black;
-            this.tbI2Init.Location = new System.Drawing.Point(49, 23);
-            this.tbI2Init.Name = "tbI2Init";
-            this.tbI2Init.Size = new System.Drawing.Size(63, 39);
-            this.tbI2Init.TabIndex = 29;
-            this.tbI2Init.Text = "Init";
-            this.tbI2Init.UseVisualStyleBackColor = false;
-            this.tbI2Init.Visible = false;
-            this.tbI2Init.Click += new System.EventHandler(this.tbI2Init_Click);
-            // 
             // btnI2UnLoad
             // 
+            this.btnI2UnLoad.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnI2UnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI2UnLoad.Enabled = false;
             this.btnI2UnLoad.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2UnLoad.Location = new System.Drawing.Point(209, 23);
+            this.btnI2UnLoad.Location = new System.Drawing.Point(6, 70);
             this.btnI2UnLoad.Name = "btnI2UnLoad";
-            this.btnI2UnLoad.Size = new System.Drawing.Size(85, 40);
+            this.btnI2UnLoad.Size = new System.Drawing.Size(60, 40);
             this.btnI2UnLoad.TabIndex = 19;
             this.btnI2UnLoad.Text = "Unload";
-            this.btnI2UnLoad.UseVisualStyleBackColor = true;
+            this.btnI2UnLoad.UseVisualStyleBackColor = false;
             this.btnI2UnLoad.Click += new System.EventHandler(this.btnI2UnLoad_Click);
             // 
-            // btnI2Auto
+            // btnI2LatchFix
             // 
-            this.btnI2Auto.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnI2Auto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnI2Auto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2Auto.Location = new System.Drawing.Point(300, 23);
-            this.btnI2Auto.Name = "btnI2Auto";
-            this.btnI2Auto.Size = new System.Drawing.Size(85, 40);
-            this.btnI2Auto.TabIndex = 19;
-            this.btnI2Auto.Text = "Auto";
-            this.btnI2Auto.UseVisualStyleBackColor = false;
-            this.btnI2Auto.Visible = false;
-            this.btnI2Auto.Click += new System.EventHandler(this.btnI2Auto_Click);
+            this.btnI2LatchFix.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2LatchFix.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2LatchFix.Location = new System.Drawing.Point(264, 70);
+            this.btnI2LatchFix.Name = "btnI2LatchFix";
+            this.btnI2LatchFix.Size = new System.Drawing.Size(61, 40);
+            this.btnI2LatchFix.TabIndex = 19;
+            this.btnI2LatchFix.Text = "Latch\r\nFix";
+            this.btnI2LatchFix.UseVisualStyleBackColor = true;
+            this.btnI2LatchFix.Click += new System.EventHandler(this.btnILPT_Click);
             // 
             // btnI2Load
             // 
+            this.btnI2Load.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnI2Load.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI2Load.Enabled = false;
             this.btnI2Load.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2Load.Location = new System.Drawing.Point(118, 23);
+            this.btnI2Load.Location = new System.Drawing.Point(6, 23);
             this.btnI2Load.Name = "btnI2Load";
-            this.btnI2Load.Size = new System.Drawing.Size(85, 40);
+            this.btnI2Load.Size = new System.Drawing.Size(60, 40);
             this.btnI2Load.TabIndex = 19;
             this.btnI2Load.Text = "Load";
-            this.btnI2Load.UseVisualStyleBackColor = true;
+            this.btnI2Load.UseVisualStyleBackColor = false;
             this.btnI2Load.Click += new System.EventHandler(this.btnI2Load_Click);
+            // 
+            // btnI2LatchRls
+            // 
+            this.btnI2LatchRls.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2LatchRls.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2LatchRls.Location = new System.Drawing.Point(264, 22);
+            this.btnI2LatchRls.Name = "btnI2LatchRls";
+            this.btnI2LatchRls.Size = new System.Drawing.Size(61, 40);
+            this.btnI2LatchRls.TabIndex = 19;
+            this.btnI2LatchRls.Text = "Latch\r\nRelease";
+            this.btnI2LatchRls.UseVisualStyleBackColor = true;
+            this.btnI2LatchRls.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2Close
+            // 
+            this.btnI2Close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Close.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2Close.Location = new System.Drawing.Point(394, 70);
+            this.btnI2Close.Name = "btnI2Close";
+            this.btnI2Close.Size = new System.Drawing.Size(61, 40);
+            this.btnI2Close.TabIndex = 19;
+            this.btnI2Close.Text = "Close";
+            this.btnI2Close.UseVisualStyleBackColor = true;
+            this.btnI2Close.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2Dock
+            // 
+            this.btnI2Dock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Dock.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2Dock.Location = new System.Drawing.Point(69, 22);
+            this.btnI2Dock.Name = "btnI2Dock";
+            this.btnI2Dock.Size = new System.Drawing.Size(61, 40);
+            this.btnI2Dock.TabIndex = 19;
+            this.btnI2Dock.Text = "Dock";
+            this.btnI2Dock.UseVisualStyleBackColor = true;
+            this.btnI2Dock.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2Open
+            // 
+            this.btnI2Open.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Open.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2Open.Location = new System.Drawing.Point(394, 22);
+            this.btnI2Open.Name = "btnI2Open";
+            this.btnI2Open.Size = new System.Drawing.Size(61, 40);
+            this.btnI2Open.TabIndex = 19;
+            this.btnI2Open.Text = "Open";
+            this.btnI2Open.UseVisualStyleBackColor = true;
+            this.btnI2Open.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2Clamp
+            // 
+            this.btnI2Clamp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Clamp.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2Clamp.Location = new System.Drawing.Point(134, 22);
+            this.btnI2Clamp.Name = "btnI2Clamp";
+            this.btnI2Clamp.Size = new System.Drawing.Size(61, 40);
+            this.btnI2Clamp.TabIndex = 19;
+            this.btnI2Clamp.Text = "Clamp";
+            this.btnI2Clamp.UseVisualStyleBackColor = true;
+            this.btnI2Clamp.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2Right
+            // 
+            this.btnI2Right.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Right.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2Right.Location = new System.Drawing.Point(461, 70);
+            this.btnI2Right.Name = "btnI2Right";
+            this.btnI2Right.Size = new System.Drawing.Size(61, 40);
+            this.btnI2Right.TabIndex = 19;
+            this.btnI2Right.Text = "Right";
+            this.btnI2Right.UseVisualStyleBackColor = true;
+            this.btnI2Right.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2UnDock
+            // 
+            this.btnI2UnDock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2UnDock.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2UnDock.Location = new System.Drawing.Point(69, 70);
+            this.btnI2UnDock.Name = "btnI2UnDock";
+            this.btnI2UnDock.Size = new System.Drawing.Size(61, 40);
+            this.btnI2UnDock.TabIndex = 19;
+            this.btnI2UnDock.Text = "UnDock";
+            this.btnI2UnDock.UseVisualStyleBackColor = true;
+            this.btnI2UnDock.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2Forward
+            // 
+            this.btnI2Forward.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Forward.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2Forward.Location = new System.Drawing.Point(329, 70);
+            this.btnI2Forward.Name = "btnI2Forward";
+            this.btnI2Forward.Size = new System.Drawing.Size(61, 40);
+            this.btnI2Forward.TabIndex = 19;
+            this.btnI2Forward.Text = "Forward";
+            this.btnI2Forward.UseVisualStyleBackColor = true;
+            this.btnI2Forward.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2VacOn
+            // 
+            this.btnI2VacOn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2VacOn.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2VacOn.Location = new System.Drawing.Point(199, 22);
+            this.btnI2VacOn.Name = "btnI2VacOn";
+            this.btnI2VacOn.Size = new System.Drawing.Size(61, 40);
+            this.btnI2VacOn.TabIndex = 19;
+            this.btnI2VacOn.Text = "Vac On";
+            this.btnI2VacOn.UseVisualStyleBackColor = true;
+            this.btnI2VacOn.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2Left
+            // 
+            this.btnI2Left.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Left.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2Left.Location = new System.Drawing.Point(461, 23);
+            this.btnI2Left.Name = "btnI2Left";
+            this.btnI2Left.Size = new System.Drawing.Size(61, 40);
+            this.btnI2Left.TabIndex = 19;
+            this.btnI2Left.Text = "Left";
+            this.btnI2Left.UseVisualStyleBackColor = true;
+            this.btnI2Left.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2UnClamp
+            // 
+            this.btnI2UnClamp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2UnClamp.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2UnClamp.Location = new System.Drawing.Point(134, 70);
+            this.btnI2UnClamp.Name = "btnI2UnClamp";
+            this.btnI2UnClamp.Size = new System.Drawing.Size(61, 40);
+            this.btnI2UnClamp.TabIndex = 19;
+            this.btnI2UnClamp.Text = "UnClamp";
+            this.btnI2UnClamp.UseVisualStyleBackColor = true;
+            this.btnI2UnClamp.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2VacOff
+            // 
+            this.btnI2VacOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2VacOff.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2VacOff.Location = new System.Drawing.Point(199, 70);
+            this.btnI2VacOff.Name = "btnI2VacOff";
+            this.btnI2VacOff.Size = new System.Drawing.Size(61, 40);
+            this.btnI2VacOff.TabIndex = 19;
+            this.btnI2VacOff.Text = "Vac Off";
+            this.btnI2VacOff.UseVisualStyleBackColor = true;
+            this.btnI2VacOff.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI2Backward
+            // 
+            this.btnI2Backward.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Backward.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2Backward.Location = new System.Drawing.Point(329, 22);
+            this.btnI2Backward.Name = "btnI2Backward";
+            this.btnI2Backward.Size = new System.Drawing.Size(61, 40);
+            this.btnI2Backward.TabIndex = 19;
+            this.btnI2Backward.Text = "Backward";
+            this.btnI2Backward.UseVisualStyleBackColor = true;
+            this.btnI2Backward.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.BackColor = System.Drawing.SystemColors.Highlight;
+            this.label68.Enabled = false;
+            this.label68.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label68.ForeColor = System.Drawing.Color.White;
+            this.label68.Location = new System.Drawing.Point(768, 652);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(51, 23);
+            this.label68.TabIndex = 37;
+            this.label68.Text = " RFID";
+            this.label68.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label68.Visible = false;
             // 
             // groupBox25
             // 
-            this.groupBox25.Controls.Add(this.tbI1Init);
             this.groupBox25.Controls.Add(this.btnI1UnLoad);
-            this.groupBox25.Controls.Add(this.tbI1Reset);
-            this.groupBox25.Controls.Add(this.btnI1Auto);
+            this.groupBox25.Controls.Add(this.btnI1LatchFix);
+            this.groupBox25.Controls.Add(this.btnI1LatchRls);
+            this.groupBox25.Controls.Add(this.btnI1Close);
+            this.groupBox25.Controls.Add(this.btnI1Open);
+            this.groupBox25.Controls.Add(this.btnI1Right);
+            this.groupBox25.Controls.Add(this.btnI1Forward);
+            this.groupBox25.Controls.Add(this.btnI1Left);
+            this.groupBox25.Controls.Add(this.btnI1VacOff);
+            this.groupBox25.Controls.Add(this.btnI1Backward);
+            this.groupBox25.Controls.Add(this.btnI1UnClamp);
+            this.groupBox25.Controls.Add(this.btnI1VacOn);
+            this.groupBox25.Controls.Add(this.btnI1UnDock);
+            this.groupBox25.Controls.Add(this.btnI1Clamp);
+            this.groupBox25.Controls.Add(this.btnI1Dock);
             this.groupBox25.Controls.Add(this.btnI1Load);
             this.groupBox25.Location = new System.Drawing.Point(3, 408);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(466, 72);
+            this.groupBox25.Size = new System.Drawing.Size(529, 118);
             this.groupBox25.TabIndex = 17;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "ILPT1 Area(B1)";
             // 
-            // tbI1Init
-            // 
-            this.tbI1Init.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.tbI1Init.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbI1Init.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbI1Init.ForeColor = System.Drawing.Color.Black;
-            this.tbI1Init.Location = new System.Drawing.Point(49, 21);
-            this.tbI1Init.Name = "tbI1Init";
-            this.tbI1Init.Size = new System.Drawing.Size(63, 39);
-            this.tbI1Init.TabIndex = 29;
-            this.tbI1Init.Text = "Init";
-            this.tbI1Init.UseVisualStyleBackColor = false;
-            this.tbI1Init.Visible = false;
-            this.tbI1Init.Click += new System.EventHandler(this.tbI1Init_Click);
-            // 
             // btnI1UnLoad
             // 
+            this.btnI1UnLoad.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnI1UnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI1UnLoad.Enabled = false;
             this.btnI1UnLoad.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1UnLoad.Location = new System.Drawing.Point(209, 21);
+            this.btnI1UnLoad.Location = new System.Drawing.Point(5, 70);
             this.btnI1UnLoad.Name = "btnI1UnLoad";
-            this.btnI1UnLoad.Size = new System.Drawing.Size(85, 40);
+            this.btnI1UnLoad.Size = new System.Drawing.Size(62, 40);
             this.btnI1UnLoad.TabIndex = 19;
             this.btnI1UnLoad.Text = "Unload";
-            this.btnI1UnLoad.UseVisualStyleBackColor = true;
+            this.btnI1UnLoad.UseVisualStyleBackColor = false;
             this.btnI1UnLoad.Click += new System.EventHandler(this.btnI1UnLoad_Click);
             // 
-            // tbI1Reset
+            // btnI1LatchFix
             // 
-            this.tbI1Reset.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.tbI1Reset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbI1Reset.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbI1Reset.ForeColor = System.Drawing.Color.Black;
-            this.tbI1Reset.Location = new System.Drawing.Point(393, 22);
-            this.tbI1Reset.Name = "tbI1Reset";
-            this.tbI1Reset.Size = new System.Drawing.Size(63, 39);
-            this.tbI1Reset.TabIndex = 29;
-            this.tbI1Reset.Text = "Reset";
-            this.tbI1Reset.UseVisualStyleBackColor = false;
-            this.tbI1Reset.Visible = false;
-            this.tbI1Reset.Click += new System.EventHandler(this.tbI1Reset_Click);
+            this.btnI1LatchFix.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1LatchFix.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1LatchFix.Location = new System.Drawing.Point(265, 70);
+            this.btnI1LatchFix.Name = "btnI1LatchFix";
+            this.btnI1LatchFix.Size = new System.Drawing.Size(61, 40);
+            this.btnI1LatchFix.TabIndex = 19;
+            this.btnI1LatchFix.Text = "Latch\r\nFix";
+            this.btnI1LatchFix.UseVisualStyleBackColor = true;
+            this.btnI1LatchFix.Click += new System.EventHandler(this.btnILPT_Click);
             // 
-            // btnI1Auto
+            // btnI1LatchRls
             // 
-            this.btnI1Auto.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnI1Auto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnI1Auto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1Auto.Location = new System.Drawing.Point(300, 21);
-            this.btnI1Auto.Name = "btnI1Auto";
-            this.btnI1Auto.Size = new System.Drawing.Size(87, 40);
-            this.btnI1Auto.TabIndex = 19;
-            this.btnI1Auto.Text = "Auto";
-            this.btnI1Auto.UseVisualStyleBackColor = false;
-            this.btnI1Auto.Visible = false;
-            this.btnI1Auto.Click += new System.EventHandler(this.btnI1Auto_Click);
+            this.btnI1LatchRls.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1LatchRls.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1LatchRls.Location = new System.Drawing.Point(265, 21);
+            this.btnI1LatchRls.Name = "btnI1LatchRls";
+            this.btnI1LatchRls.Size = new System.Drawing.Size(61, 40);
+            this.btnI1LatchRls.TabIndex = 19;
+            this.btnI1LatchRls.Text = "Latch\r\nRelease";
+            this.btnI1LatchRls.UseVisualStyleBackColor = true;
+            this.btnI1LatchRls.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1Close
+            // 
+            this.btnI1Close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Close.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1Close.Location = new System.Drawing.Point(395, 70);
+            this.btnI1Close.Name = "btnI1Close";
+            this.btnI1Close.Size = new System.Drawing.Size(61, 40);
+            this.btnI1Close.TabIndex = 19;
+            this.btnI1Close.Text = "Close";
+            this.btnI1Close.UseVisualStyleBackColor = true;
+            this.btnI1Close.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1Open
+            // 
+            this.btnI1Open.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Open.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1Open.Location = new System.Drawing.Point(395, 21);
+            this.btnI1Open.Name = "btnI1Open";
+            this.btnI1Open.Size = new System.Drawing.Size(61, 40);
+            this.btnI1Open.TabIndex = 19;
+            this.btnI1Open.Text = "Open";
+            this.btnI1Open.UseVisualStyleBackColor = true;
+            this.btnI1Open.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1Right
+            // 
+            this.btnI1Right.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Right.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1Right.Location = new System.Drawing.Point(462, 70);
+            this.btnI1Right.Name = "btnI1Right";
+            this.btnI1Right.Size = new System.Drawing.Size(61, 40);
+            this.btnI1Right.TabIndex = 19;
+            this.btnI1Right.Text = "Right";
+            this.btnI1Right.UseVisualStyleBackColor = true;
+            this.btnI1Right.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1Forward
+            // 
+            this.btnI1Forward.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Forward.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1Forward.Location = new System.Drawing.Point(330, 70);
+            this.btnI1Forward.Name = "btnI1Forward";
+            this.btnI1Forward.Size = new System.Drawing.Size(61, 40);
+            this.btnI1Forward.TabIndex = 19;
+            this.btnI1Forward.Text = "Forward";
+            this.btnI1Forward.UseVisualStyleBackColor = true;
+            this.btnI1Forward.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1Left
+            // 
+            this.btnI1Left.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Left.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1Left.Location = new System.Drawing.Point(462, 22);
+            this.btnI1Left.Name = "btnI1Left";
+            this.btnI1Left.Size = new System.Drawing.Size(61, 40);
+            this.btnI1Left.TabIndex = 19;
+            this.btnI1Left.Text = "Left";
+            this.btnI1Left.UseVisualStyleBackColor = true;
+            this.btnI1Left.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1VacOff
+            // 
+            this.btnI1VacOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1VacOff.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1VacOff.Location = new System.Drawing.Point(200, 70);
+            this.btnI1VacOff.Name = "btnI1VacOff";
+            this.btnI1VacOff.Size = new System.Drawing.Size(61, 40);
+            this.btnI1VacOff.TabIndex = 19;
+            this.btnI1VacOff.Text = "Vac Off";
+            this.btnI1VacOff.UseVisualStyleBackColor = true;
+            this.btnI1VacOff.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1Backward
+            // 
+            this.btnI1Backward.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Backward.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1Backward.Location = new System.Drawing.Point(330, 21);
+            this.btnI1Backward.Name = "btnI1Backward";
+            this.btnI1Backward.Size = new System.Drawing.Size(61, 40);
+            this.btnI1Backward.TabIndex = 19;
+            this.btnI1Backward.Text = "Backward";
+            this.btnI1Backward.UseVisualStyleBackColor = true;
+            this.btnI1Backward.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1UnClamp
+            // 
+            this.btnI1UnClamp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1UnClamp.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1UnClamp.Location = new System.Drawing.Point(135, 70);
+            this.btnI1UnClamp.Name = "btnI1UnClamp";
+            this.btnI1UnClamp.Size = new System.Drawing.Size(61, 40);
+            this.btnI1UnClamp.TabIndex = 19;
+            this.btnI1UnClamp.Text = "UnClamp";
+            this.btnI1UnClamp.UseVisualStyleBackColor = true;
+            this.btnI1UnClamp.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1VacOn
+            // 
+            this.btnI1VacOn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1VacOn.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1VacOn.Location = new System.Drawing.Point(200, 21);
+            this.btnI1VacOn.Name = "btnI1VacOn";
+            this.btnI1VacOn.Size = new System.Drawing.Size(61, 40);
+            this.btnI1VacOn.TabIndex = 19;
+            this.btnI1VacOn.Text = "Vac On";
+            this.btnI1VacOn.UseVisualStyleBackColor = true;
+            this.btnI1VacOn.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1UnDock
+            // 
+            this.btnI1UnDock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1UnDock.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1UnDock.Location = new System.Drawing.Point(70, 70);
+            this.btnI1UnDock.Name = "btnI1UnDock";
+            this.btnI1UnDock.Size = new System.Drawing.Size(61, 40);
+            this.btnI1UnDock.TabIndex = 19;
+            this.btnI1UnDock.Text = "UnDock";
+            this.btnI1UnDock.UseVisualStyleBackColor = true;
+            this.btnI1UnDock.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1Clamp
+            // 
+            this.btnI1Clamp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Clamp.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1Clamp.Location = new System.Drawing.Point(135, 21);
+            this.btnI1Clamp.Name = "btnI1Clamp";
+            this.btnI1Clamp.Size = new System.Drawing.Size(61, 40);
+            this.btnI1Clamp.TabIndex = 19;
+            this.btnI1Clamp.Text = "Clamp";
+            this.btnI1Clamp.UseVisualStyleBackColor = true;
+            this.btnI1Clamp.Click += new System.EventHandler(this.btnILPT_Click);
+            // 
+            // btnI1Dock
+            // 
+            this.btnI1Dock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Dock.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1Dock.Location = new System.Drawing.Point(70, 21);
+            this.btnI1Dock.Name = "btnI1Dock";
+            this.btnI1Dock.Size = new System.Drawing.Size(61, 40);
+            this.btnI1Dock.TabIndex = 19;
+            this.btnI1Dock.Text = "Dock";
+            this.btnI1Dock.UseVisualStyleBackColor = true;
+            this.btnI1Dock.Click += new System.EventHandler(this.btnILPT_Click);
             // 
             // btnI1Load
             // 
+            this.btnI1Load.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnI1Load.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI1Load.Enabled = false;
             this.btnI1Load.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1Load.Location = new System.Drawing.Point(118, 21);
+            this.btnI1Load.Location = new System.Drawing.Point(5, 21);
             this.btnI1Load.Name = "btnI1Load";
-            this.btnI1Load.Size = new System.Drawing.Size(85, 40);
+            this.btnI1Load.Size = new System.Drawing.Size(62, 40);
             this.btnI1Load.TabIndex = 19;
             this.btnI1Load.Text = "Load";
-            this.btnI1Load.UseVisualStyleBackColor = true;
+            this.btnI1Load.UseVisualStyleBackColor = false;
             this.btnI1Load.Click += new System.EventHandler(this.btnI1Load_Click);
             // 
             // groupBox22
@@ -2174,15 +2605,41 @@
             this.btnE2Init.Visible = false;
             this.btnE2Init.Click += new System.EventHandler(this.btnE2Init_Click);
             // 
-            // tbE2RFID
+            // btnE2Org
             // 
-            this.tbE2RFID.Enabled = false;
-            this.tbE2RFID.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbE2RFID.Location = new System.Drawing.Point(480, 635);
-            this.tbE2RFID.Name = "tbE2RFID";
-            this.tbE2RFID.Size = new System.Drawing.Size(159, 30);
-            this.tbE2RFID.TabIndex = 38;
-            this.tbE2RFID.Visible = false;
+            this.btnE2Org.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE2Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE2Org.Location = new System.Drawing.Point(6, 112);
+            this.btnE2Org.Name = "btnE2Org";
+            this.btnE2Org.Size = new System.Drawing.Size(106, 39);
+            this.btnE2Org.TabIndex = 19;
+            this.btnE2Org.Text = "Org";
+            this.btnE2Org.UseVisualStyleBackColor = true;
+            this.btnE2Org.Click += new System.EventHandler(this.btnE2Org_Click);
+            // 
+            // btnE2ServoOff
+            // 
+            this.btnE2ServoOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE2ServoOff.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE2ServoOff.Location = new System.Drawing.Point(6, 67);
+            this.btnE2ServoOff.Name = "btnE2ServoOff";
+            this.btnE2ServoOff.Size = new System.Drawing.Size(106, 39);
+            this.btnE2ServoOff.TabIndex = 19;
+            this.btnE2ServoOff.Text = "Servo Off";
+            this.btnE2ServoOff.UseVisualStyleBackColor = true;
+            this.btnE2ServoOff.Click += new System.EventHandler(this.btnE2ServoOff_Click);
+            // 
+            // btnE2ServoOn
+            // 
+            this.btnE2ServoOn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE2ServoOn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE2ServoOn.Location = new System.Drawing.Point(6, 21);
+            this.btnE2ServoOn.Name = "btnE2ServoOn";
+            this.btnE2ServoOn.Size = new System.Drawing.Size(106, 39);
+            this.btnE2ServoOn.TabIndex = 19;
+            this.btnE2ServoOn.Text = "Servo On";
+            this.btnE2ServoOn.UseVisualStyleBackColor = true;
+            this.btnE2ServoOn.Click += new System.EventHandler(this.btnE2ServoOn_Click);
             // 
             // btnE2Clamp
             // 
@@ -2195,21 +2652,6 @@
             this.btnE2Clamp.Text = "Clamp";
             this.btnE2Clamp.UseVisualStyleBackColor = true;
             this.btnE2Clamp.Click += new System.EventHandler(this.btnE2Clamp_Click);
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.BackColor = System.Drawing.SystemColors.Highlight;
-            this.label68.Enabled = false;
-            this.label68.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label68.ForeColor = System.Drawing.Color.White;
-            this.label68.Location = new System.Drawing.Point(423, 637);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(51, 23);
-            this.label68.TabIndex = 37;
-            this.label68.Text = " RFID";
-            this.label68.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label68.Visible = false;
             // 
             // btnE2Reset
             // 
@@ -2290,19 +2732,6 @@
             this.btnE2Auto.Visible = false;
             this.btnE2Auto.Click += new System.EventHandler(this.btnE2Auto_Click);
             // 
-            // btnE2ReadID
-            // 
-            this.btnE2ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE2ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE2ReadID.Location = new System.Drawing.Point(427, 590);
-            this.btnE2ReadID.Name = "btnE2ReadID";
-            this.btnE2ReadID.Size = new System.Drawing.Size(106, 39);
-            this.btnE2ReadID.TabIndex = 19;
-            this.btnE2ReadID.Text = "Read RFID";
-            this.btnE2ReadID.UseVisualStyleBackColor = true;
-            this.btnE2ReadID.Visible = false;
-            this.btnE2ReadID.Click += new System.EventHandler(this.btnE2ReadID_Click);
-            // 
             // btnE2UnClamp
             // 
             this.btnE2UnClamp.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2336,31 +2765,6 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "ELPT1 Area(A1)";
             // 
-            // tbE1RFID
-            // 
-            this.tbE1RFID.Enabled = false;
-            this.tbE1RFID.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbE1RFID.Location = new System.Drawing.Point(171, 630);
-            this.tbE1RFID.Name = "tbE1RFID";
-            this.tbE1RFID.Size = new System.Drawing.Size(159, 30);
-            this.tbE1RFID.TabIndex = 38;
-            this.tbE1RFID.Visible = false;
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.BackColor = System.Drawing.SystemColors.Highlight;
-            this.label64.Enabled = false;
-            this.label64.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.ForeColor = System.Drawing.Color.White;
-            this.label64.Location = new System.Drawing.Point(114, 632);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(51, 23);
-            this.label64.TabIndex = 37;
-            this.label64.Text = " RFID";
-            this.label64.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label64.Visible = false;
-            // 
             // btnE1Init
             // 
             this.btnE1Init.BackColor = System.Drawing.Color.PaleGoldenrod;
@@ -2375,6 +2779,42 @@
             this.btnE1Init.UseVisualStyleBackColor = false;
             this.btnE1Init.Visible = false;
             this.btnE1Init.Click += new System.EventHandler(this.btnE1Init_Click);
+            // 
+            // btnE1Org
+            // 
+            this.btnE1Org.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE1Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE1Org.Location = new System.Drawing.Point(6, 112);
+            this.btnE1Org.Name = "btnE1Org";
+            this.btnE1Org.Size = new System.Drawing.Size(106, 39);
+            this.btnE1Org.TabIndex = 19;
+            this.btnE1Org.Text = "Org";
+            this.btnE1Org.UseVisualStyleBackColor = true;
+            this.btnE1Org.Click += new System.EventHandler(this.btnE1Org_Click);
+            // 
+            // btnE1ServoOff
+            // 
+            this.btnE1ServoOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE1ServoOff.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE1ServoOff.Location = new System.Drawing.Point(6, 68);
+            this.btnE1ServoOff.Name = "btnE1ServoOff";
+            this.btnE1ServoOff.Size = new System.Drawing.Size(106, 39);
+            this.btnE1ServoOff.TabIndex = 19;
+            this.btnE1ServoOff.Text = "Servo Off";
+            this.btnE1ServoOff.UseVisualStyleBackColor = true;
+            this.btnE1ServoOff.Click += new System.EventHandler(this.btnE1ServoOff_Click);
+            // 
+            // btnE1ServoOn
+            // 
+            this.btnE1ServoOn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE1ServoOn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE1ServoOn.Location = new System.Drawing.Point(6, 22);
+            this.btnE1ServoOn.Name = "btnE1ServoOn";
+            this.btnE1ServoOn.Size = new System.Drawing.Size(106, 39);
+            this.btnE1ServoOn.TabIndex = 19;
+            this.btnE1ServoOn.Text = "Servo On";
+            this.btnE1ServoOn.UseVisualStyleBackColor = true;
+            this.btnE1ServoOn.Click += new System.EventHandler(this.btnE1ServoOn_Click);
             // 
             // btnE1Clamp
             // 
@@ -2467,19 +2907,6 @@
             this.btnE1Auto.Visible = false;
             this.btnE1Auto.Click += new System.EventHandler(this.btnE1Auto_Click);
             // 
-            // btnE1ReadID
-            // 
-            this.btnE1ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE1ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE1ReadID.Location = new System.Drawing.Point(99, 585);
-            this.btnE1ReadID.Name = "btnE1ReadID";
-            this.btnE1ReadID.Size = new System.Drawing.Size(106, 39);
-            this.btnE1ReadID.TabIndex = 19;
-            this.btnE1ReadID.Text = "Read RFID";
-            this.btnE1ReadID.UseVisualStyleBackColor = true;
-            this.btnE1ReadID.Visible = false;
-            this.btnE1ReadID.Click += new System.EventHandler(this.btnE1ReadID_Click);
-            // 
             // btnE1UnClamp
             // 
             this.btnE1UnClamp.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2512,6 +2939,19 @@
             this.label63.TabIndex = 30;
             this.label63.Text = "UnClamp <- Close Shutter <- Move Out  <- Clamp";
             // 
+            // btnE1ReadID
+            // 
+            this.btnE1ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE1ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE1ReadID.Location = new System.Drawing.Point(878, 563);
+            this.btnE1ReadID.Name = "btnE1ReadID";
+            this.btnE1ReadID.Size = new System.Drawing.Size(106, 39);
+            this.btnE1ReadID.TabIndex = 19;
+            this.btnE1ReadID.Text = "Read RFID";
+            this.btnE1ReadID.UseVisualStyleBackColor = true;
+            this.btnE1ReadID.Visible = false;
+            this.btnE1ReadID.Click += new System.EventHandler(this.btnE1ReadID_Click);
+            // 
             // label62
             // 
             this.label62.AutoSize = true;
@@ -2531,6 +2971,19 @@
             this.label43.Size = new System.Drawing.Size(130, 21);
             this.label43.TabIndex = 30;
             this.label43.Text = "Load Sequence ->";
+            // 
+            // btnE2ReadID
+            // 
+            this.btnE2ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE2ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE2ReadID.Location = new System.Drawing.Point(656, 644);
+            this.btnE2ReadID.Name = "btnE2ReadID";
+            this.btnE2ReadID.Size = new System.Drawing.Size(106, 39);
+            this.btnE2ReadID.TabIndex = 19;
+            this.btnE2ReadID.Text = "Read RFID";
+            this.btnE2ReadID.UseVisualStyleBackColor = true;
+            this.btnE2ReadID.Visible = false;
+            this.btnE2ReadID.Click += new System.EventHandler(this.btnE2ReadID_Click);
             // 
             // tabIO
             // 
@@ -3067,85 +3520,6 @@
             this.btnRestart.Visible = false;
             this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
-            // hint
-            // 
-            this.hint.AutomaticDelay = 50;
-            this.hint.AutoPopDelay = 15000;
-            this.hint.InitialDelay = 50;
-            this.hint.ReshowDelay = 10;
-            // 
-            // btnE1ServoOn
-            // 
-            this.btnE1ServoOn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE1ServoOn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE1ServoOn.Location = new System.Drawing.Point(6, 22);
-            this.btnE1ServoOn.Name = "btnE1ServoOn";
-            this.btnE1ServoOn.Size = new System.Drawing.Size(106, 39);
-            this.btnE1ServoOn.TabIndex = 19;
-            this.btnE1ServoOn.Text = "Servo On";
-            this.btnE1ServoOn.UseVisualStyleBackColor = true;
-            this.btnE1ServoOn.Click += new System.EventHandler(this.btnE1ServoOn_Click);
-            // 
-            // btnE1ServoOff
-            // 
-            this.btnE1ServoOff.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE1ServoOff.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE1ServoOff.Location = new System.Drawing.Point(6, 68);
-            this.btnE1ServoOff.Name = "btnE1ServoOff";
-            this.btnE1ServoOff.Size = new System.Drawing.Size(106, 39);
-            this.btnE1ServoOff.TabIndex = 19;
-            this.btnE1ServoOff.Text = "Servo Off";
-            this.btnE1ServoOff.UseVisualStyleBackColor = true;
-            this.btnE1ServoOff.Click += new System.EventHandler(this.btnE1ServoOff_Click);
-            // 
-            // btnE2ServoOn
-            // 
-            this.btnE2ServoOn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE2ServoOn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE2ServoOn.Location = new System.Drawing.Point(6, 21);
-            this.btnE2ServoOn.Name = "btnE2ServoOn";
-            this.btnE2ServoOn.Size = new System.Drawing.Size(106, 39);
-            this.btnE2ServoOn.TabIndex = 19;
-            this.btnE2ServoOn.Text = "Servo On";
-            this.btnE2ServoOn.UseVisualStyleBackColor = true;
-            this.btnE2ServoOn.Click += new System.EventHandler(this.btnE2ServoOn_Click);
-            // 
-            // btnE2ServoOff
-            // 
-            this.btnE2ServoOff.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE2ServoOff.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE2ServoOff.Location = new System.Drawing.Point(6, 67);
-            this.btnE2ServoOff.Name = "btnE2ServoOff";
-            this.btnE2ServoOff.Size = new System.Drawing.Size(106, 39);
-            this.btnE2ServoOff.TabIndex = 19;
-            this.btnE2ServoOff.Text = "Servo Off";
-            this.btnE2ServoOff.UseVisualStyleBackColor = true;
-            this.btnE2ServoOff.Click += new System.EventHandler(this.btnE2ServoOff_Click);
-            // 
-            // btnE1Org
-            // 
-            this.btnE1Org.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE1Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE1Org.Location = new System.Drawing.Point(6, 112);
-            this.btnE1Org.Name = "btnE1Org";
-            this.btnE1Org.Size = new System.Drawing.Size(106, 39);
-            this.btnE1Org.TabIndex = 19;
-            this.btnE1Org.Text = "Org";
-            this.btnE1Org.UseVisualStyleBackColor = true;
-            this.btnE1Org.Click += new System.EventHandler(this.btnE1Org_Click);
-            // 
-            // btnE2Org
-            // 
-            this.btnE2Org.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE2Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE2Org.Location = new System.Drawing.Point(6, 112);
-            this.btnE2Org.Name = "btnE2Org";
-            this.btnE2Org.Size = new System.Drawing.Size(106, 39);
-            this.btnE2Org.TabIndex = 19;
-            this.btnE2Org.Text = "Org";
-            this.btnE2Org.UseVisualStyleBackColor = true;
-            this.btnE2Org.Click += new System.EventHandler(this.btnE2Org_Click);
-            // 
             // btnCheckSlave
             // 
             this.btnCheckSlave.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -3157,6 +3531,13 @@
             this.btnCheckSlave.Text = "Check Slave";
             this.btnCheckSlave.UseVisualStyleBackColor = true;
             this.btnCheckSlave.Click += new System.EventHandler(this.btnCheckSlave_Click);
+            // 
+            // hint
+            // 
+            this.hint.AutomaticDelay = 50;
+            this.hint.AutoPopDelay = 15000;
+            this.hint.InitialDelay = 50;
+            this.hint.ReshowDelay = 10;
             // 
             // FormMain
             // 
@@ -3349,7 +3730,6 @@
         private System.Windows.Forms.Button btnFoupRotAuto;
         private System.Windows.Forms.Button btnFoupRotHome;
         private System.Windows.Forms.Button btnAutoRun;
-        private System.Windows.Forms.Button btnFoupRotCarry;
         private System.Windows.Forms.ComboBox cbCmd;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCtrlModeD_3;
@@ -3437,6 +3817,34 @@
         private System.Windows.Forms.Button btnE2Org;
         private System.Windows.Forms.Button btnE1Org;
         private System.Windows.Forms.Button btnCheckSlave;
+        private System.Windows.Forms.Button btnI2LatchFix;
+        private System.Windows.Forms.Button btnI2LatchRls;
+        private System.Windows.Forms.Button btnI2Close;
+        private System.Windows.Forms.Button btnI2Dock;
+        private System.Windows.Forms.Button btnI2Open;
+        private System.Windows.Forms.Button btnI2Clamp;
+        private System.Windows.Forms.Button btnI2Right;
+        private System.Windows.Forms.Button btnI2UnDock;
+        private System.Windows.Forms.Button btnI2Forward;
+        private System.Windows.Forms.Button btnI2VacOn;
+        private System.Windows.Forms.Button btnI2Left;
+        private System.Windows.Forms.Button btnI2UnClamp;
+        private System.Windows.Forms.Button btnI2VacOff;
+        private System.Windows.Forms.Button btnI2Backward;
+        private System.Windows.Forms.Button btnI1LatchFix;
+        private System.Windows.Forms.Button btnI1LatchRls;
+        private System.Windows.Forms.Button btnI1Close;
+        private System.Windows.Forms.Button btnI1Open;
+        private System.Windows.Forms.Button btnI1Right;
+        private System.Windows.Forms.Button btnI1Forward;
+        private System.Windows.Forms.Button btnI1Left;
+        private System.Windows.Forms.Button btnI1VacOff;
+        private System.Windows.Forms.Button btnI1Backward;
+        private System.Windows.Forms.Button btnI1UnClamp;
+        private System.Windows.Forms.Button btnI1VacOn;
+        private System.Windows.Forms.Button btnI1UnDock;
+        private System.Windows.Forms.Button btnI1Clamp;
+        private System.Windows.Forms.Button btnI1Dock;
     }
 }
 

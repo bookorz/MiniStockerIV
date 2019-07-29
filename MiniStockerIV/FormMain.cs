@@ -574,22 +574,23 @@ namespace MiniStockerIV
         private string getELPTShutter(string port, string status)
         {
             string cmd = "";
-            switch (port)
-            {
-                case Const.STK_ELPT1:
-                    cmd = "$1MCR:ELPT_SHUTTER/1";//呼叫 Marco 指令:ELPT_SHUTTER, 參數: 1(ELPT1)
-                    break;
-                case Const.STK_ELPT2:
-                    cmd = "$1MCR:ELPT_SHUTTER/2";//呼叫 Marco 指令:ELPT_SHUTTER, 參數: 2(ELPT2)
-                    break;
-            }
+            string marco_name = "";
             switch (status)
             {
                 case Const.STATUS_OPEN:
-                    cmd = cmd + "/OPEN;";//OPEN Shutter
+                    marco_name = "ELPT_SHUTTER_OPEN";//OPEN Shutter
                     break;
                 case Const.STATUS_CLOSE:
-                    cmd = cmd + "/CLOSE;";//CLOSE Shutter
+                    marco_name = "ELPT_SHUTTER_CLOSE";//OPEN Shutter
+                    break;
+            }
+            switch (port)
+            {
+                case Const.STK_ELPT1:
+                    cmd = "$1MCR:" + marco_name + "/P1;";//呼叫 Marco 指令, 參數: P1(ELPT1)
+                    break;
+                case Const.STK_ELPT2:
+                    cmd = "$1MCR:" + marco_name + "/P2;";//呼叫 Marco 指令, 參數: P2(ELPT2)
                     break;
             }
             return cmd;
@@ -775,10 +776,10 @@ namespace MiniStockerIV
             switch (port)
             {
                 case Const.STK_ILPT1:
-                    cmd = "$1MCR:ILPT_OPEN/1";//呼叫 Marco 指令:ILPT_OPEN, 參數: 1(ILPT1)
+                    cmd = "$1MCR:ILPT_LOAD/P3;";//呼叫 Marco 指令:ILPT_LOAD, 參數: 1(ILPT1)
                     break;
                 case Const.STK_ILPT2:
-                    cmd = "$1MCR:ILPT_OPEN/2";//呼叫 Marco 指令:ILPT_OPEN, 參數: 2(ILPT2)
+                    cmd = "$1MCR:ILPT_LOAD/P4;";//呼叫 Marco 指令:ILPT_LOAD, 參數: 2(ILPT2)
                     break;
             }
             return cmd;
@@ -797,10 +798,10 @@ namespace MiniStockerIV
             switch (port)
             {
                 case Const.STK_ILPT1:
-                    cmd = "$1MCR:ILPT_CLOSE:1;";//呼叫 Marco 指令:ILPT_CLOSE, 參數: 1(ILPT1)
+                    cmd = "$1MCR:ILPT_UNLOAD/P3;";//呼叫 Marco 指令:ILPT_UNLOAD, 參數: 1(ILPT1)
                     break;
                 case Const.STK_ILPT2:
-                    cmd = "$1MCR:ILPT_CLOSE:2;";//呼叫 Marco 指令:ILPT_CLOSE, 參數: 2(ILPT2)
+                    cmd = "$1MCR:ILPT_UNLOAD/P4;";//呼叫 Marco 指令:ILPT_UNLOAD, 參數: 2(ILPT2)
                     break;
             }
             return cmd;
@@ -2675,9 +2676,21 @@ namespace MiniStockerIV
             }
             else
             {
-                MessageBox.Show(cmd,"Notice",MessageBoxButtons.OK,MessageBoxIcon.Question);
-                //sendCommand(cmd);
+                //MessageBox.Show(cmd,"Notice",MessageBoxButtons.OK,MessageBoxIcon.Question);
+                sendCommand(cmd);
             }
+        }
+
+        private void btnI1Org_Click(object sender, EventArgs e)
+        {
+            string cmd = "$1MCR:ILPT_ORG/P3;";
+            sendCommand(cmd);
+        }
+
+        private void btnI2Org_Click(object sender, EventArgs e)
+        {
+            string cmd = "$1MCR:ILPT_ORG/P4;";
+            sendCommand(cmd);
         }
     }
 }

@@ -27,10 +27,10 @@
 1,710,A_Area_Sensor,A部 Area Sensor,IN
 1,711,A1_Operator_Access_Signal,A部① Operator作業中,IN
 1,712,A2_Operator_Access_Signal,A部② Operator作業中,IN
-1,900,A1_Lock,A部① Lock機構夾持,OUT
-1,901,A1_Unlock,A部① Lock機構放開,OUT
-1,902,A2_Lock,A部② Lock機構夾持,OUT
-1,903,A2_Unlock,A部② Lock機構放開,OUT
+1,900,A1_Clamp,A部① Lock機構夾持,OUT
+1,901,A1_Unclamp,A部① Lock機構放開,OUT
+1,902,A2_Clamp,A部② Lock機構夾持,OUT
+1,903,A2_Unclamp,A部② Lock機構放開,OUT
 1,904,A1_Shtter_Open,A部① Shutter 開,OUT
 1,905,A1_Shtter_Close,A部① Shutter 關,OUT
 1,906,A2_Shtter_Open,A部② Shutter 開,OUT

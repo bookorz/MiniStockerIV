@@ -281,6 +281,8 @@
             this.btnRestart = new System.Windows.Forms.Button();
             this.btnCheckSlave = new System.Windows.Forms.Button();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
+            this.btnI1Org = new System.Windows.Forms.Button();
+            this.btnI2Org = new System.Windows.Forms.Button();
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -323,7 +325,7 @@
             this.tabMode.Location = new System.Drawing.Point(8, 12);
             this.tabMode.Name = "tabMode";
             this.tabMode.SelectedIndex = 0;
-            this.tabMode.Size = new System.Drawing.Size(995, 720);
+            this.tabMode.Size = new System.Drawing.Size(995, 753);
             this.tabMode.TabIndex = 22;
             // 
             // tabSetting
@@ -1298,7 +1300,7 @@
             this.tabStocker.Controls.Add(this.btnE2ReadID);
             this.tabStocker.Location = new System.Drawing.Point(4, 33);
             this.tabStocker.Name = "tabStocker";
-            this.tabStocker.Size = new System.Drawing.Size(987, 683);
+            this.tabStocker.Size = new System.Drawing.Size(987, 716);
             this.tabStocker.TabIndex = 4;
             this.tabStocker.Text = " Stocker Command";
             this.tabStocker.UseVisualStyleBackColor = true;
@@ -2115,6 +2117,7 @@
             // groupBox24
             // 
             this.groupBox24.Controls.Add(this.btnI2UnLoad);
+            this.groupBox24.Controls.Add(this.btnI2Org);
             this.groupBox24.Controls.Add(this.btnI2LatchFix);
             this.groupBox24.Controls.Add(this.btnI2Load);
             this.groupBox24.Controls.Add(this.btnI2LatchRls);
@@ -2130,9 +2133,9 @@
             this.groupBox24.Controls.Add(this.btnI2UnClamp);
             this.groupBox24.Controls.Add(this.btnI2VacOff);
             this.groupBox24.Controls.Add(this.btnI2Backward);
-            this.groupBox24.Location = new System.Drawing.Point(4, 532);
+            this.groupBox24.Location = new System.Drawing.Point(4, 562);
             this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(528, 118);
+            this.groupBox24.Size = new System.Drawing.Size(528, 150);
             this.groupBox24.TabIndex = 17;
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "ILPT2 Area(B2)";
@@ -2141,9 +2144,8 @@
             // 
             this.btnI2UnLoad.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnI2UnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnI2UnLoad.Enabled = false;
             this.btnI2UnLoad.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2UnLoad.Location = new System.Drawing.Point(6, 70);
+            this.btnI2UnLoad.Location = new System.Drawing.Point(6, 64);
             this.btnI2UnLoad.Name = "btnI2UnLoad";
             this.btnI2UnLoad.Size = new System.Drawing.Size(60, 40);
             this.btnI2UnLoad.TabIndex = 19;
@@ -2155,7 +2157,7 @@
             // 
             this.btnI2LatchFix.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI2LatchFix.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2LatchFix.Location = new System.Drawing.Point(264, 70);
+            this.btnI2LatchFix.Location = new System.Drawing.Point(264, 64);
             this.btnI2LatchFix.Name = "btnI2LatchFix";
             this.btnI2LatchFix.Size = new System.Drawing.Size(61, 40);
             this.btnI2LatchFix.TabIndex = 19;
@@ -2167,7 +2169,6 @@
             // 
             this.btnI2Load.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnI2Load.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnI2Load.Enabled = false;
             this.btnI2Load.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnI2Load.Location = new System.Drawing.Point(6, 23);
             this.btnI2Load.Name = "btnI2Load";
@@ -2193,7 +2194,7 @@
             // 
             this.btnI2Close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI2Close.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2Close.Location = new System.Drawing.Point(394, 70);
+            this.btnI2Close.Location = new System.Drawing.Point(394, 64);
             this.btnI2Close.Name = "btnI2Close";
             this.btnI2Close.Size = new System.Drawing.Size(61, 40);
             this.btnI2Close.TabIndex = 19;
@@ -2241,7 +2242,7 @@
             // 
             this.btnI2Right.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI2Right.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2Right.Location = new System.Drawing.Point(461, 70);
+            this.btnI2Right.Location = new System.Drawing.Point(461, 64);
             this.btnI2Right.Name = "btnI2Right";
             this.btnI2Right.Size = new System.Drawing.Size(61, 40);
             this.btnI2Right.TabIndex = 19;
@@ -2253,7 +2254,7 @@
             // 
             this.btnI2UnDock.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI2UnDock.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2UnDock.Location = new System.Drawing.Point(69, 70);
+            this.btnI2UnDock.Location = new System.Drawing.Point(69, 64);
             this.btnI2UnDock.Name = "btnI2UnDock";
             this.btnI2UnDock.Size = new System.Drawing.Size(61, 40);
             this.btnI2UnDock.TabIndex = 19;
@@ -2265,7 +2266,7 @@
             // 
             this.btnI2Forward.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI2Forward.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2Forward.Location = new System.Drawing.Point(329, 70);
+            this.btnI2Forward.Location = new System.Drawing.Point(329, 64);
             this.btnI2Forward.Name = "btnI2Forward";
             this.btnI2Forward.Size = new System.Drawing.Size(61, 40);
             this.btnI2Forward.TabIndex = 19;
@@ -2301,7 +2302,7 @@
             // 
             this.btnI2UnClamp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI2UnClamp.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2UnClamp.Location = new System.Drawing.Point(134, 70);
+            this.btnI2UnClamp.Location = new System.Drawing.Point(134, 64);
             this.btnI2UnClamp.Name = "btnI2UnClamp";
             this.btnI2UnClamp.Size = new System.Drawing.Size(61, 40);
             this.btnI2UnClamp.TabIndex = 19;
@@ -2313,7 +2314,7 @@
             // 
             this.btnI2VacOff.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI2VacOff.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2VacOff.Location = new System.Drawing.Point(199, 70);
+            this.btnI2VacOff.Location = new System.Drawing.Point(199, 64);
             this.btnI2VacOff.Name = "btnI2VacOff";
             this.btnI2VacOff.Size = new System.Drawing.Size(61, 40);
             this.btnI2VacOff.TabIndex = 19;
@@ -2351,6 +2352,7 @@
             // groupBox25
             // 
             this.groupBox25.Controls.Add(this.btnI1UnLoad);
+            this.groupBox25.Controls.Add(this.btnI1Org);
             this.groupBox25.Controls.Add(this.btnI1LatchFix);
             this.groupBox25.Controls.Add(this.btnI1LatchRls);
             this.groupBox25.Controls.Add(this.btnI1Close);
@@ -2368,7 +2370,7 @@
             this.groupBox25.Controls.Add(this.btnI1Load);
             this.groupBox25.Location = new System.Drawing.Point(3, 408);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(529, 118);
+            this.groupBox25.Size = new System.Drawing.Size(529, 150);
             this.groupBox25.TabIndex = 17;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "ILPT1 Area(B1)";
@@ -2377,9 +2379,8 @@
             // 
             this.btnI1UnLoad.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnI1UnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnI1UnLoad.Enabled = false;
             this.btnI1UnLoad.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1UnLoad.Location = new System.Drawing.Point(5, 70);
+            this.btnI1UnLoad.Location = new System.Drawing.Point(5, 64);
             this.btnI1UnLoad.Name = "btnI1UnLoad";
             this.btnI1UnLoad.Size = new System.Drawing.Size(62, 40);
             this.btnI1UnLoad.TabIndex = 19;
@@ -2391,7 +2392,7 @@
             // 
             this.btnI1LatchFix.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI1LatchFix.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1LatchFix.Location = new System.Drawing.Point(265, 70);
+            this.btnI1LatchFix.Location = new System.Drawing.Point(265, 64);
             this.btnI1LatchFix.Name = "btnI1LatchFix";
             this.btnI1LatchFix.Size = new System.Drawing.Size(61, 40);
             this.btnI1LatchFix.TabIndex = 19;
@@ -2415,7 +2416,7 @@
             // 
             this.btnI1Close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI1Close.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1Close.Location = new System.Drawing.Point(395, 70);
+            this.btnI1Close.Location = new System.Drawing.Point(395, 64);
             this.btnI1Close.Name = "btnI1Close";
             this.btnI1Close.Size = new System.Drawing.Size(61, 40);
             this.btnI1Close.TabIndex = 19;
@@ -2439,7 +2440,7 @@
             // 
             this.btnI1Right.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI1Right.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1Right.Location = new System.Drawing.Point(462, 70);
+            this.btnI1Right.Location = new System.Drawing.Point(462, 64);
             this.btnI1Right.Name = "btnI1Right";
             this.btnI1Right.Size = new System.Drawing.Size(61, 40);
             this.btnI1Right.TabIndex = 19;
@@ -2451,7 +2452,7 @@
             // 
             this.btnI1Forward.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI1Forward.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1Forward.Location = new System.Drawing.Point(330, 70);
+            this.btnI1Forward.Location = new System.Drawing.Point(330, 64);
             this.btnI1Forward.Name = "btnI1Forward";
             this.btnI1Forward.Size = new System.Drawing.Size(61, 40);
             this.btnI1Forward.TabIndex = 19;
@@ -2475,7 +2476,7 @@
             // 
             this.btnI1VacOff.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI1VacOff.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1VacOff.Location = new System.Drawing.Point(200, 70);
+            this.btnI1VacOff.Location = new System.Drawing.Point(200, 64);
             this.btnI1VacOff.Name = "btnI1VacOff";
             this.btnI1VacOff.Size = new System.Drawing.Size(61, 40);
             this.btnI1VacOff.TabIndex = 19;
@@ -2499,7 +2500,7 @@
             // 
             this.btnI1UnClamp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI1UnClamp.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1UnClamp.Location = new System.Drawing.Point(135, 70);
+            this.btnI1UnClamp.Location = new System.Drawing.Point(135, 64);
             this.btnI1UnClamp.Name = "btnI1UnClamp";
             this.btnI1UnClamp.Size = new System.Drawing.Size(61, 40);
             this.btnI1UnClamp.TabIndex = 19;
@@ -2523,7 +2524,7 @@
             // 
             this.btnI1UnDock.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI1UnDock.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1UnDock.Location = new System.Drawing.Point(70, 70);
+            this.btnI1UnDock.Location = new System.Drawing.Point(70, 64);
             this.btnI1UnDock.Name = "btnI1UnDock";
             this.btnI1UnDock.Size = new System.Drawing.Size(61, 40);
             this.btnI1UnDock.TabIndex = 19;
@@ -2559,7 +2560,6 @@
             // 
             this.btnI1Load.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnI1Load.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnI1Load.Enabled = false;
             this.btnI1Load.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnI1Load.Location = new System.Drawing.Point(5, 21);
             this.btnI1Load.Name = "btnI1Load";
@@ -2695,7 +2695,6 @@
             // btnE2CloseShutter
             // 
             this.btnE2CloseShutter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE2CloseShutter.Enabled = false;
             this.btnE2CloseShutter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnE2CloseShutter.Location = new System.Drawing.Point(230, 68);
             this.btnE2CloseShutter.Name = "btnE2CloseShutter";
@@ -2708,7 +2707,6 @@
             // btnE2OpenShutter
             // 
             this.btnE2OpenShutter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE2OpenShutter.Enabled = false;
             this.btnE2OpenShutter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnE2OpenShutter.Location = new System.Drawing.Point(230, 22);
             this.btnE2OpenShutter.Name = "btnE2OpenShutter";
@@ -2870,7 +2868,6 @@
             // btnE1CloseShutter
             // 
             this.btnE1CloseShutter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE1CloseShutter.Enabled = false;
             this.btnE1CloseShutter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnE1CloseShutter.Location = new System.Drawing.Point(230, 68);
             this.btnE1CloseShutter.Name = "btnE1CloseShutter";
@@ -2883,7 +2880,6 @@
             // btnE1OpenShutter
             // 
             this.btnE1OpenShutter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE1OpenShutter.Enabled = false;
             this.btnE1OpenShutter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnE1OpenShutter.Location = new System.Drawing.Point(230, 22);
             this.btnE1OpenShutter.Name = "btnE1OpenShutter";
@@ -3539,6 +3535,30 @@
             this.hint.InitialDelay = 50;
             this.hint.ReshowDelay = 10;
             // 
+            // btnI1Org
+            // 
+            this.btnI1Org.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1Org.Location = new System.Drawing.Point(6, 108);
+            this.btnI1Org.Name = "btnI1Org";
+            this.btnI1Org.Size = new System.Drawing.Size(125, 39);
+            this.btnI1Org.TabIndex = 19;
+            this.btnI1Org.Text = "Org";
+            this.btnI1Org.UseVisualStyleBackColor = true;
+            this.btnI1Org.Click += new System.EventHandler(this.btnI1Org_Click);
+            // 
+            // btnI2Org
+            // 
+            this.btnI2Org.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2Org.Location = new System.Drawing.Point(7, 108);
+            this.btnI2Org.Name = "btnI2Org";
+            this.btnI2Org.Size = new System.Drawing.Size(125, 39);
+            this.btnI2Org.TabIndex = 19;
+            this.btnI2Org.Text = "Org";
+            this.btnI2Org.UseVisualStyleBackColor = true;
+            this.btnI2Org.Click += new System.EventHandler(this.btnI2Org_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3845,6 +3865,8 @@
         private System.Windows.Forms.Button btnI1UnDock;
         private System.Windows.Forms.Button btnI1Clamp;
         private System.Windows.Forms.Button btnI1Dock;
+        private System.Windows.Forms.Button btnI2Org;
+        private System.Windows.Forms.Button btnI1Org;
     }
 }
 

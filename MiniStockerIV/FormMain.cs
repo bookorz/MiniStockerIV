@@ -942,7 +942,7 @@ namespace MiniStockerIV
             string results = msg.Substring(msg.LastIndexOf('/') + 1);
             results = results.Substring(0, results.Length - 1);//去掉結尾的 ;
             //假資料 Start
-            if(tbFoups.Text.Equals(""))
+            if(!tbFoups.Text.Equals(""))
                 results = tbFoups.Text;
             //假資料 End
             if (results.Length != 23)

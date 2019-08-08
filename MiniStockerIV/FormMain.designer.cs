@@ -169,6 +169,7 @@
             this.tbE2RFID = new System.Windows.Forms.TextBox();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
             this.btnI2UnLoad = new System.Windows.Forms.Button();
+            this.btnI2Org = new System.Windows.Forms.Button();
             this.btnI2LatchFix = new System.Windows.Forms.Button();
             this.btnI2Load = new System.Windows.Forms.Button();
             this.btnI2LatchRls = new System.Windows.Forms.Button();
@@ -187,6 +188,7 @@
             this.label68 = new System.Windows.Forms.Label();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
             this.btnI1UnLoad = new System.Windows.Forms.Button();
+            this.btnI1Org = new System.Windows.Forms.Button();
             this.btnI1LatchFix = new System.Windows.Forms.Button();
             this.btnI1LatchRls = new System.Windows.Forms.Button();
             this.btnI1Close = new System.Windows.Forms.Button();
@@ -281,8 +283,6 @@
             this.btnRestart = new System.Windows.Forms.Button();
             this.btnCheckSlave = new System.Windows.Forms.Button();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
-            this.btnI1Org = new System.Windows.Forms.Button();
-            this.btnI2Org = new System.Windows.Forms.Button();
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -334,7 +334,7 @@
             this.tabSetting.Location = new System.Drawing.Point(4, 33);
             this.tabSetting.Margin = new System.Windows.Forms.Padding(0);
             this.tabSetting.Name = "tabSetting";
-            this.tabSetting.Size = new System.Drawing.Size(987, 683);
+            this.tabSetting.Size = new System.Drawing.Size(987, 716);
             this.tabSetting.TabIndex = 3;
             this.tabSetting.Text = " Connect Setting  ";
             this.tabSetting.UseVisualStyleBackColor = true;
@@ -973,7 +973,7 @@
             this.tabCmd.Location = new System.Drawing.Point(4, 33);
             this.tabCmd.Name = "tabCmd";
             this.tabCmd.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCmd.Size = new System.Drawing.Size(987, 683);
+            this.tabCmd.Size = new System.Drawing.Size(987, 716);
             this.tabCmd.TabIndex = 0;
             this.tabCmd.Text = "Script Mode";
             // 
@@ -1816,6 +1816,7 @@
             this.tbPresRobot.TabIndex = 74;
             this.tbPresRobot.Text = "Robot";
             this.tbPresRobot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPresRobot.Visible = false;
             // 
             // label72
             // 
@@ -2153,6 +2154,18 @@
             this.btnI2UnLoad.UseVisualStyleBackColor = false;
             this.btnI2UnLoad.Click += new System.EventHandler(this.btnI2UnLoad_Click);
             // 
+            // btnI2Org
+            // 
+            this.btnI2Org.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI2Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI2Org.Location = new System.Drawing.Point(7, 108);
+            this.btnI2Org.Name = "btnI2Org";
+            this.btnI2Org.Size = new System.Drawing.Size(125, 39);
+            this.btnI2Org.TabIndex = 19;
+            this.btnI2Org.Text = "Org";
+            this.btnI2Org.UseVisualStyleBackColor = true;
+            this.btnI2Org.Click += new System.EventHandler(this.btnI2Org_Click);
+            // 
             // btnI2LatchFix
             // 
             this.btnI2LatchFix.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2387,6 +2400,18 @@
             this.btnI1UnLoad.Text = "Unload";
             this.btnI1UnLoad.UseVisualStyleBackColor = false;
             this.btnI1UnLoad.Click += new System.EventHandler(this.btnI1UnLoad_Click);
+            // 
+            // btnI1Org
+            // 
+            this.btnI1Org.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI1Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnI1Org.Location = new System.Drawing.Point(6, 108);
+            this.btnI1Org.Name = "btnI1Org";
+            this.btnI1Org.Size = new System.Drawing.Size(125, 39);
+            this.btnI1Org.TabIndex = 19;
+            this.btnI1Org.Text = "Org";
+            this.btnI1Org.UseVisualStyleBackColor = true;
+            this.btnI1Org.Click += new System.EventHandler(this.btnI1Org_Click);
             // 
             // btnI1LatchFix
             // 
@@ -2986,7 +3011,7 @@
             this.tabIO.Controls.Add(this.pnlIO);
             this.tabIO.Location = new System.Drawing.Point(4, 33);
             this.tabIO.Name = "tabIO";
-            this.tabIO.Size = new System.Drawing.Size(987, 683);
+            this.tabIO.Size = new System.Drawing.Size(987, 716);
             this.tabIO.TabIndex = 8;
             this.tabIO.Text = " I/O Check";
             this.tabIO.UseVisualStyleBackColor = true;
@@ -3004,7 +3029,7 @@
             this.tabVersion.Controls.Add(this.richTextBox1);
             this.tabVersion.Location = new System.Drawing.Point(4, 33);
             this.tabVersion.Name = "tabVersion";
-            this.tabVersion.Size = new System.Drawing.Size(987, 683);
+            this.tabVersion.Size = new System.Drawing.Size(987, 716);
             this.tabVersion.TabIndex = 12;
             this.tabVersion.Text = "Version";
             this.tabVersion.UseVisualStyleBackColor = true;
@@ -3055,7 +3080,7 @@
             this.tabTest.Controls.Add(this.btnTestDNMConn);
             this.tabTest.Location = new System.Drawing.Point(4, 33);
             this.tabTest.Name = "tabTest";
-            this.tabTest.Size = new System.Drawing.Size(987, 683);
+            this.tabTest.Size = new System.Drawing.Size(987, 716);
             this.tabTest.TabIndex = 13;
             this.tabTest.Text = "Test";
             this.tabTest.UseVisualStyleBackColor = true;
@@ -3534,30 +3559,6 @@
             this.hint.AutoPopDelay = 15000;
             this.hint.InitialDelay = 50;
             this.hint.ReshowDelay = 10;
-            // 
-            // btnI1Org
-            // 
-            this.btnI1Org.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnI1Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1Org.Location = new System.Drawing.Point(6, 108);
-            this.btnI1Org.Name = "btnI1Org";
-            this.btnI1Org.Size = new System.Drawing.Size(125, 39);
-            this.btnI1Org.TabIndex = 19;
-            this.btnI1Org.Text = "Org";
-            this.btnI1Org.UseVisualStyleBackColor = true;
-            this.btnI1Org.Click += new System.EventHandler(this.btnI1Org_Click);
-            // 
-            // btnI2Org
-            // 
-            this.btnI2Org.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnI2Org.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2Org.Location = new System.Drawing.Point(7, 108);
-            this.btnI2Org.Name = "btnI2Org";
-            this.btnI2Org.Size = new System.Drawing.Size(125, 39);
-            this.btnI2Org.TabIndex = 19;
-            this.btnI2Org.Text = "Org";
-            this.btnI2Org.UseVisualStyleBackColor = true;
-            this.btnI2Org.Click += new System.EventHandler(this.btnI2Org_Click);
             // 
             // FormMain
             // 

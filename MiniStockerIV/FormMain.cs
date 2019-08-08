@@ -616,6 +616,14 @@ namespace MiniStockerIV
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            string msg = "";
+            //Check Key Pro
+            if(!Util.checkKeyPro( ref msg))
+            {
+                MessageBox.Show(msg,"Notice",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+
             //GUI 訊息處理器
             GUICmdCtrl Comm = new GUICmdCtrl();
             Comm.Start();
@@ -651,6 +659,8 @@ namespace MiniStockerIV
             form.Show();
             ThreadPool.QueueUserWorkItem(new WaitCallback(runScript));// Script 執行續建立
         }
+
+        
 
         private void hideGUI()
         {
@@ -915,7 +925,7 @@ namespace MiniStockerIV
         {
             //MessageBox.Show("查詢Stocker 在席!");
             //string cmd = "$1GET:BRDIO:20,1,05";
-            string cmd = "$1MCR:FOUPS/ALL";//$1MCR:FOUPS:STN[CR]//0=>ALL
+            string cmd = "$1MCR:GET_FOUPS/ALL;";
             sendCommand(cmd);
             //測試用
             //setFoupPresenceByBoard("$1ACK:BRDIO:20,1,5,00143,00241,00128,00055,00155");

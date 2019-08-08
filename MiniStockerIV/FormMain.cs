@@ -938,65 +938,21 @@ namespace MiniStockerIV
         /// $1FIN:MCR__:5,00000000,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1
         private void setFoupPresenceByFoups(string msg)
         {
-            string[] rsltPresence = new string[21];
-            string[] results = msg.Split(',');
+            string[] rsltPresence = new string[23];
+            string results = msg.Substring(msg.LastIndexOf('/') + 1);
+            results = results.Substring(0, results.Length - 1);//去掉結尾的 ;
+            //假資料 Start
+            if(tbFoups.Text.Equals(""))
+                results = tbFoups.Text;
+            //假資料 End
             if (results.Length != 23)
                 return;
             int idx = 0;
-            for (int i = 2; i < results.Length; i++, idx++)//前2個項目非 return 值
+            for (int i = 0; i < results.Length; i++, idx++)
             {
-                rsltPresence[idx] = results[i];
+                rsltPresence[idx] = results.Substring(i,1);
             }
             FormMainUpdate.updateFoupPresenceByFoups(rsltPresence);
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="result">$3ACK:BRDIO:20,1,5,00008,00008,00008,00008,00000</param>
-        private void setFoupPresenceByBoard(string msg)
-        {
-            string[] rsltPresence = new string[18];
-            string[] results = msg.Split(',');
-            int boardid = 20;
-            for (int i = 3; i < results.Length; i++)//前三個項目非 return 值
-            {
-                //FormMainUpdate.LogUpdate(Convert.ToString(int.Parse(results[i]), 2).PadLeft(8, '0'));
-                logUpdate(Convert.ToString(int.Parse(results[i]), 2).PadLeft(8, '0'));
-                string result = Convert.ToString(int.Parse(results[i]), 2).PadLeft(8, '0');
-                switch (boardid)
-                {
-                    case 20:
-                        rsltPresence[0] = result.Substring(6, 2);//1-1(2)
-                        rsltPresence[1] = result.Substring(4, 2);//1-2(2)
-                        rsltPresence[2] = result.Substring(2, 2);//1-3(2)
-                        rsltPresence[3] = result.Substring(0, 2);//2-1(2)
-                        break;
-                    case 21:
-                        rsltPresence[4] = result.Substring(5, 3);//ILPT1(3)
-                        rsltPresence[5] = result.Substring(2, 3);//ILPT2(3)
-                        rsltPresence[6] = result.Substring(0, 2);//3-1(2)
-                        break;
-                    case 22:
-                        rsltPresence[7] = result.Substring(6, 2);//3-2(2)
-                        rsltPresence[8] = result.Substring(4, 2);//3-3(2)
-                        rsltPresence[9] = result.Substring(2, 2);//4-1(2)
-                        rsltPresence[10] = result.Substring(0, 2);//4-2(2)
-                        break;
-                    case 23:
-                        rsltPresence[11] = result.Substring(6, 2);//4-3(2)
-                        rsltPresence[12] = result.Substring(4, 2);//5-1(2)
-                        rsltPresence[13] = result.Substring(2, 2);//5-2(2)
-                        rsltPresence[14] = result.Substring(0, 2);//5-3(2)
-                        break;
-                    case 24:
-                        rsltPresence[15] = result.Substring(6, 2);//6-1(2)
-                        rsltPresence[16] = result.Substring(4, 2);//6-2(2)
-                        rsltPresence[17] = result.Substring(2, 2);//6-3(2)
-                        break;
-                }
-                boardid++;
-            }
-            FormMainUpdate.updateFoupPresenceByBoard(rsltPresence);
         }
 
         private void btnFoupRotSwitch_Click(object sender, EventArgs e)

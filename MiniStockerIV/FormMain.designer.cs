@@ -283,6 +283,7 @@
             this.btnRestart = new System.Windows.Forms.Button();
             this.btnCheckSlave = new System.Windows.Forms.Button();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
+            this.tbFoups = new System.Windows.Forms.TextBox();
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -1277,6 +1278,7 @@
             // 
             // tabStocker
             // 
+            this.tabStocker.Controls.Add(this.tbFoups);
             this.tabStocker.Controls.Add(this.tbI2Reset);
             this.tabStocker.Controls.Add(this.btnI2Auto);
             this.tabStocker.Controls.Add(this.btnI1Auto);
@@ -3560,6 +3562,14 @@
             this.hint.InitialDelay = 50;
             this.hint.ReshowDelay = 10;
             // 
+            // tbFoups
+            // 
+            this.tbFoups.Location = new System.Drawing.Point(538, 684);
+            this.tbFoups.Name = "tbFoups";
+            this.tbFoups.Size = new System.Drawing.Size(446, 28);
+            this.tbFoups.TabIndex = 40;
+            this.tbFoups.Text = "21111000001111100001111";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3868,6 +3878,7 @@
         private System.Windows.Forms.Button btnI1Dock;
         private System.Windows.Forms.Button btnI2Org;
         private System.Windows.Forms.Button btnI1Org;
+        private System.Windows.Forms.TextBox tbFoups;
     }
 }
 

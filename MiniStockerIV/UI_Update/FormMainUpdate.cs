@@ -510,13 +510,11 @@ namespace MiniStockerIV.UI_Update
 
         internal static void updateFoupPresenceByFoups()
         {
-            string[] positions = new string[] { "tbPresRobot","tbPresELPT1","tbPresELPT2",
-            "tbPresILPT1","tbPresILPT2","tbPresShelf1_1",
-            "tbPresShelf1_2", "tbPresShelf1_3", "tbPresShelf2_1",
-            "tbPresShelf3_1", "tbPresShelf3_2", "tbPresShelf3_3",
-            "tbPresShelf4_1", "tbPresShelf4_2", "tbPresShelf4_3",
-            "tbPresShelf5_1", "tbPresShelf5_2", "tbPresShelf5_3",
-            "tbPresShelf6_1", "tbPresShelf6_2", "tbPresShelf6_3",
+            string[] positions = new string[] { "tbPresRobot","tbPresELPT1","tbPresELPT2","tbPresILPT1","tbPresILPT2",
+            "tbPresShelf1_1", "tbPresShelf1_2", "tbPresShelf1_3", "tbPresShelf1_4", "tbPresShelf1_5",
+            "tbPresShelf2_1", "tbPresShelf2_2", "tbPresShelf2_3", "tbPresShelf2_4", "tbPresShelf2_5",
+            "tbPresShelf3_1", "tbPresShelf3_2", "tbPresShelf3_3", "tbPresShelf3_4",
+            "tbPresShelf4_1", "tbPresShelf4_2", "tbPresShelf4_3", "tbPresShelf4_4"
             };
             string[] presences = RsltPresence;
             Form form = Application.OpenForms["FormMain"];
@@ -585,11 +583,6 @@ namespace MiniStockerIV.UI_Update
                     hint.SetToolTip(tb, presences[i]);
                 }
             }
-        }
-        internal static void updateFoupPresenceByBoard(string[] value)
-        {
-            RsltPresence = value;
-            updateFoupPresenceByBoard();
         }
         internal static void updateFoupPresenceByFoups(string[] value)
         {

@@ -621,6 +621,7 @@ namespace MiniStockerIV
             if(!Util.checkKeyPro( ref msg))
             {
                 MessageBox.Show(msg,"Notice",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                this.Close();
                 return;
             }
 
@@ -2657,6 +2658,11 @@ namespace MiniStockerIV
         {
             string cmd = "$1MCR:ILPT_ORG/P4;";
             sendCommand(cmd);
+        }
+
+        private void btnReConn_Click(object sender, EventArgs e)
+        {
+            Marco.ConnDevice();//連接設備
         }
     }
 }

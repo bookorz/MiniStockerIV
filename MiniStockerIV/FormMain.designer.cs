@@ -284,6 +284,7 @@
             this.btnCheckSlave = new System.Windows.Forms.Button();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
             this.tbFoups = new System.Windows.Forms.TextBox();
+            this.btnReConn = new System.Windows.Forms.Button();
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -3455,6 +3456,7 @@
             this.groupBox6.Controls.Add(this.btnAbort);
             this.groupBox6.Controls.Add(this.btnHold);
             this.groupBox6.Controls.Add(this.btnRestart);
+            this.groupBox6.Controls.Add(this.btnReConn);
             this.groupBox6.Controls.Add(this.btnCheckSlave);
             this.groupBox6.Controls.Add(this.btnLogin);
             this.groupBox6.Location = new System.Drawing.Point(1005, 12);
@@ -3568,7 +3570,18 @@
             this.tbFoups.Name = "tbFoups";
             this.tbFoups.Size = new System.Drawing.Size(446, 28);
             this.tbFoups.TabIndex = 40;
-            this.tbFoups.Text = "21111000001111100001111";
+            // 
+            // btnReConn
+            // 
+            this.btnReConn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReConn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReConn.Location = new System.Drawing.Point(311, 19);
+            this.btnReConn.Name = "btnReConn";
+            this.btnReConn.Size = new System.Drawing.Size(113, 39);
+            this.btnReConn.TabIndex = 19;
+            this.btnReConn.Text = "Reconnect";
+            this.btnReConn.UseVisualStyleBackColor = true;
+            this.btnReConn.Click += new System.EventHandler(this.btnReConn_Click);
             // 
             // FormMain
             // 
@@ -3879,6 +3892,7 @@
         private System.Windows.Forms.Button btnI2Org;
         private System.Windows.Forms.Button btnI1Org;
         private System.Windows.Forms.TextBox tbFoups;
+        private System.Windows.Forms.Button btnReConn;
     }
 }
 

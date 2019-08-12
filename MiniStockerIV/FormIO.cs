@@ -415,7 +415,7 @@ namespace MiniStockerIV
 
         private void btnQryIO1_Click(object sender, EventArgs e)
         {
-            if (tabIOControl1.SelectedTab.Text.Equals("IN"))
+            if (tabIOControl1.SelectedTab.Text.Equals("IN") || tabIOControl1.SelectedTab.Text.Equals("OUT"))
             {
                 string cmd = "$1MCR:I7565DNM_REFRESH;";
                 sendCommand(cmd);

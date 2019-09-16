@@ -122,7 +122,6 @@
             this.btnFoupRotGetWait = new System.Windows.Forms.Button();
             this.btnFoupRotGet = new System.Windows.Forms.Button();
             this.btnFoupRotSwitch = new System.Windows.Forms.Button();
-            this.btnFoupRotAuto = new System.Windows.Forms.Button();
             this.btnFoupRotReset = new System.Windows.Forms.Button();
             this.groupBox49 = new System.Windows.Forms.GroupBox();
             this.cbDestination = new System.Windows.Forms.ComboBox();
@@ -215,7 +214,6 @@
             this.btnE2MoveIn = new System.Windows.Forms.Button();
             this.btnE2CloseShutter = new System.Windows.Forms.Button();
             this.btnE2OpenShutter = new System.Windows.Forms.Button();
-            this.btnE2Auto = new System.Windows.Forms.Button();
             this.btnE2UnClamp = new System.Windows.Forms.Button();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.btnE1Init = new System.Windows.Forms.Button();
@@ -228,7 +226,6 @@
             this.btnE1MoveIn = new System.Windows.Forms.Button();
             this.btnE1CloseShutter = new System.Windows.Forms.Button();
             this.btnE1OpenShutter = new System.Windows.Forms.Button();
-            this.btnE1Auto = new System.Windows.Forms.Button();
             this.btnE1UnClamp = new System.Windows.Forms.Button();
             this.label44 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
@@ -240,51 +237,16 @@
             this.pnlIO = new System.Windows.Forms.Panel();
             this.tabVersion = new System.Windows.Forms.TabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.tabTest = new System.Windows.Forms.TabPage();
-            this.label15 = new System.Windows.Forms.Label();
-            this.lblValue = new System.Windows.Forms.Label();
-            this.btnBit8 = new System.Windows.Forms.Button();
-            this.btnBit7 = new System.Windows.Forms.Button();
-            this.btnBit6 = new System.Windows.Forms.Button();
-            this.btnBit5 = new System.Windows.Forms.Button();
-            this.btnBit4 = new System.Windows.Forms.Button();
-            this.btnBit3 = new System.Windows.Forms.Button();
-            this.btnBit2 = new System.Windows.Forms.Button();
-            this.btnBit1 = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.tbDNMVal_Set = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tbDNMIO_Set = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.btnTestDNMSetIO = new System.Windows.Forms.Button();
-            this.tbDNMIO_Get = new System.Windows.Forms.TextBox();
-            this.btnTestDNMGetIO = new System.Windows.Forms.Button();
-            this.btnTestDNMConn = new System.Windows.Forms.Button();
-            this.btnLogin = new System.Windows.Forms.Button();
             this.btnClearMsg = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.rtbMsg = new System.Windows.Forms.RichTextBox();
             this.btnAbort = new System.Windows.Forms.Button();
             this.btnHold = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
+            this.btnReConn = new System.Windows.Forms.Button();
             this.btnCheckSlave = new System.Windows.Forms.Button();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
-            this.tbFoups = new System.Windows.Forms.TextBox();
-            this.btnReConn = new System.Windows.Forms.Button();
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -309,7 +271,6 @@
             this.groupBox17.SuspendLayout();
             this.tabIO.SuspendLayout();
             this.tabVersion.SuspendLayout();
-            this.tabTest.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -322,7 +283,6 @@
             this.tabMode.Controls.Add(this.tabStocker);
             this.tabMode.Controls.Add(this.tabIO);
             this.tabMode.Controls.Add(this.tabVersion);
-            this.tabMode.Controls.Add(this.tabTest);
             this.tabMode.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabMode.Location = new System.Drawing.Point(8, 12);
             this.tabMode.Name = "tabMode";
@@ -1215,6 +1175,7 @@
             this.btnInitAll.TabIndex = 29;
             this.btnInitAll.Text = "2. Init All";
             this.btnInitAll.UseVisualStyleBackColor = false;
+            this.btnInitAll.Visible = false;
             this.btnInitAll.Click += new System.EventHandler(this.btnInitAll_Click);
             // 
             // btnReset
@@ -1229,6 +1190,7 @@
             this.btnReset.TabIndex = 29;
             this.btnReset.Text = "1.Reset All";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Visible = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnAddScript
@@ -1275,11 +1237,11 @@
             this.btnAutoRun.TabIndex = 20;
             this.btnAutoRun.Text = "3. Auto Run";
             this.btnAutoRun.UseVisualStyleBackColor = false;
+            this.btnAutoRun.Visible = false;
             this.btnAutoRun.Click += new System.EventHandler(this.btnAutoRun_Click);
             // 
             // tabStocker
             // 
-            this.tabStocker.Controls.Add(this.tbFoups);
             this.tabStocker.Controls.Add(this.tbI2Reset);
             this.tabStocker.Controls.Add(this.btnI2Auto);
             this.tabStocker.Controls.Add(this.btnI1Auto);
@@ -1297,10 +1259,8 @@
             this.tabStocker.Controls.Add(this.groupBox17);
             this.tabStocker.Controls.Add(this.label44);
             this.tabStocker.Controls.Add(this.label63);
-            this.tabStocker.Controls.Add(this.btnE1ReadID);
             this.tabStocker.Controls.Add(this.label62);
             this.tabStocker.Controls.Add(this.label43);
-            this.tabStocker.Controls.Add(this.btnE2ReadID);
             this.tabStocker.Location = new System.Drawing.Point(4, 33);
             this.tabStocker.Name = "tabStocker";
             this.tabStocker.Size = new System.Drawing.Size(987, 716);
@@ -1436,7 +1396,6 @@
             // 
             this.groupBox1.Controls.Add(this.groupBox48);
             this.groupBox1.Controls.Add(this.btnFoupRotSwitch);
-            this.groupBox1.Controls.Add(this.btnFoupRotAuto);
             this.groupBox1.Controls.Add(this.btnFoupRotReset);
             this.groupBox1.Controls.Add(this.groupBox49);
             this.groupBox1.Controls.Add(this.btnFoupRotOrg);
@@ -1531,20 +1490,6 @@
             this.btnFoupRotSwitch.Text = "<->";
             this.btnFoupRotSwitch.UseVisualStyleBackColor = true;
             this.btnFoupRotSwitch.Click += new System.EventHandler(this.btnFoupRotSwitch_Click);
-            // 
-            // btnFoupRotAuto
-            // 
-            this.btnFoupRotAuto.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnFoupRotAuto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFoupRotAuto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFoupRotAuto.Location = new System.Drawing.Point(166, 142);
-            this.btnFoupRotAuto.Name = "btnFoupRotAuto";
-            this.btnFoupRotAuto.Size = new System.Drawing.Size(68, 39);
-            this.btnFoupRotAuto.TabIndex = 19;
-            this.btnFoupRotAuto.Text = "Auto";
-            this.btnFoupRotAuto.UseVisualStyleBackColor = false;
-            this.btnFoupRotAuto.Visible = false;
-            this.btnFoupRotAuto.Click += new System.EventHandler(this.btnFoupRotAuto_Click);
             // 
             // btnFoupRotReset
             // 
@@ -2609,8 +2554,8 @@
             this.groupBox22.Controls.Add(this.btnE2MoveIn);
             this.groupBox22.Controls.Add(this.btnE2CloseShutter);
             this.groupBox22.Controls.Add(this.btnE2OpenShutter);
-            this.groupBox22.Controls.Add(this.btnE2Auto);
             this.groupBox22.Controls.Add(this.btnE2UnClamp);
+            this.groupBox22.Controls.Add(this.btnE2ReadID);
             this.groupBox22.Location = new System.Drawing.Point(4, 239);
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.Size = new System.Drawing.Size(465, 160);
@@ -2744,20 +2689,6 @@
             this.btnE2OpenShutter.UseVisualStyleBackColor = true;
             this.btnE2OpenShutter.Click += new System.EventHandler(this.btnE2OpenShutter_Click);
             // 
-            // btnE2Auto
-            // 
-            this.btnE2Auto.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnE2Auto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE2Auto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE2Auto.Location = new System.Drawing.Point(118, 113);
-            this.btnE2Auto.Name = "btnE2Auto";
-            this.btnE2Auto.Size = new System.Drawing.Size(106, 39);
-            this.btnE2Auto.TabIndex = 19;
-            this.btnE2Auto.Text = "Auto";
-            this.btnE2Auto.UseVisualStyleBackColor = false;
-            this.btnE2Auto.Visible = false;
-            this.btnE2Auto.Click += new System.EventHandler(this.btnE2Auto_Click);
-            // 
             // btnE2UnClamp
             // 
             this.btnE2UnClamp.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2782,8 +2713,8 @@
             this.groupBox17.Controls.Add(this.btnE1MoveIn);
             this.groupBox17.Controls.Add(this.btnE1CloseShutter);
             this.groupBox17.Controls.Add(this.btnE1OpenShutter);
-            this.groupBox17.Controls.Add(this.btnE1Auto);
             this.groupBox17.Controls.Add(this.btnE1UnClamp);
+            this.groupBox17.Controls.Add(this.btnE1ReadID);
             this.groupBox17.Location = new System.Drawing.Point(4, 73);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(465, 160);
@@ -2917,20 +2848,6 @@
             this.btnE1OpenShutter.UseVisualStyleBackColor = true;
             this.btnE1OpenShutter.Click += new System.EventHandler(this.btnE1OpenShutter_Click);
             // 
-            // btnE1Auto
-            // 
-            this.btnE1Auto.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnE1Auto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE1Auto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE1Auto.Location = new System.Drawing.Point(118, 112);
-            this.btnE1Auto.Name = "btnE1Auto";
-            this.btnE1Auto.Size = new System.Drawing.Size(106, 39);
-            this.btnE1Auto.TabIndex = 19;
-            this.btnE1Auto.Text = "Auto";
-            this.btnE1Auto.UseVisualStyleBackColor = false;
-            this.btnE1Auto.Visible = false;
-            this.btnE1Auto.Click += new System.EventHandler(this.btnE1Auto_Click);
-            // 
             // btnE1UnClamp
             // 
             this.btnE1UnClamp.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2967,7 +2884,7 @@
             // 
             this.btnE1ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnE1ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE1ReadID.Location = new System.Drawing.Point(878, 563);
+            this.btnE1ReadID.Location = new System.Drawing.Point(118, 112);
             this.btnE1ReadID.Name = "btnE1ReadID";
             this.btnE1ReadID.Size = new System.Drawing.Size(106, 39);
             this.btnE1ReadID.TabIndex = 19;
@@ -3000,7 +2917,7 @@
             // 
             this.btnE2ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnE2ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE2ReadID.Location = new System.Drawing.Point(656, 644);
+            this.btnE2ReadID.Location = new System.Drawing.Point(118, 112);
             this.btnE2ReadID.Name = "btnE2ReadID";
             this.btnE2ReadID.Size = new System.Drawing.Size(106, 39);
             this.btnE2ReadID.TabIndex = 19;
@@ -3039,401 +2956,15 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.richTextBox1.Location = new System.Drawing.Point(3, 3);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(959, 595);
             this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "2019/05/13 \n1.0.1 : Initial version";
+            this.richTextBox1.Text = "2019/06/13 \n    1.0.1 : Initial version\n2019/08/20\n    1.0.3 : RD release 初版\n    " +
+    "A, B, Robot 基本單動功能 \n    IO 點檢功能\n    USB Key 檢查功能";
             this.richTextBox1.WordWrap = false;
-            // 
-            // tabTest
-            // 
-            this.tabTest.Controls.Add(this.label15);
-            this.tabTest.Controls.Add(this.lblValue);
-            this.tabTest.Controls.Add(this.btnBit8);
-            this.tabTest.Controls.Add(this.btnBit7);
-            this.tabTest.Controls.Add(this.btnBit6);
-            this.tabTest.Controls.Add(this.btnBit5);
-            this.tabTest.Controls.Add(this.btnBit4);
-            this.tabTest.Controls.Add(this.btnBit3);
-            this.tabTest.Controls.Add(this.btnBit2);
-            this.tabTest.Controls.Add(this.btnBit1);
-            this.tabTest.Controls.Add(this.label14);
-            this.tabTest.Controls.Add(this.tbDNMVal_Set);
-            this.tabTest.Controls.Add(this.label10);
-            this.tabTest.Controls.Add(this.tbDNMIO_Set);
-            this.tabTest.Controls.Add(this.button5);
-            this.tabTest.Controls.Add(this.button3);
-            this.tabTest.Controls.Add(this.button4);
-            this.tabTest.Controls.Add(this.dateTimePicker2);
-            this.tabTest.Controls.Add(this.dateTimePicker1);
-            this.tabTest.Controls.Add(this.checkBox4);
-            this.tabTest.Controls.Add(this.checkBox3);
-            this.tabTest.Controls.Add(this.button9);
-            this.tabTest.Controls.Add(this.button8);
-            this.tabTest.Controls.Add(this.button7);
-            this.tabTest.Controls.Add(this.button1);
-            this.tabTest.Controls.Add(this.checkBox2);
-            this.tabTest.Controls.Add(this.checkBox1);
-            this.tabTest.Controls.Add(this.btnTestDNMSetIO);
-            this.tabTest.Controls.Add(this.tbDNMIO_Get);
-            this.tabTest.Controls.Add(this.btnTestDNMGetIO);
-            this.tabTest.Controls.Add(this.btnTestDNMConn);
-            this.tabTest.Location = new System.Drawing.Point(4, 33);
-            this.tabTest.Name = "tabTest";
-            this.tabTest.Size = new System.Drawing.Size(987, 716);
-            this.tabTest.TabIndex = 13;
-            this.tabTest.Text = "Test";
-            this.tabTest.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(601, 48);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(53, 21);
-            this.label15.TabIndex = 27;
-            this.label15.Text = "Value:";
-            // 
-            // lblValue
-            // 
-            this.lblValue.AutoSize = true;
-            this.lblValue.Location = new System.Drawing.Point(655, 48);
-            this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(37, 21);
-            this.lblValue.TabIndex = 27;
-            this.lblValue.Text = "255";
-            // 
-            // btnBit8
-            // 
-            this.btnBit8.Location = new System.Drawing.Point(525, 253);
-            this.btnBit8.Name = "btnBit8";
-            this.btnBit8.Size = new System.Drawing.Size(36, 29);
-            this.btnBit8.TabIndex = 26;
-            this.btnBit8.Text = "1";
-            this.hint.SetToolTip(this.btnBit8, "Bit 8");
-            this.btnBit8.UseVisualStyleBackColor = true;
-            this.btnBit8.Click += new System.EventHandler(this.btnOutBit_Click);
-            // 
-            // btnBit7
-            // 
-            this.btnBit7.Location = new System.Drawing.Point(525, 219);
-            this.btnBit7.Name = "btnBit7";
-            this.btnBit7.Size = new System.Drawing.Size(36, 29);
-            this.btnBit7.TabIndex = 26;
-            this.btnBit7.Text = "1";
-            this.hint.SetToolTip(this.btnBit7, "Bit 7");
-            this.btnBit7.UseVisualStyleBackColor = true;
-            this.btnBit7.Click += new System.EventHandler(this.btnOutBit_Click);
-            // 
-            // btnBit6
-            // 
-            this.btnBit6.Location = new System.Drawing.Point(525, 184);
-            this.btnBit6.Name = "btnBit6";
-            this.btnBit6.Size = new System.Drawing.Size(36, 29);
-            this.btnBit6.TabIndex = 26;
-            this.btnBit6.Text = "1";
-            this.hint.SetToolTip(this.btnBit6, "Bit 6");
-            this.btnBit6.UseVisualStyleBackColor = true;
-            this.btnBit6.Click += new System.EventHandler(this.btnOutBit_Click);
-            // 
-            // btnBit5
-            // 
-            this.btnBit5.Location = new System.Drawing.Point(525, 149);
-            this.btnBit5.Name = "btnBit5";
-            this.btnBit5.Size = new System.Drawing.Size(36, 29);
-            this.btnBit5.TabIndex = 26;
-            this.btnBit5.Text = "1";
-            this.hint.SetToolTip(this.btnBit5, "Bit 5");
-            this.btnBit5.UseVisualStyleBackColor = true;
-            this.btnBit5.Click += new System.EventHandler(this.btnOutBit_Click);
-            // 
-            // btnBit4
-            // 
-            this.btnBit4.Location = new System.Drawing.Point(525, 114);
-            this.btnBit4.Name = "btnBit4";
-            this.btnBit4.Size = new System.Drawing.Size(36, 29);
-            this.btnBit4.TabIndex = 26;
-            this.btnBit4.Text = "1";
-            this.hint.SetToolTip(this.btnBit4, "Bit 4");
-            this.btnBit4.UseVisualStyleBackColor = true;
-            this.btnBit4.Click += new System.EventHandler(this.btnOutBit_Click);
-            // 
-            // btnBit3
-            // 
-            this.btnBit3.Location = new System.Drawing.Point(525, 79);
-            this.btnBit3.Name = "btnBit3";
-            this.btnBit3.Size = new System.Drawing.Size(36, 29);
-            this.btnBit3.TabIndex = 26;
-            this.btnBit3.Text = "1";
-            this.hint.SetToolTip(this.btnBit3, "Bit 3");
-            this.btnBit3.UseVisualStyleBackColor = true;
-            this.btnBit3.Click += new System.EventHandler(this.btnOutBit_Click);
-            // 
-            // btnBit2
-            // 
-            this.btnBit2.Location = new System.Drawing.Point(525, 44);
-            this.btnBit2.Name = "btnBit2";
-            this.btnBit2.Size = new System.Drawing.Size(36, 29);
-            this.btnBit2.TabIndex = 26;
-            this.btnBit2.Text = "1";
-            this.hint.SetToolTip(this.btnBit2, "Bit 2");
-            this.btnBit2.UseVisualStyleBackColor = true;
-            this.btnBit2.Click += new System.EventHandler(this.btnOutBit_Click);
-            // 
-            // btnBit1
-            // 
-            this.btnBit1.Location = new System.Drawing.Point(525, 9);
-            this.btnBit1.Name = "btnBit1";
-            this.btnBit1.Size = new System.Drawing.Size(36, 29);
-            this.btnBit1.TabIndex = 26;
-            this.btnBit1.Text = "1";
-            this.hint.SetToolTip(this.btnBit1, "Bit 1");
-            this.btnBit1.UseVisualStyleBackColor = true;
-            this.btnBit1.Click += new System.EventHandler(this.btnOutBit_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(655, 306);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(27, 19);
-            this.label14.TabIndex = 25;
-            this.label14.Text = "To";
-            this.label14.Visible = false;
-            // 
-            // tbDNMVal_Set
-            // 
-            this.tbDNMVal_Set.Location = new System.Drawing.Point(269, 137);
-            this.tbDNMVal_Set.Name = "tbDNMVal_Set";
-            this.tbDNMVal_Set.Size = new System.Drawing.Size(100, 28);
-            this.tbDNMVal_Set.TabIndex = 1;
-            this.tbDNMVal_Set.Text = "0";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(393, 306);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(126, 19);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Log Date From";
-            this.label10.Visible = false;
-            // 
-            // tbDNMIO_Set
-            // 
-            this.tbDNMIO_Set.Location = new System.Drawing.Point(163, 137);
-            this.tbDNMIO_Set.Name = "tbDNMIO_Set";
-            this.tbDNMIO_Set.Size = new System.Drawing.Size(100, 28);
-            this.tbDNMIO_Set.TabIndex = 1;
-            this.tbDNMIO_Set.Text = "1901";
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(815, 329);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(78, 26);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Export";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Visible = false;
-            this.button5.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(679, 195);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(119, 35);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Print Log";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(815, 299);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(78, 26);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Query";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(688, 304);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(110, 26);
-            this.dateTimePicker2.TabIndex = 24;
-            this.dateTimePicker2.Value = new System.DateTime(2019, 6, 25, 0, 0, 0, 0);
-            this.dateTimePicker2.Visible = false;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(525, 304);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(110, 26);
-            this.dateTimePicker1.TabIndex = 24;
-            this.dateTimePicker1.Value = new System.DateTime(2019, 6, 25, 0, 0, 0, 0);
-            this.dateTimePicker1.Visible = false;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox4.Location = new System.Drawing.Point(700, 332);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(109, 23);
-            this.checkBox4.TabIndex = 23;
-            this.checkBox4.Text = "LoadPort2";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.Visible = false;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox3.Location = new System.Drawing.Point(586, 332);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(109, 23);
-            this.checkBox3.TabIndex = 23;
-            this.checkBox3.Text = "LoadPort1";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.Visible = false;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(30, 368);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(119, 35);
-            this.button9.TabIndex = 0;
-            this.button9.Text = "GET Foups";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(30, 316);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(119, 35);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "GETIO Marco";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(30, 253);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(119, 35);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "SetIO Marco";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(18, 195);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Test Marco";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(480, 332);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(100, 23);
-            this.checkBox2.TabIndex = 23;
-            this.checkBox2.Text = "Aligner1";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.Visible = false;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(392, 332);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(82, 23);
-            this.checkBox1.TabIndex = 23;
-            this.checkBox1.Text = "Robot1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.Visible = false;
-            // 
-            // btnTestDNMSetIO
-            // 
-            this.btnTestDNMSetIO.Location = new System.Drawing.Point(18, 137);
-            this.btnTestDNMSetIO.Name = "btnTestDNMSetIO";
-            this.btnTestDNMSetIO.Size = new System.Drawing.Size(119, 35);
-            this.btnTestDNMSetIO.TabIndex = 0;
-            this.btnTestDNMSetIO.Text = "Set IO";
-            this.btnTestDNMSetIO.UseVisualStyleBackColor = true;
-            this.btnTestDNMSetIO.Click += new System.EventHandler(this.btnTestDNMSetIO_Click);
-            // 
-            // tbDNMIO_Get
-            // 
-            this.tbDNMIO_Get.Location = new System.Drawing.Point(163, 76);
-            this.tbDNMIO_Get.Name = "tbDNMIO_Get";
-            this.tbDNMIO_Get.Size = new System.Drawing.Size(100, 28);
-            this.tbDNMIO_Get.TabIndex = 1;
-            this.tbDNMIO_Get.Text = "1900";
-            // 
-            // btnTestDNMGetIO
-            // 
-            this.btnTestDNMGetIO.Location = new System.Drawing.Point(18, 76);
-            this.btnTestDNMGetIO.Name = "btnTestDNMGetIO";
-            this.btnTestDNMGetIO.Size = new System.Drawing.Size(119, 35);
-            this.btnTestDNMGetIO.TabIndex = 0;
-            this.btnTestDNMGetIO.Text = "Get IO";
-            this.btnTestDNMGetIO.UseVisualStyleBackColor = true;
-            this.btnTestDNMGetIO.Click += new System.EventHandler(this.btnTestDNMGetIO_Click);
-            // 
-            // btnTestDNMConn
-            // 
-            this.btnTestDNMConn.Location = new System.Drawing.Point(18, 23);
-            this.btnTestDNMConn.Name = "btnTestDNMConn";
-            this.btnTestDNMConn.Size = new System.Drawing.Size(119, 35);
-            this.btnTestDNMConn.TabIndex = 0;
-            this.btnTestDNMConn.Text = "DNM 連線";
-            this.btnTestDNMConn.UseVisualStyleBackColor = true;
-            this.btnTestDNMConn.Click += new System.EventHandler(this.btnTestDNMConn_Click);
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogin.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(120, 657);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(108, 32);
-            this.btnLogin.TabIndex = 18;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Visible = false;
-            this.btnLogin.Click += new System.EventHandler(this.login);
             // 
             // btnClearMsg
             // 
@@ -3449,7 +2980,6 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Controls.Add(this.lblStatus);
             this.groupBox6.Controls.Add(this.rtbMsg);
             this.groupBox6.Controls.Add(this.btnClearMsg);
@@ -3458,25 +2988,12 @@
             this.groupBox6.Controls.Add(this.btnRestart);
             this.groupBox6.Controls.Add(this.btnReConn);
             this.groupBox6.Controls.Add(this.btnCheckSlave);
-            this.groupBox6.Controls.Add(this.btnLogin);
             this.groupBox6.Location = new System.Drawing.Point(1005, 12);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(549, 720);
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Message Area";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("新細明體", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(317, 689);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 27);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Login";
-            this.label2.DoubleClick += new System.EventHandler(this.login_Click);
             // 
             // lblStatus
             // 
@@ -3545,6 +3062,18 @@
             this.btnRestart.Visible = false;
             this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
+            // btnReConn
+            // 
+            this.btnReConn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReConn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReConn.Location = new System.Drawing.Point(311, 19);
+            this.btnReConn.Name = "btnReConn";
+            this.btnReConn.Size = new System.Drawing.Size(113, 39);
+            this.btnReConn.TabIndex = 19;
+            this.btnReConn.Text = "Reconnect";
+            this.btnReConn.UseVisualStyleBackColor = true;
+            this.btnReConn.Click += new System.EventHandler(this.btnReConn_Click);
+            // 
             // btnCheckSlave
             // 
             this.btnCheckSlave.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -3563,25 +3092,6 @@
             this.hint.AutoPopDelay = 15000;
             this.hint.InitialDelay = 50;
             this.hint.ReshowDelay = 10;
-            // 
-            // tbFoups
-            // 
-            this.tbFoups.Location = new System.Drawing.Point(538, 684);
-            this.tbFoups.Name = "tbFoups";
-            this.tbFoups.Size = new System.Drawing.Size(446, 28);
-            this.tbFoups.TabIndex = 40;
-            // 
-            // btnReConn
-            // 
-            this.btnReConn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReConn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReConn.Location = new System.Drawing.Point(311, 19);
-            this.btnReConn.Name = "btnReConn";
-            this.btnReConn.Size = new System.Drawing.Size(113, 39);
-            this.btnReConn.TabIndex = 19;
-            this.btnReConn.Text = "Reconnect";
-            this.btnReConn.UseVisualStyleBackColor = true;
-            this.btnReConn.Click += new System.EventHandler(this.btnReConn_Click);
             // 
             // FormMain
             // 
@@ -3628,8 +3138,6 @@
             this.groupBox17.ResumeLayout(false);
             this.tabIO.ResumeLayout(false);
             this.tabVersion.ResumeLayout(false);
-            this.tabTest.ResumeLayout(false);
-            this.tabTest.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
@@ -3713,8 +3221,6 @@
         private System.Windows.Forms.Button btnE2OpenShutter;
         private System.Windows.Forms.Button btnE2ReadID;
         private System.Windows.Forms.Button btnE2UnClamp;
-        private System.Windows.Forms.Button btnE2Auto;
-        private System.Windows.Forms.Button btnE1Auto;
         private System.Windows.Forms.TextBox tbE1RFID;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.GroupBox groupBox25;
@@ -3771,18 +3277,15 @@
         private System.Windows.Forms.Button btnFoupRotPutWait;
         private System.Windows.Forms.ToolTip hint;
         private System.Windows.Forms.Button btnSTKRefresh;
-        private System.Windows.Forms.Button btnFoupRotAuto;
         private System.Windows.Forms.Button btnFoupRotHome;
         private System.Windows.Forms.Button btnAutoRun;
         private System.Windows.Forms.ComboBox cbCmd;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCtrlModeD_3;
         private System.Windows.Forms.Button btnCtrlModeN_3;
         private System.Windows.Forms.Button btnCtrlModeD_2;
         private System.Windows.Forms.Button btnCtrlModeN_2;
         private System.Windows.Forms.Button btnCtrlModeD_1;
         private System.Windows.Forms.Button btnCtrlModeN_1;
-        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TabPage tabVersion;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label4;
@@ -3820,40 +3323,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbPresShelf2_2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TabPage tabTest;
-        private System.Windows.Forms.Button btnTestDNMConn;
-        private System.Windows.Forms.Button btnTestDNMGetIO;
-        private System.Windows.Forms.TextBox tbDNMIO_Get;
-        private System.Windows.Forms.TextBox tbDNMIO_Set;
-        private System.Windows.Forms.Button btnTestDNMSetIO;
-        private System.Windows.Forms.TextBox tbDNMVal_Set;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnFoupRotServoOn;
         private System.Windows.Forms.Button btnFoupRotOrg;
-        private System.Windows.Forms.Button btnBit8;
-        private System.Windows.Forms.Button btnBit7;
-        private System.Windows.Forms.Button btnBit6;
-        private System.Windows.Forms.Button btnBit5;
-        private System.Windows.Forms.Button btnBit4;
-        private System.Windows.Forms.Button btnBit3;
-        private System.Windows.Forms.Button btnBit2;
-        private System.Windows.Forms.Button btnBit1;
-        private System.Windows.Forms.Label lblValue;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button btnE1ServoOff;
         private System.Windows.Forms.Button btnE1ServoOn;
         private System.Windows.Forms.Button btnE2ServoOff;
@@ -3891,7 +3362,6 @@
         private System.Windows.Forms.Button btnI1Dock;
         private System.Windows.Forms.Button btnI2Org;
         private System.Windows.Forms.Button btnI1Org;
-        private System.Windows.Forms.TextBox tbFoups;
         private System.Windows.Forms.Button btnReConn;
     }
 }

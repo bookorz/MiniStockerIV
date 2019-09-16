@@ -24,18 +24,13 @@ namespace MiniStockerIV
     {
 
         byte ODATA_0;
-        I7565DNM dnm = new I7565DNM("7");//測試用
-        const string _CUSTOMER_SERVICE = "客服";
-        const string _CUSTOMER = "Customer";
-        const string _RD = "RD";
+        //I7565DNM dnm = new I7565DNM("7");//測試用
         string version = "1.0.3";
-        string category = _CUSTOMER_SERVICE;
         
         Boolean isCmdFin = true;
         Boolean isPause = false;
         Boolean isScriptRunning = false;
         Boolean autoMode = false;
-        Button[] autoBtns;
         //private int dirIdx = 0;
         private int posIdx = 0;
         int intCmdTimeOut = 300000;//default 5 mins
@@ -59,7 +54,6 @@ namespace MiniStockerIV
         {
             InitializeComponent();
             XmlConfigurator.Configure();//Log4N 需要
-            autoBtns = new Button[] { btnE1Auto, btnE2Auto, btnFoupRotAuto,btnI1Auto, btnI2Auto };
             InitCtrlGUI();
             //init marco
             Marco.ConnDevice();//連接設備
@@ -624,15 +618,18 @@ namespace MiniStockerIV
                 this.Close();
                 return;
             }
+            else
+            {
+                MessageBox.Show("USB Key Owner: " + msg, "Welcom", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Text = this.Text + " (Version: " + version + ") User: " + msg;
+            }
+            
 
             //GUI 訊息處理器
             GUICmdCtrl Comm = new GUICmdCtrl();
             Comm.Start();
 
-
-            this.Text = this.Text + " (" + category + " Version: " + version + ")";
             //連線
-            hideGUI();
             //btnCtrl1Con_Click(sender, e);
             //btnCtrlWHRCon_Click(sender, e);
             //btnCtrlCTUCon_Click(sender, e);
@@ -642,7 +639,7 @@ namespace MiniStockerIV
             btnCtrlCon_Click(btnCtrl3Con, e);
             btnCtrlCon_Click(btnCtrl4Con, e);
             btnCtrlCon_Click(btnCtrl5Con, e);
-            tabMode.SelectedIndex = 1;
+            tabMode.SelectedIndex = 2;
             //Initial_I_O();
             Initial_Error();
             Initial_Command();
@@ -662,42 +659,6 @@ namespace MiniStockerIV
         }
 
         
-
-        private void hideGUI()
-        {
-            //20190412 預設不使用以下頁面功能
-            btnLogin.Visible = false;
-            tabMode.TabPages.Remove(tabCmd);
-            switch (category) {
-                case _RD:
-                    btnLogin.Visible = true;
-                    if (isAdmin)
-                    {
-                        tabMode.TabPages.Add(tabCmd);
-                    }
-                    else
-                    {
-                        tabMode.TabPages.Remove(tabCmd);
-                    }
-                    break;
-                case _CUSTOMER_SERVICE:
-                    btnLogin.Visible = true;
-                    if (isAdmin)
-                    {
-                        tabMode.TabPages.Add(tabCmd);
-                    }
-                    else
-                    {
-                        tabMode.TabPages.Remove(tabCmd);
-                    }
-                    break;
-            }
-            btnE1Auto.Visible = isAdmin;
-            btnE2Auto.Visible = isAdmin;
-            btnI1Auto.Visible = isAdmin;
-            btnI2Auto.Visible = isAdmin;
-            btnFoupRotAuto.Visible = isAdmin;
-        }
 
         /// <summary>
         /// $1MCR:ELPT_MOVE/LTP/STATUS[CR]
@@ -942,10 +903,6 @@ namespace MiniStockerIV
             string[] rsltPresence = new string[23];
             string results = msg.Substring(msg.LastIndexOf('/') + 1);
             results = results.Substring(0, results.Length - 1);//去掉結尾的 ;
-            //假資料 Start
-            if(!tbFoups.Text.Equals(""))
-                results = tbFoups.Text;
-            //假資料 End
             if (results.Length != 23)
                 return;
             int idx = 0;
@@ -2211,11 +2168,6 @@ namespace MiniStockerIV
                     MessageBox.Show("Login fail! Change to normal mode.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            hideGUI();
-            }
-            private void login_Click(object sender, EventArgs e)
-            {
-            
             }
 
         public static string[] ShowLoginDialog()
@@ -2320,72 +2272,6 @@ namespace MiniStockerIV
             sendCommand(cmd);
         }
 
-        private void btnTestDNMConn_Click(object sender, EventArgs e)
-        {
-            rtbMsg.AppendText("api.I7565DNM_INIT(\"7\", null):");
-            rtbMsg.AppendText(dnm.I7565DNM_INIT(null).ToString() + "\n");
-            //10026: COM PORT 不存在
-        }
-
-        private void btnTestDNMGetIO_Click(object sender, EventArgs e)
-        {
-            string cmd = "$1MCR:MARCO_GET/" + tbDNMIO_Get.Text + ";";
-            sendCommand(cmd);
-        }
-
-        private void btnTestDNMSetIO_Click(object sender, EventArgs e)
-        {
-            string msg = "SET IO " + tbDNMIO_Set.Text + ":";
-            rtbMsg.AppendText(msg + dnm.I7565DNM_SETIO(tbDNMIO_Set.Text, uint.Parse(tbDNMVal_Set.Text)) + "\n");
-            //1001
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string cmd = "$1MCR:MARCO_TEST/12345/TEST;";
-            sendCommand(cmd);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //FormMainUpdate.LogUpdate("Robot1Controller 連線中!!");
-            //FormMainUpdate.LogUpdate("Robot1Controller 連線成功!!");
-            //FormMainUpdate.LogUpdate("Aligner1Controller 連線中!!");
-            //FormMainUpdate.LogUpdate("Aligner1Controller 連線成功!!");
-
-            //FormMainUpdate.LogUpdate("2019-06-24 12:03:36,830 Robot1Controller=>Send:$1CMD:HOME_");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:03:36,835 Robot1Controller<=Receive:$1ACK:HOME_");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:03:40,129 Robot1Controller<=Receive:$1FIN:HOME_:00000000");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:03:40,130 Aligner1Controller=>Send:$3CMD:ORG__");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:03:40,134 Aligner1Controller<=Receive:$1ACK:ORG__");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:03:42,638 Aligner1Controller<=Receive:$1FIN:ORG__:00000000");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:03:42,639 Aligner1Controller=>Send:$3CMD:HOME_");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:03:42,642 Aligner1Controller<=Receive:$1ACK:HOME_");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:03:43,638 Aligner1Controller<=Receive:$1FIN:HOME_:00000000");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:04:57,830 Robot1Controller=>Send:$1CMD:PUT__:121,001,2,0");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:04:57,835 Robot1Controller<=Receive:$1ACK:PUT__");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:04:59,128 Robot1Controller<=Receive:$1FIN:PUT__:00000000");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:04:59,130 Aligner1Controller=>Send:$3CMD:WHLD_:1");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:04:59,134 Aligner1Controller<=Receive:$1ACK:WHLD_");
-            //FormMainUpdate.LogUpdate("2019-06-24 12:05:01,638 Aligner1Controller<=Receive:$1FIN:WHLD_:9380a000");
-            string desc = "未定義異常";
-            string axis = "";
-            error_codes.TryGetValue("9380A000", out desc);
-            //FormMainUpdate.LogUpdate("異常描述:" + desc + axis);
-            logUpdate("異常描述:" + desc + axis);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            string cmd = "$1MCR:MARCO_SET/12345/TEST;";
-            sendCommand(cmd);
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            string cmd = "$1MCR:MARCO_GET/12345/TEST;";
-            sendCommand(cmd);
-        }
 
         private void btnFoupRotServoOn_Click(object sender, EventArgs e)
         {
@@ -2401,69 +2287,6 @@ namespace MiniStockerIV
 
         }
 
-        private void btnOutBit_Click(object sender, EventArgs e)
-        {
-            byte y = 0x0;
-            switch (((Button)sender).Name)
-            {
-                case "btnBit1":
-                    y = 0x1;
-                    break;
-                case "btnBit2":
-                    y = 0x2;
-                    break;
-                case "btnBit3":
-                    y = 0x4;
-                    break;
-                case "btnBit4":
-                    y = 0x8;
-                    break;
-                case "btnBit5":
-                    y = 0x10;
-                    break;
-                case "btnBit6":
-                    y = 0x20;
-                    break;
-                case "btnBit7":
-                    y = 0x40;
-                    break;
-                case "btnBit8":
-                    y = 0x80;
-                    break;
-            }
-            Load_Button(ref ODATA_0, y, (Button)sender);
-            lblValue.Text = ODATA_0.ToString();
-        }
-
-        private void Load_Button(ref byte X , byte Y, Button btn)
-        {
-            try
-            {
-                X = (byte)(X & ~Y);
-                if (btn.Text == "1")
-                {
-                    btn.Text = "0";
-                    X = (byte)(X | Y);
-                }
-                else
-                {
-                    btn.Text = "1";
-                }
-                MessageBox.Show(btn.Name.ToString() + "=[" + X.ToString() + "]");
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
-            }
-                
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            string cmd = "$1MCR:GET_FOUPS;";
-            sendCommand(cmd);
-        }
 
         private void btnE1ServoOn_Click(object sender, EventArgs e)
         {
@@ -2664,5 +2487,7 @@ namespace MiniStockerIV
         {
             Marco.ConnDevice();//連接設備
         }
+
+        
     }
 }

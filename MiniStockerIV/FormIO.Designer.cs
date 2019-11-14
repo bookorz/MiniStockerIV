@@ -52,6 +52,9 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.Category1_O_List = new System.Windows.Forms.Panel();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
+            this.cbAutoRefresh = new System.Windows.Forms.CheckBox();
+            this.cbUpdInterval = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbIO_3.SuspendLayout();
             this.tabIOControl3.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -139,7 +142,7 @@
             // cbUseIOName
             // 
             this.cbUseIOName.AutoSize = true;
-            this.cbUseIOName.Location = new System.Drawing.Point(855, 8);
+            this.cbUseIOName.Location = new System.Drawing.Point(233, 8);
             this.cbUseIOName.Name = "cbUseIOName";
             this.cbUseIOName.Size = new System.Drawing.Size(86, 16);
             this.cbUseIOName.TabIndex = 2;
@@ -287,11 +290,54 @@
             this.Category1_O_List.Size = new System.Drawing.Size(296, 526);
             this.Category1_O_List.TabIndex = 1;
             // 
+            // cbAutoRefresh
+            // 
+            this.cbAutoRefresh.AutoSize = true;
+            this.cbAutoRefresh.Font = new System.Drawing.Font("新細明體", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cbAutoRefresh.Location = new System.Drawing.Point(822, 3);
+            this.cbAutoRefresh.Name = "cbAutoRefresh";
+            this.cbAutoRefresh.Size = new System.Drawing.Size(68, 15);
+            this.cbAutoRefresh.TabIndex = 6;
+            this.cbAutoRefresh.Text = "自動更新";
+            this.cbAutoRefresh.UseVisualStyleBackColor = true;
+            this.cbAutoRefresh.CheckedChanged += new System.EventHandler(this.cbAutoRefresh_CheckedChanged);
+            // 
+            // cbUpdInterval
+            // 
+            this.cbUpdInterval.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUpdInterval.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cbUpdInterval.FormattingEnabled = true;
+            this.cbUpdInterval.Items.AddRange(new object[] {
+            "0.3",
+            "0.5",
+            "1",
+            "1.5",
+            "2",
+            "5",
+            "10"});
+            this.cbUpdInterval.Location = new System.Drawing.Point(891, 1);
+            this.cbUpdInterval.Name = "cbUpdInterval";
+            this.cbUpdInterval.Size = new System.Drawing.Size(46, 20);
+            this.cbUpdInterval.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("新細明體", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(943, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 11);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "秒";
+            // 
             // FormIO
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(971, 644);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbUpdInterval);
+            this.Controls.Add(this.cbAutoRefresh);
             this.Controls.Add(this.cbUseIOName);
             this.Controls.Add(this.gbIO_3);
             this.Controls.Add(this.gbIO_2);
@@ -342,5 +388,8 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel Category1_O_List;
         private System.Windows.Forms.ToolTip hint;
+        private System.Windows.Forms.CheckBox cbAutoRefresh;
+        private System.Windows.Forms.ComboBox cbUpdInterval;
+        private System.Windows.Forms.Label label1;
     }
 }

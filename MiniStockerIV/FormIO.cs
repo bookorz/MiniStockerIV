@@ -1,6 +1,7 @@
 ﻿using MiniStockerIV.UI_Update;
 using SanwaMarco.Comm;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -16,7 +17,7 @@ namespace MiniStockerIV
 {
     public partial class FormIO : Form
     {
-
+        Boolean isAutoRefresh = false;
         int currentY_I = 15;//Input Y 軸座標
         int currentY_O = 15;//Output Y 軸座標
 
@@ -456,7 +457,7 @@ namespace MiniStockerIV
 
         private void btnQryIO2_Click(object sender, EventArgs e)
         {
-            if (tabIOControl2.SelectedTab.Text.Equals("IN") || tabIOControl1.SelectedTab.Text.Equals("OUT"))
+            if (tabIOControl2.SelectedTab.Text.Equals("IN") || tabIOControl2.SelectedTab.Text.Equals("OUT"))
             {
                 string cmd = "$1MCR:I7565DNM_REFRESH;";
                 sendCommand(cmd);
@@ -497,7 +498,7 @@ namespace MiniStockerIV
 
         private void btnQryIO3_Click(object sender, EventArgs e)
         {
-            if (tabIOControl3.SelectedTab.Text.Equals("IN") || tabIOControl1.SelectedTab.Text.Equals("OUT"))
+            if (tabIOControl3.SelectedTab.Text.Equals("IN") || tabIOControl3.SelectedTab.Text.Equals("OUT"))
             {
                 string cmd = "$1MCR:I7565DNM_REFRESH;";
                 sendCommand(cmd);
@@ -534,6 +535,72 @@ namespace MiniStockerIV
                     setRELIOS(ios.Key, ios.Value, "0");//clear output
                 }
             }
+        }
+
+        private void cbAutoRefresh_CheckedChanged(object sender, EventArgs e)
+        {
+            isAutoRefresh = cbAutoRefresh.Checked;
+            FormMainUpdate.isShowCmd = !cbAutoRefresh.Checked;
+            if (cbAutoRefresh.Checked)
+            {
+                cbUpdInterval.SelectedItem = "0.5";
+                ThreadPool.QueueUserWorkItem(new WaitCallback(RefreshIO));
+                //ArrayList cmds1 = FormMainUpdate.getIORefreshCmds("tabIOControl1", "Category1_I_List", "Category1_O_List");
+                //foreach (string item in cmds1)
+                //{
+                //    sendCommand(item);
+                //}
+            }
+            else
+            {
+                cbUpdInterval.SelectedIndex = -1;
+            }
+        }
+        private void RefreshIO(object obj)
+        {
+            while (isAutoRefresh)
+            {
+                try
+                {
+                    Thread.Sleep(20000);
+                    string cmd = "$1MCR:I7565DNM_REFRESH;";
+                    sendCommand(cmd);
+                    ArrayList cmds1 = FormMainUpdate.getIORefreshCmds("tabIOControl1", "Category1_I_List", "Category1_O_List");
+                    if (cmds1 != null)
+                    {
+                        foreach (string item in cmds1)
+                        {
+                            sendCommand(item);
+                        }
+                    }
+                    ArrayList cmds2 = FormMainUpdate.getIORefreshCmds("tabIOControl2", "Category2_I_List", "Category2_O_List");
+                    if (cmds2 != null)
+                    {
+                        foreach (string item in cmds2)
+                        {
+                            sendCommand(item);
+                        }
+                    }
+                    ArrayList cmds3 = FormMainUpdate.getIORefreshCmds("tabIOControl3", "Category3_I_List", "Category3_O_List");
+                    if (cmds3 != null)
+                    {
+                        foreach (string item in cmds3)
+                        {
+                            sendCommand(item);
+                        }
+                    }
+                    //FormMainUpdate.cmdList.Clear();
+                    //btnQryIO1_Click(null, null);
+                    //btnQryIO2_Click(null, null);
+                    //btnQryIO3_Click(null, null);
+                }
+                catch (Exception e)
+                {
+                    //logger.Error(e.StackTrace);
+                    Console.Write(e.StackTrace);
+                }
+            }
+
         }
     }
 }

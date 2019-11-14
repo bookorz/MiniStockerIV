@@ -2488,6 +2488,10 @@ namespace MiniStockerIV
             Marco.ConnDevice();//連接設備
         }
 
-        
+        private void tabMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show(tabMode.SelectedTab.Name);
+            FormMainUpdate.setShowCommand(tabMode.SelectedTab.Name);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using log4net;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -14,10 +15,14 @@ namespace MiniStockerIV.UI_Update
 
         private static readonly ILog logger = LogManager.GetLogger(typeof(FormMainUpdate));
         public static Boolean isAlarmSet = false;
+        public static Boolean isShowCmd = true;
         private static string[] rsltPresence = new string[0];
         public static string[] RsltPresence { get => rsltPresence; set => rsltPresence = value; }
+        private static ArrayList cmdList = new ArrayList();// = new ArrayList();
+
         delegate void UpdateLog(string msg);
         delegate void UpdateIO(string msg);
+        delegate ArrayList RefreshIO(string tcName, string panelIn, string panelOut);
         delegate void UpdateAlarm(Boolean isAlarm);
         delegate void UpdateBtnEnable(Boolean isRun);
         delegate void MessageShow(string msg);
@@ -28,6 +33,7 @@ namespace MiniStockerIV.UI_Update
         delegate void AddScript(string cmd);
         delegate void UpdateFoupPresence();
         delegate void UpdateUI(string msg);
+        delegate void SetShowCommand(string msg);
 
         public static void addScriptCmd(string cmd)
         {
@@ -376,8 +382,68 @@ namespace MiniStockerIV.UI_Update
             }
         }
 
+        public static ArrayList getIORefreshCmds(string tcName, string pnlInName, string pnlOutName)
+        {
+                try
+                {
+                    Form form = Application.OpenForms["FormIO"];
+                    if (form == null)
+                        return null;
 
-        
+                    if (form.InvokeRequired)
+                    {
+                        RefreshIO ph = new RefreshIO(getIORefreshCmds);
+                        form.Invoke(ph, tcName, pnlInName, pnlOutName);
+                    }
+                    else
+                    {
+                        cmdList = new ArrayList();
+                        TabControl tc = form.Controls.Find(tcName, true).FirstOrDefault() as TabControl;
+                        Panel p_in = form.Controls.Find(pnlInName, true).FirstOrDefault() as Panel;
+                        Panel p_out = form.Controls.Find(pnlOutName, true).FirstOrDefault() as Panel;
+                        if (tc.SelectedTab.Text.Equals("IN"))
+                        {
+                            foreach (Control foo in p_in.Controls)
+                            {
+                                if (!foo.GetType().Name.Equals("Label"))
+                                {
+                                    continue;
+                                }
+                                else if (!foo.Text.Equals("■"))
+                                {
+                                    string address = foo.Name.Split('_')[0];
+                                    string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
+                                    cmdList.Add("$" + address + "MCR:GET_RELIO/" + rio + ";");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (Control foo in p_out.Controls)
+                            {
+                                if (!foo.GetType().Name.Equals("Label"))
+                                {
+                                    continue;
+                                }
+                                else if (!foo.Text.Equals("■"))
+                                {
+                                    string address = foo.Name.Split('_')[0];
+                                    //Console.WriteLine(foo.Name);
+                                    string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
+                                    cmdList.Add("$" + address + "MCR:GET_RELIO/" + rio + ";");
+                                }
+                            }
+                        }
+                    }
+                    return cmdList;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.StackTrace);
+                    return null;
+                }
+        }
+
         public static void CounterUpdate(string cnt)
         {
             try
@@ -405,6 +471,8 @@ namespace MiniStockerIV.UI_Update
         }
         public static void Log(string msg)
         {
+            if (!isShowCmd)
+                return;
             logger.Info(msg);
         }
 
@@ -588,6 +656,38 @@ namespace MiniStockerIV.UI_Update
         {
             RsltPresence = value;
             updateFoupPresenceByFoups();
+        }
+
+        internal static void setShowCommand(string tabName)
+        {
+
+            Form form = Application.OpenForms["FormIO"];
+            if (form == null)
+                return;
+
+            if (form.InvokeRequired)
+            {
+                SetShowCommand ph = new SetShowCommand(setShowCommand);
+                form.BeginInvoke(ph, tabName);
+            }
+            else
+            {
+                CheckBox cbAutoRefresh = form.Controls.Find("cbAutoRefresh", true).FirstOrDefault() as CheckBox;
+                if (cbAutoRefresh == null)
+                    return;
+                if (!tabName.Equals("tabIO"))
+                {
+                    cbAutoRefresh.Checked = false;//取消IO自動更新
+                    isShowCmd = true;
+                }else if (!cbAutoRefresh.Checked)
+                {
+                    isShowCmd = true;
+                }
+                else
+                {
+                    isShowCmd = false;
+                }
+            }
         }
     }
 }

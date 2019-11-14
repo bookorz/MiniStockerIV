@@ -215,6 +215,7 @@
             this.btnE2CloseShutter = new System.Windows.Forms.Button();
             this.btnE2OpenShutter = new System.Windows.Forms.Button();
             this.btnE2UnClamp = new System.Windows.Forms.Button();
+            this.btnE2ReadID = new System.Windows.Forms.Button();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.btnE1Init = new System.Windows.Forms.Button();
             this.btnE1Org = new System.Windows.Forms.Button();
@@ -227,12 +228,11 @@
             this.btnE1CloseShutter = new System.Windows.Forms.Button();
             this.btnE1OpenShutter = new System.Windows.Forms.Button();
             this.btnE1UnClamp = new System.Windows.Forms.Button();
+            this.btnE1ReadID = new System.Windows.Forms.Button();
             this.label44 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
-            this.btnE1ReadID = new System.Windows.Forms.Button();
             this.label62 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.btnE2ReadID = new System.Windows.Forms.Button();
             this.tabIO = new System.Windows.Forms.TabPage();
             this.pnlIO = new System.Windows.Forms.Panel();
             this.tabVersion = new System.Windows.Forms.TabPage();
@@ -289,6 +289,7 @@
             this.tabMode.SelectedIndex = 0;
             this.tabMode.Size = new System.Drawing.Size(995, 753);
             this.tabMode.TabIndex = 22;
+            this.tabMode.SelectedIndexChanged += new System.EventHandler(this.tabMode_SelectedIndexChanged);
             // 
             // tabSetting
             // 
@@ -2701,6 +2702,19 @@
             this.btnE2UnClamp.UseVisualStyleBackColor = true;
             this.btnE2UnClamp.Click += new System.EventHandler(this.btnE2UnClamp_Click);
             // 
+            // btnE2ReadID
+            // 
+            this.btnE2ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE2ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE2ReadID.Location = new System.Drawing.Point(118, 112);
+            this.btnE2ReadID.Name = "btnE2ReadID";
+            this.btnE2ReadID.Size = new System.Drawing.Size(106, 39);
+            this.btnE2ReadID.TabIndex = 19;
+            this.btnE2ReadID.Text = "Read RFID";
+            this.btnE2ReadID.UseVisualStyleBackColor = true;
+            this.btnE2ReadID.Visible = false;
+            this.btnE2ReadID.Click += new System.EventHandler(this.btnE2ReadID_Click);
+            // 
             // groupBox17
             // 
             this.groupBox17.Controls.Add(this.btnE1Init);
@@ -2860,6 +2874,19 @@
             this.btnE1UnClamp.UseVisualStyleBackColor = true;
             this.btnE1UnClamp.Click += new System.EventHandler(this.btnE1UnClamp_Click);
             // 
+            // btnE1ReadID
+            // 
+            this.btnE1ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnE1ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnE1ReadID.Location = new System.Drawing.Point(118, 112);
+            this.btnE1ReadID.Name = "btnE1ReadID";
+            this.btnE1ReadID.Size = new System.Drawing.Size(106, 39);
+            this.btnE1ReadID.TabIndex = 19;
+            this.btnE1ReadID.Text = "Read RFID";
+            this.btnE1ReadID.UseVisualStyleBackColor = true;
+            this.btnE1ReadID.Visible = false;
+            this.btnE1ReadID.Click += new System.EventHandler(this.btnE1ReadID_Click);
+            // 
             // label44
             // 
             this.label44.AutoSize = true;
@@ -2880,19 +2907,6 @@
             this.label63.TabIndex = 30;
             this.label63.Text = "UnClamp <- Close Shutter <- Move Out  <- Clamp";
             // 
-            // btnE1ReadID
-            // 
-            this.btnE1ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE1ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE1ReadID.Location = new System.Drawing.Point(118, 112);
-            this.btnE1ReadID.Name = "btnE1ReadID";
-            this.btnE1ReadID.Size = new System.Drawing.Size(106, 39);
-            this.btnE1ReadID.TabIndex = 19;
-            this.btnE1ReadID.Text = "Read RFID";
-            this.btnE1ReadID.UseVisualStyleBackColor = true;
-            this.btnE1ReadID.Visible = false;
-            this.btnE1ReadID.Click += new System.EventHandler(this.btnE1ReadID_Click);
-            // 
             // label62
             // 
             this.label62.AutoSize = true;
@@ -2912,19 +2926,6 @@
             this.label43.Size = new System.Drawing.Size(130, 21);
             this.label43.TabIndex = 30;
             this.label43.Text = "Load Sequence ->";
-            // 
-            // btnE2ReadID
-            // 
-            this.btnE2ReadID.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnE2ReadID.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnE2ReadID.Location = new System.Drawing.Point(118, 112);
-            this.btnE2ReadID.Name = "btnE2ReadID";
-            this.btnE2ReadID.Size = new System.Drawing.Size(106, 39);
-            this.btnE2ReadID.TabIndex = 19;
-            this.btnE2ReadID.Text = "Read RFID";
-            this.btnE2ReadID.UseVisualStyleBackColor = true;
-            this.btnE2ReadID.Visible = false;
-            this.btnE2ReadID.Click += new System.EventHandler(this.btnE2ReadID_Click);
             // 
             // tabIO
             // 

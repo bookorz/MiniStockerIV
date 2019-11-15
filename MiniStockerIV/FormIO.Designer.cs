@@ -311,14 +311,15 @@
             "0.3",
             "0.5",
             "1",
-            "1.5",
             "2",
+            "3",
             "5",
             "10"});
             this.cbUpdInterval.Location = new System.Drawing.Point(891, 1);
             this.cbUpdInterval.Name = "cbUpdInterval";
             this.cbUpdInterval.Size = new System.Drawing.Size(46, 20);
             this.cbUpdInterval.TabIndex = 7;
+            this.cbUpdInterval.SelectedIndexChanged += new System.EventHandler(this.cbUpdInterval_SelectedIndexChanged);
             // 
             // label1
             // 

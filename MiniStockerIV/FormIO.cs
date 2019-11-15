@@ -18,6 +18,7 @@ namespace MiniStockerIV
     public partial class FormIO : Form
     {
         Boolean isAutoRefresh = false;
+        int interval = 500;//default auto refresh interval
         int currentY_I = 15;//Input Y 軸座標
         int currentY_O = 15;//Output Y 軸座標
 
@@ -83,6 +84,10 @@ namespace MiniStockerIV
                 deviceName = ConfigurationManager.AppSettings["Controller_5_Name"];
             }
             sendCommand(deviceName, cmd);
+            if (cmd.Contains("I7565DNM_REFRESH"))
+            {
+                Thread.Sleep(200);//等待資料更新，避免之後GETIO指令讀到舊值
+            }
         }
 
         public void sendCommand(string deviceName, string cmd)
@@ -100,7 +105,8 @@ namespace MiniStockerIV
             }
             else
             {
-                logUpdate(cmd);
+                if(!cmd.Contains("RELIO"))
+                    logUpdate(cmd);
                 device.Send(cmd + "\r"); //暫時先不送指令, 先跳
             }
         }
@@ -562,7 +568,8 @@ namespace MiniStockerIV
             {
                 try
                 {
-                    Thread.Sleep(20000);
+                    //Thread.Sleep(20000);//LOCAL測試用
+                    Thread.Sleep(interval);
                     string cmd = "$1MCR:I7565DNM_REFRESH;";
                     sendCommand(cmd);
                     ArrayList cmds1 = FormMainUpdate.getIORefreshCmds("tabIOControl1", "Category1_I_List", "Category1_O_List");
@@ -601,6 +608,18 @@ namespace MiniStockerIV
                 }
             }
 
+        }
+
+        private void cbUpdInterval_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int.TryParse((Double.Parse(cbUpdInterval.Text) * 1000).ToString(), out interval);
+            }
+            catch
+            {
+                //數字格式錯誤時，不理會
+            }
         }
     }
 }

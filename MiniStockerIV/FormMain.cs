@@ -266,8 +266,9 @@ namespace MiniStockerIV
                 int lastIdx = msg.LastIndexOf(":") > 5 ? msg.LastIndexOf(":") : msg.Length;
                 string func = msg.Substring(6, lastIdx - 6);// 前六碼為固定前修飾詞, 例如 $1CMD: $2MCR:
                 //string errMsg = "";
-                logUpdate("Receive <= " + replyMsg );
-                Thread.Sleep(200);
+                if(!replyMsg.Contains("RELIO"))
+                    logUpdate("Receive <= " + replyMsg );//IO LOG 太多，不寫
+                //Thread.Sleep(200);
                 switch (msgType)
                 {
                     case "NAK"://NAK 指令錯誤, 無法辨識

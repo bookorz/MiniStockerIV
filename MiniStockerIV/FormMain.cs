@@ -2038,20 +2038,7 @@ namespace MiniStockerIV
         }
         
         
-        private void btnHold_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRestart_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAbort_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void tabSetting_Click(object sender, EventArgs e)
         {
@@ -2493,6 +2480,16 @@ namespace MiniStockerIV
         {
             //MessageBox.Show(tabMode.SelectedTab.Name);
             FormMainUpdate.setShowCommand(tabMode.SelectedTab.Name);
+        }
+
+        private void btnSetSpeed_Click(object sender, EventArgs e)
+        {
+            if (cbSpeed.Text != "")
+            {
+                string cmd = "$1MCR:ROBOT_SPEED/" + (cbSpeed.Text.Equals("100")?"00": cbSpeed.Text) + ";";
+                sendCommand(cmd);
+            }
+            
         }
     }
 }

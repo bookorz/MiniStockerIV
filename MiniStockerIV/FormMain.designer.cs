@@ -229,10 +229,6 @@
             this.btnE1OpenShutter = new System.Windows.Forms.Button();
             this.btnE1UnClamp = new System.Windows.Forms.Button();
             this.btnE1ReadID = new System.Windows.Forms.Button();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
             this.tabIO = new System.Windows.Forms.TabPage();
             this.pnlIO = new System.Windows.Forms.Panel();
             this.tabVersion = new System.Windows.Forms.TabPage();
@@ -241,12 +237,11 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.rtbMsg = new System.Windows.Forms.RichTextBox();
-            this.btnAbort = new System.Windows.Forms.Button();
-            this.btnHold = new System.Windows.Forms.Button();
-            this.btnRestart = new System.Windows.Forms.Button();
             this.btnReConn = new System.Windows.Forms.Button();
             this.btnCheckSlave = new System.Windows.Forms.Button();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
+            this.cbSpeed = new System.Windows.Forms.ComboBox();
+            this.btnSetSpeed = new System.Windows.Forms.Button();
             this.tabMode.SuspendLayout();
             this.tabSetting.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -1258,10 +1253,6 @@
             this.tabStocker.Controls.Add(this.groupBox25);
             this.tabStocker.Controls.Add(this.groupBox22);
             this.tabStocker.Controls.Add(this.groupBox17);
-            this.tabStocker.Controls.Add(this.label44);
-            this.tabStocker.Controls.Add(this.label63);
-            this.tabStocker.Controls.Add(this.label62);
-            this.tabStocker.Controls.Add(this.label43);
             this.tabStocker.Location = new System.Drawing.Point(4, 33);
             this.tabStocker.Name = "tabStocker";
             this.tabStocker.Size = new System.Drawing.Size(987, 716);
@@ -1275,7 +1266,7 @@
             this.tbI2Reset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbI2Reset.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbI2Reset.ForeColor = System.Drawing.Color.Black;
-            this.tbI2Reset.Location = new System.Drawing.Point(610, 594);
+            this.tbI2Reset.Location = new System.Drawing.Point(607, 617);
             this.tbI2Reset.Name = "tbI2Reset";
             this.tbI2Reset.Size = new System.Drawing.Size(63, 39);
             this.tbI2Reset.TabIndex = 29;
@@ -1289,7 +1280,7 @@
             this.btnI2Auto.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnI2Auto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI2Auto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI2Auto.Location = new System.Drawing.Point(679, 593);
+            this.btnI2Auto.Location = new System.Drawing.Point(676, 616);
             this.btnI2Auto.Name = "btnI2Auto";
             this.btnI2Auto.Size = new System.Drawing.Size(85, 40);
             this.btnI2Auto.TabIndex = 19;
@@ -1303,7 +1294,7 @@
             this.btnI1Auto.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnI1Auto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnI1Auto.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnI1Auto.Location = new System.Drawing.Point(677, 547);
+            this.btnI1Auto.Location = new System.Drawing.Point(676, 571);
             this.btnI1Auto.Name = "btnI1Auto";
             this.btnI1Auto.Size = new System.Drawing.Size(87, 40);
             this.btnI1Auto.TabIndex = 19;
@@ -1318,7 +1309,7 @@
             this.tbI1Init.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbI1Init.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbI1Init.ForeColor = System.Drawing.Color.Black;
-            this.tbI1Init.Location = new System.Drawing.Point(539, 547);
+            this.tbI1Init.Location = new System.Drawing.Point(538, 571);
             this.tbI1Init.Name = "tbI1Init";
             this.tbI1Init.Size = new System.Drawing.Size(63, 39);
             this.tbI1Init.TabIndex = 29;
@@ -1333,7 +1324,7 @@
             this.tbI2Init.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbI2Init.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbI2Init.ForeColor = System.Drawing.Color.Black;
-            this.tbI2Init.Location = new System.Drawing.Point(539, 594);
+            this.tbI2Init.Location = new System.Drawing.Point(538, 618);
             this.tbI2Init.Name = "tbI2Init";
             this.tbI2Init.Size = new System.Drawing.Size(63, 39);
             this.tbI2Init.TabIndex = 29;
@@ -1348,7 +1339,7 @@
             this.tbI1Reset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbI1Reset.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbI1Reset.ForeColor = System.Drawing.Color.Black;
-            this.tbI1Reset.Location = new System.Drawing.Point(608, 547);
+            this.tbI1Reset.Location = new System.Drawing.Point(607, 571);
             this.tbI1Reset.Name = "tbI1Reset";
             this.tbI1Reset.Size = new System.Drawing.Size(63, 39);
             this.tbI1Reset.TabIndex = 29;
@@ -1361,7 +1352,7 @@
             // 
             this.tbE1RFID.Enabled = false;
             this.tbE1RFID.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbE1RFID.Location = new System.Drawing.Point(826, 608);
+            this.tbE1RFID.Location = new System.Drawing.Point(824, 575);
             this.tbE1RFID.Name = "tbE1RFID";
             this.tbE1RFID.Size = new System.Drawing.Size(159, 30);
             this.tbE1RFID.TabIndex = 38;
@@ -1374,7 +1365,7 @@
             this.label64.Enabled = false;
             this.label64.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label64.ForeColor = System.Drawing.Color.White;
-            this.label64.Location = new System.Drawing.Point(769, 610);
+            this.label64.Location = new System.Drawing.Point(767, 577);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(51, 23);
             this.label64.TabIndex = 37;
@@ -1388,14 +1379,16 @@
             this.groupBox46.Controls.Add(this.groupBox47);
             this.groupBox46.Location = new System.Drawing.Point(538, 3);
             this.groupBox46.Name = "groupBox46";
-            this.groupBox46.Size = new System.Drawing.Size(446, 536);
+            this.groupBox46.Size = new System.Drawing.Size(446, 562);
             this.groupBox46.TabIndex = 39;
             this.groupBox46.TabStop = false;
             this.groupBox46.Text = "FOUP Robot Area";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSetSpeed);
             this.groupBox1.Controls.Add(this.groupBox48);
+            this.groupBox1.Controls.Add(this.cbSpeed);
             this.groupBox1.Controls.Add(this.btnFoupRotSwitch);
             this.groupBox1.Controls.Add(this.btnFoupRotReset);
             this.groupBox1.Controls.Add(this.groupBox49);
@@ -1405,7 +1398,7 @@
             this.groupBox1.Controls.Add(this.btnFoupRotInit);
             this.groupBox1.Location = new System.Drawing.Point(6, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(408, 255);
+            this.groupBox1.Size = new System.Drawing.Size(408, 295);
             this.groupBox1.TabIndex = 79;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Robot";
@@ -1663,7 +1656,7 @@
             this.groupBox47.Controls.Add(this.tbPresShelf2_2);
             this.groupBox47.Controls.Add(this.tbPresShelf4_3);
             this.groupBox47.Controls.Add(this.tbPresShelf1_2);
-            this.groupBox47.Location = new System.Drawing.Point(6, 285);
+            this.groupBox47.Location = new System.Drawing.Point(6, 318);
             this.groupBox47.Name = "groupBox47";
             this.groupBox47.Size = new System.Drawing.Size(427, 235);
             this.groupBox47.TabIndex = 76;
@@ -2058,7 +2051,7 @@
             // 
             this.tbE2RFID.Enabled = false;
             this.tbE2RFID.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbE2RFID.Location = new System.Drawing.Point(825, 650);
+            this.tbE2RFID.Location = new System.Drawing.Point(824, 624);
             this.tbE2RFID.Name = "tbE2RFID";
             this.tbE2RFID.Size = new System.Drawing.Size(159, 30);
             this.tbE2RFID.TabIndex = 38;
@@ -2083,7 +2076,7 @@
             this.groupBox24.Controls.Add(this.btnI2UnClamp);
             this.groupBox24.Controls.Add(this.btnI2VacOff);
             this.groupBox24.Controls.Add(this.btnI2Backward);
-            this.groupBox24.Location = new System.Drawing.Point(4, 562);
+            this.groupBox24.Location = new System.Drawing.Point(3, 494);
             this.groupBox24.Name = "groupBox24";
             this.groupBox24.Size = new System.Drawing.Size(528, 150);
             this.groupBox24.TabIndex = 17;
@@ -2303,7 +2296,7 @@
             this.label68.Enabled = false;
             this.label68.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label68.ForeColor = System.Drawing.Color.White;
-            this.label68.Location = new System.Drawing.Point(768, 652);
+            this.label68.Location = new System.Drawing.Point(767, 626);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(51, 23);
             this.label68.TabIndex = 37;
@@ -2330,7 +2323,7 @@
             this.groupBox25.Controls.Add(this.btnI1Clamp);
             this.groupBox25.Controls.Add(this.btnI1Dock);
             this.groupBox25.Controls.Add(this.btnI1Load);
-            this.groupBox25.Location = new System.Drawing.Point(3, 408);
+            this.groupBox25.Location = new System.Drawing.Point(2, 340);
             this.groupBox25.Name = "groupBox25";
             this.groupBox25.Size = new System.Drawing.Size(529, 150);
             this.groupBox25.TabIndex = 17;
@@ -2557,7 +2550,7 @@
             this.groupBox22.Controls.Add(this.btnE2OpenShutter);
             this.groupBox22.Controls.Add(this.btnE2UnClamp);
             this.groupBox22.Controls.Add(this.btnE2ReadID);
-            this.groupBox22.Location = new System.Drawing.Point(4, 239);
+            this.groupBox22.Location = new System.Drawing.Point(3, 171);
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.Size = new System.Drawing.Size(465, 160);
             this.groupBox22.TabIndex = 17;
@@ -2729,7 +2722,7 @@
             this.groupBox17.Controls.Add(this.btnE1OpenShutter);
             this.groupBox17.Controls.Add(this.btnE1UnClamp);
             this.groupBox17.Controls.Add(this.btnE1ReadID);
-            this.groupBox17.Location = new System.Drawing.Point(4, 73);
+            this.groupBox17.Location = new System.Drawing.Point(3, 5);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(465, 160);
             this.groupBox17.TabIndex = 17;
@@ -2887,46 +2880,6 @@
             this.btnE1ReadID.Visible = false;
             this.btnE1ReadID.Click += new System.EventHandler(this.btnE1ReadID_Click);
             // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label44.Location = new System.Drawing.Point(147, 35);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(150, 21);
-            this.label44.TabIndex = 31;
-            this.label44.Text = "<- UnLoad Sequence";
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(7, 56);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(283, 13);
-            this.label63.TabIndex = 30;
-            this.label63.Text = "UnClamp <- Close Shutter <- Move Out  <- Clamp";
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label62.Location = new System.Drawing.Point(7, 22);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(265, 13);
-            this.label62.TabIndex = 30;
-            this.label62.Text = "Clamp -> Open Shutter -> Move In -> Unclamp";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label43.Location = new System.Drawing.Point(6, 0);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(130, 21);
-            this.label43.TabIndex = 30;
-            this.label43.Text = "Load Sequence ->";
-            // 
             // tabIO
             // 
             this.tabIO.Controls.Add(this.pnlIO);
@@ -2969,9 +2922,10 @@
             // 
             // btnClearMsg
             // 
+            this.btnClearMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClearMsg.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClearMsg.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearMsg.Location = new System.Drawing.Point(6, 657);
+            this.btnClearMsg.Location = new System.Drawing.Point(4, 633);
             this.btnClearMsg.Name = "btnClearMsg";
             this.btnClearMsg.Size = new System.Drawing.Size(108, 32);
             this.btnClearMsg.TabIndex = 18;
@@ -2981,17 +2935,17 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.lblStatus);
             this.groupBox6.Controls.Add(this.rtbMsg);
             this.groupBox6.Controls.Add(this.btnClearMsg);
-            this.groupBox6.Controls.Add(this.btnAbort);
-            this.groupBox6.Controls.Add(this.btnHold);
-            this.groupBox6.Controls.Add(this.btnRestart);
             this.groupBox6.Controls.Add(this.btnReConn);
             this.groupBox6.Controls.Add(this.btnCheckSlave);
             this.groupBox6.Location = new System.Drawing.Point(1005, 12);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(549, 720);
+            this.groupBox6.Size = new System.Drawing.Size(415, 674);
             this.groupBox6.TabIndex = 17;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Message Area";
@@ -3007,67 +2961,24 @@
             // 
             // rtbMsg
             // 
+            this.rtbMsg.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbMsg.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbMsg.Location = new System.Drawing.Point(9, 60);
+            this.rtbMsg.Location = new System.Drawing.Point(6, 21);
             this.rtbMsg.Name = "rtbMsg";
-            this.rtbMsg.Size = new System.Drawing.Size(534, 591);
+            this.rtbMsg.Size = new System.Drawing.Size(395, 602);
             this.rtbMsg.TabIndex = 0;
+            this.rtbMsg.TabStop = false;
             this.rtbMsg.Text = "";
             this.rtbMsg.WordWrap = false;
             // 
-            // btnAbort
-            // 
-            this.btnAbort.BackColor = System.Drawing.Color.Red;
-            this.btnAbort.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbort.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAbort.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbort.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAbort.Location = new System.Drawing.Point(205, 21);
-            this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(92, 32);
-            this.btnAbort.TabIndex = 21;
-            this.btnAbort.Text = "ABORT";
-            this.btnAbort.UseVisualStyleBackColor = false;
-            this.btnAbort.Visible = false;
-            this.btnAbort.Click += new System.EventHandler(this.btnAbort_Click);
-            // 
-            // btnHold
-            // 
-            this.btnHold.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnHold.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHold.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHold.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHold.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnHold.Location = new System.Drawing.Point(9, 22);
-            this.btnHold.Name = "btnHold";
-            this.btnHold.Size = new System.Drawing.Size(92, 32);
-            this.btnHold.TabIndex = 21;
-            this.btnHold.Text = "HOLD";
-            this.btnHold.UseVisualStyleBackColor = false;
-            this.btnHold.Visible = false;
-            this.btnHold.Click += new System.EventHandler(this.btnHold_Click);
-            // 
-            // btnRestart
-            // 
-            this.btnRestart.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnRestart.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRestart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRestart.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestart.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnRestart.Location = new System.Drawing.Point(107, 21);
-            this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(92, 32);
-            this.btnRestart.TabIndex = 21;
-            this.btnRestart.Text = "RESTR";
-            this.btnRestart.UseVisualStyleBackColor = false;
-            this.btnRestart.Visible = false;
-            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
-            // 
             // btnReConn
             // 
+            this.btnReConn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReConn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReConn.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReConn.Location = new System.Drawing.Point(311, 19);
+            this.btnReConn.Location = new System.Drawing.Point(289, 629);
             this.btnReConn.Name = "btnReConn";
             this.btnReConn.Size = new System.Drawing.Size(113, 39);
             this.btnReConn.TabIndex = 19;
@@ -3077,9 +2988,10 @@
             // 
             // btnCheckSlave
             // 
+            this.btnCheckSlave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCheckSlave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCheckSlave.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckSlave.Location = new System.Drawing.Point(430, 20);
+            this.btnCheckSlave.Location = new System.Drawing.Point(170, 629);
             this.btnCheckSlave.Name = "btnCheckSlave";
             this.btnCheckSlave.Size = new System.Drawing.Size(113, 39);
             this.btnCheckSlave.TabIndex = 19;
@@ -3094,11 +3006,45 @@
             this.hint.InitialDelay = 50;
             this.hint.ReshowDelay = 10;
             // 
+            // cbSpeed
+            // 
+            this.cbSpeed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSpeed.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbSpeed.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSpeed.FormattingEnabled = true;
+            this.cbSpeed.Items.AddRange(new object[] {
+            "100",
+            "90",
+            "80",
+            "70",
+            "60",
+            "50",
+            "40",
+            "30",
+            "20",
+            "10"});
+            this.cbSpeed.Location = new System.Drawing.Point(6, 253);
+            this.cbSpeed.Name = "cbSpeed";
+            this.cbSpeed.Size = new System.Drawing.Size(127, 30);
+            this.cbSpeed.TabIndex = 79;
+            // 
+            // btnSetSpeed
+            // 
+            this.btnSetSpeed.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSetSpeed.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetSpeed.Location = new System.Drawing.Point(144, 254);
+            this.btnSetSpeed.Name = "btnSetSpeed";
+            this.btnSetSpeed.Size = new System.Drawing.Size(85, 29);
+            this.btnSetSpeed.TabIndex = 79;
+            this.btnSetSpeed.Text = "Set Speed";
+            this.btnSetSpeed.UseVisualStyleBackColor = true;
+            this.btnSetSpeed.Click += new System.EventHandler(this.btnSetSpeed_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1584, 761);
+            this.ClientSize = new System.Drawing.Size(1432, 707);
             this.Controls.Add(this.tabMode);
             this.Controls.Add(this.groupBox6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -3171,9 +3117,6 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.RichTextBox rtbMsg;
-        private System.Windows.Forms.Button btnRestart;
-        private System.Windows.Forms.Button btnAbort;
-        private System.Windows.Forms.Button btnHold;
         private System.Windows.Forms.TabPage tabSetting;
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.GroupBox gbCtrl3;
@@ -3212,10 +3155,6 @@
         private System.Windows.Forms.Button btnE1OpenShutter;
         private System.Windows.Forms.Button btnE1ReadID;
         private System.Windows.Forms.Button btnE1UnClamp;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.Label label43;
         private System.Windows.Forms.GroupBox groupBox22;
         private System.Windows.Forms.Button btnE2Clamp;
         private System.Windows.Forms.Button btnE2CloseShutter;
@@ -3364,6 +3303,8 @@
         private System.Windows.Forms.Button btnI2Org;
         private System.Windows.Forms.Button btnI1Org;
         private System.Windows.Forms.Button btnReConn;
+        private System.Windows.Forms.ComboBox cbSpeed;
+        private System.Windows.Forms.Button btnSetSpeed;
     }
 }
 

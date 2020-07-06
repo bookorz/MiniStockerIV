@@ -29,7 +29,7 @@ namespace MiniStockerIV
         
         Boolean isCmdFin = true;
         Boolean isPause = false;
-        Boolean isScriptRunning = false;
+        public static Boolean isScriptRunning = false;
         Boolean autoMode = false;
         //private int dirIdx = 0;
         private int posIdx = 0;

@@ -105,7 +105,7 @@ namespace MiniStockerIV
             }
             else
             {
-                if(!cmd.Contains("RELIO"))
+                if (!cmd.Contains("RELIO"))
                     logUpdate(cmd);
                 device.Send(cmd + "\r"); //暫時先不送指令, 先跳
             }
@@ -305,7 +305,7 @@ namespace MiniStockerIV
             //    InsertIO("1", "9528"+i, "Buzzer1"+i, "OUT", Stocker_IO_List);
             //}
         }
-        
+
         private void QryIO(TabControl tc, Panel p_in, Panel p_out)
         {
             if (tc.SelectedTab.Text.Equals("IN"))
@@ -368,7 +368,7 @@ namespace MiniStockerIV
             string cmd = "$" + address + "MCR:SET_RELIOS/" + id + "/" + value + ";";
             sendCommand(cmd);
         }
-        private void QryIOByName( TabControl tc, Panel p_in, Panel p_out)
+        private void QryIOByName(TabControl tc, Panel p_in, Panel p_out)
         {
             if (tc.SelectedTab.Text.Equals("IN"))
             {
@@ -380,7 +380,7 @@ namespace MiniStockerIV
                     }
                     else if (!foo.Text.Equals("■"))
                     {
-                        string address = foo.Name.Split('_')[0]; 
+                        string address = foo.Name.Split('_')[0];
                         int start_idx = foo.Text.IndexOf("(") + 1;
                         int length = foo.Text.IndexOf(")") - start_idx;
                         string rio = foo.Text.Substring(start_idx, length);
@@ -411,7 +411,7 @@ namespace MiniStockerIV
                 }
             }
         }
-        
+
 
         private void cbUseIOName_CheckedChanged(object sender, EventArgs e)
         {
@@ -422,144 +422,172 @@ namespace MiniStockerIV
 
         private void btnQryIO1_Click(object sender, EventArgs e)
         {
-            if (tabIOControl1.SelectedTab.Text.Equals("IN") || tabIOControl1.SelectedTab.Text.Equals("OUT"))
+            if (FormMain.isScriptRunning)
             {
-                string cmd = "$1MCR:I7565DNM_REFRESH;";
-                sendCommand(cmd);
-                if (cbUseIOName.Checked)
-                    //QryIOByName("1", tabIOControl1, Category1_I_List, Category1_O_List);
-                    QryIOByName(tabIOControl1, Category1_I_List, Category1_O_List);
-                else
-                    QryIO(tabIOControl1, Category1_I_List, Category1_O_List);
+                MessageBox.Show("Script執行中無法使用本功能");
             }
             else
             {
-                Dictionary<string, string> ioMap = new Dictionary<string, string>();
-                foreach (Control foo in Category1_O_List.Controls)
+                if (tabIOControl1.SelectedTab.Text.Equals("IN") || tabIOControl1.SelectedTab.Text.Equals("OUT"))
                 {
-                    if (!foo.GetType().Name.Equals("Label"))
-                    {
-                        continue;
-                    }
-                    else if (!foo.Text.Equals("■"))
-                    {
-                        string address = foo.Name.Split('_')[0];
-                        //Console.WriteLine(foo.Name);
-                        string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
-                        if (ioMap.ContainsKey(address))
-                            ioMap[address] = ioMap[address] + ";" + rio;
-                        else
-                            ioMap[address] = rio;
-                        string key = foo.Name.Substring(0, foo.Name.LastIndexOf("_"));
-                        FormMainUpdate.Update_IO(key, "OFF");
-                    }
+                    string cmd = "$1MCR:I7565DNM_REFRESH;";
+                    sendCommand(cmd);
+                    if (cbUseIOName.Checked)
+                        //QryIOByName("1", tabIOControl1, Category1_I_List, Category1_O_List);
+                        QryIOByName(tabIOControl1, Category1_I_List, Category1_O_List);
+                    else
+                        QryIO(tabIOControl1, Category1_I_List, Category1_O_List);
                 }
-                foreach (KeyValuePair<string, string> ios in ioMap)
+                else
                 {
-                    setRELIOS(ios.Key, ios.Value, "0");//clear output
+                    Dictionary<string, string> ioMap = new Dictionary<string, string>();
+                    foreach (Control foo in Category1_O_List.Controls)
+                    {
+                        if (!foo.GetType().Name.Equals("Label"))
+                        {
+                            continue;
+                        }
+                        else if (!foo.Text.Equals("■"))
+                        {
+                            string address = foo.Name.Split('_')[0];
+                            //Console.WriteLine(foo.Name);
+                            string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
+                            if (ioMap.ContainsKey(address))
+                                ioMap[address] = ioMap[address] + ";" + rio;
+                            else
+                                ioMap[address] = rio;
+                            string key = foo.Name.Substring(0, foo.Name.LastIndexOf("_"));
+                            FormMainUpdate.Update_IO(key, "OFF");
+                        }
+                    }
+                    foreach (KeyValuePair<string, string> ios in ioMap)
+                    {
+                        setRELIOS(ios.Key, ios.Value, "0");//clear output
+                    }
                 }
             }
         }
 
         private void btnQryIO2_Click(object sender, EventArgs e)
         {
-            if (tabIOControl2.SelectedTab.Text.Equals("IN") || tabIOControl2.SelectedTab.Text.Equals("OUT"))
+            if (FormMain.isScriptRunning)
             {
-                string cmd = "$1MCR:I7565DNM_REFRESH;";
-                sendCommand(cmd);
-                if (cbUseIOName.Checked)
-                    QryIOByName(tabIOControl2, Category2_I_List, Category2_O_List);
-                //QryIOByName("2", tabIOControl2, Category2_I_List, Category2_O_List);
-                else
-                    QryIO(tabIOControl2, Category2_I_List, Category2_O_List);
+                MessageBox.Show("Script執行中無法使用本功能");
             }
             else
             {
-                Dictionary<string, string> ioMap = new Dictionary<string, string>();
-                foreach (Control foo in Category2_O_List.Controls)
+                if (tabIOControl2.SelectedTab.Text.Equals("IN") || tabIOControl2.SelectedTab.Text.Equals("OUT"))
                 {
-                    if (!foo.GetType().Name.Equals("Label"))
-                    {
-                        continue;
-                    }
-                    else if (!foo.Text.Equals("■"))
-                    {
-                        string address = foo.Name.Split('_')[0];
-                        //Console.WriteLine(foo.Name);
-                        string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
-                        if (ioMap.ContainsKey(address))
-                            ioMap[address] = ioMap[address] + ";" + rio;
-                        else
-                            ioMap[address] = rio;
-                        string key = foo.Name.Substring(0, foo.Name.LastIndexOf("_"));
-                        FormMainUpdate.Update_IO(key, "OFF");
-                    }
+                    string cmd = "$1MCR:I7565DNM_REFRESH;";
+                    sendCommand(cmd);
+                    if (cbUseIOName.Checked)
+                        QryIOByName(tabIOControl2, Category2_I_List, Category2_O_List);
+                    //QryIOByName("2", tabIOControl2, Category2_I_List, Category2_O_List);
+                    else
+                        QryIO(tabIOControl2, Category2_I_List, Category2_O_List);
                 }
-                foreach (KeyValuePair<string, string> ios in ioMap)
+                else
                 {
-                    setRELIOS(ios.Key, ios.Value, "0");//clear output
+                    Dictionary<string, string> ioMap = new Dictionary<string, string>();
+                    foreach (Control foo in Category2_O_List.Controls)
+                    {
+                        if (!foo.GetType().Name.Equals("Label"))
+                        {
+                            continue;
+                        }
+                        else if (!foo.Text.Equals("■"))
+                        {
+                            string address = foo.Name.Split('_')[0];
+                            //Console.WriteLine(foo.Name);
+                            string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
+                            if (ioMap.ContainsKey(address))
+                                ioMap[address] = ioMap[address] + ";" + rio;
+                            else
+                                ioMap[address] = rio;
+                            string key = foo.Name.Substring(0, foo.Name.LastIndexOf("_"));
+                            FormMainUpdate.Update_IO(key, "OFF");
+                        }
+                    }
+                    foreach (KeyValuePair<string, string> ios in ioMap)
+                    {
+                        setRELIOS(ios.Key, ios.Value, "0");//clear output
+                    }
                 }
             }
         }
 
         private void btnQryIO3_Click(object sender, EventArgs e)
         {
-            if (tabIOControl3.SelectedTab.Text.Equals("IN") || tabIOControl3.SelectedTab.Text.Equals("OUT"))
+            if (FormMain.isScriptRunning)
             {
-                string cmd = "$1MCR:I7565DNM_REFRESH;";
-                sendCommand(cmd);
-                if (cbUseIOName.Checked)
-                    QryIOByName(tabIOControl3, Category3_I_List, Category3_O_List);
-                //QryIOByName("3", tabIOControl3, Category3_I_List, Category3_O_List);
-                else
-                    QryIO(tabIOControl3, Category3_I_List, Category3_O_List);
+                MessageBox.Show("Script執行中無法使用本功能");
             }
             else
             {
-                Dictionary<string, string> ioMap = new Dictionary<string, string>();
-                foreach (Control foo in Category3_O_List.Controls)
+                if (tabIOControl3.SelectedTab.Text.Equals("IN") || tabIOControl3.SelectedTab.Text.Equals("OUT"))
                 {
-                    if (!foo.GetType().Name.Equals("Label"))
-                    {
-                        continue;
-                    }
-                    else if (!foo.Text.Equals("■"))
-                    {
-                        string address = foo.Name.Split('_')[0];
-                        //Console.WriteLine(foo.Name);
-                        string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
-                        if (ioMap.ContainsKey(address))
-                            ioMap[address] = ioMap[address] + ";" + rio;
-                        else
-                            ioMap[address] = rio;
-                        string key = foo.Name.Substring(0, foo.Name.LastIndexOf("_"));
-                        FormMainUpdate.Update_IO(key, "OFF");
-                    }
+                    string cmd = "$1MCR:I7565DNM_REFRESH;";
+                    sendCommand(cmd);
+                    if (cbUseIOName.Checked)
+                        QryIOByName(tabIOControl3, Category3_I_List, Category3_O_List);
+                    //QryIOByName("3", tabIOControl3, Category3_I_List, Category3_O_List);
+                    else
+                        QryIO(tabIOControl3, Category3_I_List, Category3_O_List);
                 }
-                foreach (KeyValuePair<string, string> ios in ioMap)
+                else
                 {
-                    setRELIOS(ios.Key, ios.Value, "0");//clear output
+                    Dictionary<string, string> ioMap = new Dictionary<string, string>();
+                    foreach (Control foo in Category3_O_List.Controls)
+                    {
+                        if (!foo.GetType().Name.Equals("Label"))
+                        {
+                            continue;
+                        }
+                        else if (!foo.Text.Equals("■"))
+                        {
+                            string address = foo.Name.Split('_')[0];
+                            //Console.WriteLine(foo.Name);
+                            string rio = foo.Text.Substring(0, foo.Text.IndexOf("("));
+                            if (ioMap.ContainsKey(address))
+                                ioMap[address] = ioMap[address] + ";" + rio;
+                            else
+                                ioMap[address] = rio;
+                            string key = foo.Name.Substring(0, foo.Name.LastIndexOf("_"));
+                            FormMainUpdate.Update_IO(key, "OFF");
+                        }
+                    }
+                    foreach (KeyValuePair<string, string> ios in ioMap)
+                    {
+                        setRELIOS(ios.Key, ios.Value, "0");//clear output
+                    }
                 }
             }
         }
 
         private void cbAutoRefresh_CheckedChanged(object sender, EventArgs e)
         {
-            isAutoRefresh = cbAutoRefresh.Checked;
-            FormMainUpdate.isShowCmd = !cbAutoRefresh.Checked;
-            if (cbAutoRefresh.Checked)
+            if (FormMain.isScriptRunning)
             {
-                cbUpdInterval.SelectedItem = "0.5";
-                ThreadPool.QueueUserWorkItem(new WaitCallback(RefreshIO));
-                //ArrayList cmds1 = FormMainUpdate.getIORefreshCmds("tabIOControl1", "Category1_I_List", "Category1_O_List");
-                //foreach (string item in cmds1)
-                //{
-                //    sendCommand(item);
-                //}
+                MessageBox.Show("Script執行中無法使用本功能");
             }
             else
             {
-                cbUpdInterval.SelectedIndex = -1;
+                isAutoRefresh = cbAutoRefresh.Checked;
+                FormMainUpdate.isShowCmd = !cbAutoRefresh.Checked;
+                if (cbAutoRefresh.Checked)
+                {
+                    cbUpdInterval.SelectedItem = "0.5";
+                    ThreadPool.QueueUserWorkItem(new WaitCallback(RefreshIO));
+                    //ArrayList cmds1 = FormMainUpdate.getIORefreshCmds("tabIOControl1", "Category1_I_List", "Category1_O_List");
+                    //foreach (string item in cmds1)
+                    //{
+                    //    sendCommand(item);
+                    //}
+                }
+                else
+                {
+                    cbUpdInterval.SelectedIndex = -1;
+                }
             }
         }
         private void RefreshIO(object obj)

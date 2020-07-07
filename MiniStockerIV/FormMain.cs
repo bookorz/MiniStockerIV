@@ -49,7 +49,7 @@ namespace MiniStockerIV
             //isScriptRunning = isRun;
             FormMainUpdate.SetRunBtnEnable(isRun);
         }
-
+        
         public FormMain()
         {
             InitializeComponent();
@@ -275,12 +275,14 @@ namespace MiniStockerIV
                         showError(replyMsg);
                         setIsRunning(false);//CAN  or  NAK stop script
                         isScriptRunning = false;
+                        Marco.runMode = Marco.RunMode.Normal;
                         isCmdFin = true;
                         break;
                     case "CAN"://CAN 指令取消, 狀態不允許執行
                         showError(replyMsg);
                         setIsRunning(false);//CAN  or  NAK stop script
                         isScriptRunning = false;
+                        Marco.runMode = Marco.RunMode.Normal;
                         isCmdFin = true;
                         break;
                     case "ABS"://動作異常結束
@@ -288,6 +290,7 @@ namespace MiniStockerIV
                         showError(replyMsg);
                         setIsRunning(false);//ABS stop script
                         isScriptRunning = false;
+                        Marco.runMode = Marco.RunMode.Normal;
                         isCmdFin = true;
                         switch (func)
                         {
@@ -300,6 +303,7 @@ namespace MiniStockerIV
                         showError(replyMsg);
                         setIsRunning(false);//CAN  or  NAK stop script
                         isScriptRunning = false;
+                        Marco.runMode = Marco.RunMode.Normal;
                         isCmdFin = true;
                         break;
                     case "ACK"://動作開始執行
@@ -1447,13 +1451,14 @@ namespace MiniStockerIV
 
         private void showAutoDialog()
         {
-            return;
-            //關閉主頁功能
-            FormMainUpdate.SetFormEnable("FormMain", false);
-            //FormUpdate.SetTextBoxEmpty("FormAuto", "tbMsg");
-            //顯示自動功能
-            FormAuto autoForm = new FormAuto();
-            autoForm.Show();
+            //return;
+            ////關閉主頁功能
+            //FormMainUpdate.SetFormEnable("FormMain", false);
+            ////FormUpdate.SetTextBoxEmpty("FormAuto", "tbMsg");
+            ////顯示自動功能
+            //FormAuto autoForm = new FormAuto();
+            //autoForm.Show();
+          
         }
 
         private void btnFoupRotHome_Click(object sender, EventArgs e)
@@ -1817,6 +1822,7 @@ namespace MiniStockerIV
             Thread.Sleep(500);
             setIsRunning(true);//set Script 執行中
             isScriptRunning = true;//set Script 執行中
+            Marco.runMode = Marco.RunMode.SrcScriptRun;
             //ThreadPool.QueueUserWorkItem(new WaitCallback(runScript));
         }
 
@@ -1918,6 +1924,7 @@ namespace MiniStockerIV
             //FormMainUpdate.ShowMessage("Command Script done.");Tony他們說訊息看了很煩!!
             setIsRunning(false);//執行結束
             isScriptRunning = false;//執行結束
+            Marco.runMode = Marco.RunMode.Normal;
 
         }
 
@@ -1930,6 +1937,7 @@ namespace MiniStockerIV
             isScriptRunning = false;
             setIsRunning(false);//執行結束
             isCmdFin = true;
+            Marco.runMode = Marco.RunMode.Normal;
         }
 
         private void dgvCmdScript_DoubleClick(object sender, EventArgs e)

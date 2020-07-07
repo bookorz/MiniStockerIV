@@ -1,0 +1,270 @@
+[
+  {
+    "Seq": 1,
+    "Command": "$1MCR:ELPT_SERVO/P1/1;"
+  },
+  {
+    "Seq": 2,
+    "Command": "$1MCR:ELPT_SERVO/P2/1;"
+  },
+  {
+    "Seq": 3,
+    "Command": "$1MCR:ELPT_CLAMP/P1;"
+  },
+  {
+    "Seq": 4,
+    "Command": "$1MCR:ELPT_SHUTTER_OPEN/P1;"
+  },
+  {
+    "Seq": 5,
+    "Command": "$1MCR:ELPT_MOVEIN/P1;"
+  },
+  {
+    "Seq": 6,
+    "Command": "$1MCR:ELPT_SHUTTER_CLOSE/P1;"
+  },
+  {
+    "Seq": 7,
+    "Command": "$1MCR:ELPT_UNCLAMP/P1;"
+  },
+  {
+    "Seq": 8,
+    "Command": "$1MCR:ELPT_CLAMP/P2;"
+  },
+  {
+    "Seq": 9,
+    "Command": "$1MCR:ELPT_MOVEIN/P2;"
+  },
+  {
+    "Seq": 10,
+    "Command": "$1MCR:ELPT_SHUTTER_CLOSE/P2;"
+  },
+  {
+    "Seq": 11,
+    "Command": "$1MCR:ELPT_UNCLAMP/P2;"
+  },
+  {
+    "Seq": 12,
+    "Command": "$1MCR:ROBOT_GET/P1;"
+  },
+  {
+    "Seq": 13,
+    "Command": "$1MCR:ROBOT_PUT/BF11;"
+  },
+  {
+    "Seq": 14,
+    "Command": "$1MCR:ROBOT_GET/P2;"
+  },
+  {
+    "Seq": 15,
+    "Command": "$1MCR:ROBOT_PUT/BF21;"
+  },
+  {
+    "Seq": 16,
+    "Command": "$1MCR:ROBOT_GET/BF11;"
+  },
+  {
+    "Seq": 17,
+    "Command": "$1MCR:ROBOT_PUT/BF12;"
+  },
+  {
+    "Seq": 18,
+    "Command": "$1MCR:ROBOT_GET/BF21;"
+  },
+  {
+    "Seq": 19,
+    "Command": "$1MCR:ROBOT_PUT/BF22;"
+  },
+  {
+    "Seq": 20,
+    "Command": "$1MCR:ROBOT_GET/BF12;"
+  },
+  {
+    "Seq": 21,
+    "Command": "$1MCR:ROBOT_PUT/BF13;"
+  },
+  {
+    "Seq": 22,
+    "Command": "$1MCR:ROBOT_GET/BF22;"
+  },
+  {
+    "Seq": 23,
+    "Command": "$1MCR:ROBOT_PUT/BF23;"
+  },
+  {
+    "Seq": 24,
+    "Command": "$1MCR:ROBOT_GET/BF13;"
+  },
+  {
+    "Seq": 25,
+    "Command": "$1MCR:ROBOT_PUT/BF14;"
+  },
+  {
+    "Seq": 26,
+    "Command": "$1MCR:ROBOT_GET/BF23;"
+  },
+  {
+    "Seq": 27,
+    "Command": "$1MCR:ROBOT_PUT/BF24;"
+  },
+  {
+    "Seq": 28,
+    "Command": "$1MCR:ROBOT_GET/BF14;"
+  },
+  {
+    "Seq": 29,
+    "Command": "$1MCR:ROBOT_PUT/BF15;"
+  },
+  {
+    "Seq": 30,
+    "Command": "$1MCR:ROBOT_GET/BF24;"
+  },
+  {
+    "Seq": 31,
+    "Command": "$1MCR:ROBOT_PUT/BF25;"
+  },
+  {
+    "Seq": 32,
+    "Command": "$1MCR:ROBOT_GET/BF15;"
+  },
+  {
+    "Seq": 33,
+    "Command": "$1MCR:ROBOT_PUT/BF34;"
+  },
+  {
+    "Seq": 34,
+    "Command": "$1MCR:ROBOT_GET/BF25;"
+  },
+  {
+    "Seq": 35,
+    "Command": "$1MCR:ROBOT_PUT/BF44;"
+  },
+  {
+    "Seq": 36,
+    "Command": "$1MCR:ROBOT_GET/BF34;"
+  },
+  {
+    "Seq": 37,
+    "Command": "$1MCR:ROBOT_PUT/BF33;"
+  },
+  {
+    "Seq": 38,
+    "Command": "$1MCR:ROBOT_GET/BF44;"
+  },
+  {
+    "Seq": 39,
+    "Command": "$1MCR:ROBOT_PUT/BF43;"
+  },
+  {
+    "Seq": 40,
+    "Command": "$1MCR:ROBOT_GET/BF33;"
+  },
+  {
+    "Seq": 41,
+    "Command": "$1MCR:ROBOT_PUT/BF32;"
+  },
+  {
+    "Seq": 42,
+    "Command": "$1MCR:ROBOT_GET/BF43;"
+  },
+  {
+    "Seq": 43,
+    "Command": "$1MCR:ROBOT_PUT/BF42;"
+  },
+  {
+    "Seq": 44,
+    "Command": "$1MCR:ROBOT_GET/BF32;"
+  },
+  {
+    "Seq": 45,
+    "Command": "$1MCR:ROBOT_PUT/BF31;"
+  },
+  {
+    "Seq": 46,
+    "Command": "$1MCR:ROBOT_GET/BF42;"
+  },
+  {
+    "Seq": 47,
+    "Command": "$1MCR:ROBOT_PUT/BF41;"
+  },
+  {
+    "Seq": 48,
+    "Command": "$1MCR:ROBOT_GET/BF31;"
+  },
+  {
+    "Seq": 49,
+    "Command": "$1MCR:ROBOT_PUT/P3;"
+  },
+  {
+    "Seq": 50,
+    "Command": "$1MCR:ROBOT_GET/BF41;"
+  },
+  {
+    "Seq": 51,
+    "Command": "$1MCR:ROBOT_PUT/P4;"
+  },
+  {
+    "Seq": 52,
+    "Command": "$1MCR:ILPT_LOAD/P3;"
+  },
+  {
+    "Seq": 53,
+    "Command": "$1MCR:ILPT_LOAD/P4;"
+  },
+  {
+    "Seq": 54,
+    "Command": "$1MCR:ILPT_UNLOAD/P3;"
+  },
+  {
+    "Seq": 55,
+    "Command": "$1MCR:ILPT_UNLOAD/P4;"
+  },
+  {
+    "Seq": 56,
+    "Command": "$1MCR:ROBOT_GET/P3;"
+  },
+  {
+    "Seq": 57,
+    "Command": "$1MCR:ROBOT_PUT/P1;"
+  },
+  {
+    "Seq": 58,
+    "Command": "$1MCR:ROBOT_GET/P4;"
+  },
+  {
+    "Seq": 59,
+    "Command": "$1MCR:ROBOT_PUT/P2;"
+  },
+  {
+    "Seq": 60,
+    "Command": "$1MCR:ELPT_CLAMP/P1;"
+  },
+  {
+    "Seq": 61,
+    "Command": "$1MCR:ELPT_CLAMP/P2;"
+  },
+  {
+    "Seq": 62,
+    "Command": "$1MCR:ELPT_SHUTTER_OPEN/P1;"
+  },
+  {
+    "Seq": 63,
+    "Command": "$1MCR:ELPT_MOVEOUT/P1;"
+  },
+  {
+    "Seq": 64,
+    "Command": "$1MCR:ELPT_UNCLAMP/P1;"
+  },
+  {
+    "Seq": 65,
+    "Command": "$1MCR:ELPT_SHUTTER_OPEN/P2;"
+  },
+  {
+    "Seq": 66,
+    "Command": "$1MCR:ELPT_MOVEOUT/P2;"
+  },
+  {
+    "Seq": 67,
+    "Command": "$1MCR:ELPT_UNCLAMP/P2;"
+  }
+]

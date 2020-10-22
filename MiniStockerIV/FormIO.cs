@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SanwaMarco;
 
 namespace MiniStockerIV
 {
@@ -206,12 +207,19 @@ namespace MiniStockerIV
         }
         private void Initial_I_O()
         {
-
             string line;
             string filename;
+            string filenameindex;
 
-            //System.IO.StreamReader file =  new System.IO.StreamReader(@"Stocker_IO.csv");
-            filename = ConfigurationManager.AppSettings["IO_Define_1"];
+
+            //根據機台形式讀取對應的點位
+            if (Marco.machineType == Marco.MachineType.Normal )
+                filenameindex = "IO_Define_1";
+            else
+                filenameindex = "IO_26Port_Define_1";
+                
+            filename = ConfigurationManager.AppSettings[filenameindex];
+
             System.IO.StreamReader file = new System.IO.StreamReader(filename);
             Category1_I_List.Controls.Clear();
             Category1_O_List.Controls.Clear();
@@ -244,7 +252,16 @@ namespace MiniStockerIV
             file.Close();
             currentY_I = 15;
             currentY_O = 15;
-            filename = ConfigurationManager.AppSettings["IO_Define_2"];
+
+            //根據機台形式讀取對應的點位
+            if (Marco.machineType == Marco.MachineType.Normal)
+                filenameindex = "IO_Define_2";
+            else
+                filenameindex = "IO_26Port_Define_2";
+
+            filename = ConfigurationManager.AppSettings[filenameindex];
+
+            //filename = ConfigurationManager.AppSettings["IO_Define_2"];
             //file =  new System.IO.StreamReader(@"WHR_IO.csv");
             file = new System.IO.StreamReader(filename);
             while ((line = file.ReadLine()) != null)
@@ -272,7 +289,13 @@ namespace MiniStockerIV
             file.Close();
             currentY_I = 15;
             currentY_O = 15;
-            filename = ConfigurationManager.AppSettings["IO_Define_3"];
+            //根據機台形式讀取對應的點位
+            if (Marco.machineType == Marco.MachineType.Normal)
+                filenameindex = "IO_Define_3";
+            else
+                filenameindex = "IO_26Port_Define_3";
+
+            filename = ConfigurationManager.AppSettings[filenameindex];
             //file =  new System.IO.StreamReader(@"CTU_PTZ_IO.csv");
             file = new System.IO.StreamReader(filename);
             while ((line = file.ReadLine()) != null)

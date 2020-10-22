@@ -104,10 +104,10 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.Category3_I_List);
-            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Location = new System.Drawing.Point(4, 28);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(300, 543);
+            this.tabPage5.Size = new System.Drawing.Size(300, 540);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "IN";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -123,10 +123,10 @@
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.Category3_O_List);
-            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Location = new System.Drawing.Point(4, 28);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(300, 543);
+            this.tabPage6.Size = new System.Drawing.Size(300, 540);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "OUT";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             this.cbUseIOName.AutoSize = true;
             this.cbUseIOName.Location = new System.Drawing.Point(233, 8);
             this.cbUseIOName.Name = "cbUseIOName";
-            this.cbUseIOName.Size = new System.Drawing.Size(86, 16);
+            this.cbUseIOName.Size = new System.Drawing.Size(106, 19);
             this.cbUseIOName.TabIndex = 2;
             this.cbUseIOName.Text = "Use IO Name";
             this.cbUseIOName.UseVisualStyleBackColor = true;
@@ -185,10 +185,10 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.Category2_I_List);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(307, 543);
+            this.tabPage3.Size = new System.Drawing.Size(307, 540);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "IN";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -204,10 +204,10 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.Category2_O_List);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Location = new System.Drawing.Point(4, 28);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(307, 543);
+            this.tabPage4.Size = new System.Drawing.Size(307, 540);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "OUT";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -255,10 +255,10 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.Category1_I_List);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(305, 543);
+            this.tabPage1.Size = new System.Drawing.Size(305, 540);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "IN";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -274,10 +274,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.Category1_O_List);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(305, 543);
+            this.tabPage2.Size = new System.Drawing.Size(305, 540);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "OUT";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -294,9 +294,9 @@
             // 
             this.cbAutoRefresh.AutoSize = true;
             this.cbAutoRefresh.Font = new System.Drawing.Font("新細明體", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.cbAutoRefresh.Location = new System.Drawing.Point(822, 3);
+            this.cbAutoRefresh.Location = new System.Drawing.Point(770, 3);
             this.cbAutoRefresh.Name = "cbAutoRefresh";
-            this.cbAutoRefresh.Size = new System.Drawing.Size(68, 15);
+            this.cbAutoRefresh.Size = new System.Drawing.Size(85, 18);
             this.cbAutoRefresh.TabIndex = 6;
             this.cbAutoRefresh.Text = "自動更新";
             this.cbAutoRefresh.UseVisualStyleBackColor = true;
@@ -315,9 +315,9 @@
             "3",
             "5",
             "10"});
-            this.cbUpdInterval.Location = new System.Drawing.Point(891, 1);
+            this.cbUpdInterval.Location = new System.Drawing.Point(872, 0);
             this.cbUpdInterval.Name = "cbUpdInterval";
-            this.cbUpdInterval.Size = new System.Drawing.Size(46, 20);
+            this.cbUpdInterval.Size = new System.Drawing.Size(46, 23);
             this.cbUpdInterval.TabIndex = 7;
             this.cbUpdInterval.SelectedIndexChanged += new System.EventHandler(this.cbUpdInterval_SelectedIndexChanged);
             // 
@@ -327,7 +327,7 @@
             this.label1.Font = new System.Drawing.Font("新細明體", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.Location = new System.Drawing.Point(943, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 11);
+            this.label1.Size = new System.Drawing.Size(21, 14);
             this.label1.TabIndex = 8;
             this.label1.Text = "秒";
             // 
@@ -335,7 +335,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(971, 644);
+            this.ClientSize = new System.Drawing.Size(988, 649);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbUpdInterval);
             this.Controls.Add(this.cbAutoRefresh);

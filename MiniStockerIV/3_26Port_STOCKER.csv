@@ -28,23 +28,38 @@
 1,611,Shelf_43_Sensor_2,Stocker部 43 FOUP確認Sensor 2,IN
 1,700,Vacuum_Source,真空來源壓力確認,IN
 1,701,N2_Source,N2來源壓力確認,IN
-1,713,PAUSE_Signal,PAUSE,IN
-1,714,Door_Interlok_EMS_Signal,Door Interlock急停信號,IN
-1,807,FFU_Alarm_Signal,FFU異常檢出,IN
+1,713,Pause_Signal,PAUSE,IN
+1,800,Shelf_16_Sensor_1,Stocker部 16 FOUP確認Sensor 1,IN
+1,801,Shelf_16_Sensor_2,Stocker部 16 FOUP確認Sensor 2,IN
+1,802,Shelf_26_Sensor_1,Stocker部 26 FOUP確認Sensor 1,IN
+1,803,Shelf_26_Sensor_2,Stocker部 26 FOUP確認Sensor 2,IN
+1,804,Shelf_17_Sensor_1,Stocker部 17 FOUP確認Sensor 1,IN
+1,805,Shelf_17_Sensor_2,Stocker部 17 FOUP確認Sensor 2,IN
+1,806,Shelf_27_Sensor_1,Stocker部 27 FOUP確認Sensor 1,IN
+1,807,Shelf_27_Sensor_2,Stocker部 27 FOUP確認Sensor 2,IN
 1,808,Shelf_15_Sensor_1,Stocker部 15 FOUP確認Sensor 1,IN
 1,809,Shelf_15_Sensor_2,Stocker部 15 FOUP確認Sensor 2,IN
 1,810,Shelf_25_Sensor_1,Stocker部 25 FOUP確認Sensor 1,IN
 1,811,Shelf_25_Sensor_2,Stocker部 25 FOUP確認Sensor 2,IN
-1,812,Shelf_34_Sensor_1,Stocker部 34 FOUP確認Sensor 1,IN
-1,813,Shelf_34_Sensor_2,Stocker部 34 FOUP確認Sensor 2,IN
-1,814,Shelf_44_Sensor_1,Stocker部 44 FOUP確認Sensor 1,IN
-1,815,Shelf_44_Sensor_2,Stocker部 44 FOUP確認Sensor 2,IN
+1,1500,Pause_Signal,PAUSE,OUT
 1,1900,Tower_Red,塔燈 LED R (RED),OUT
 1,1901,Tower_Orange,塔燈 LED Y (ORANGE),OUT
 1,1902,Tower_Green,塔燈 LED G (GREEN),OUT
 1,1903,Tower_Blue,塔燈 LED B (BLUE),OUT
-1,1905,Tower_Alarm1(purple),塔燈 ALARM 1 (PURPLE),OUT
+1,1905,Tower_Alarm1(PURPLE),塔燈 ALARM 1 (PURPLE),OUT
 1,1908,Tower_Red_Flash,塔燈 LED R FLASH,OUT
 1,1909,Tower_Orange_Flash,塔燈 LED Y FLASH,OUT
 1,1910,Tower_Green_Flash,塔燈 LED G FLASH,OUT
 1,1911,Tower_Blue_Flash,塔燈 LED B FLASH,OUT
+1,2200,Shelf_34_Sensor_1,Stocker部 34 FOUP確認Sensor 1,IN
+1,2201,Shelf_34_Sensor_2,Stocker部 34 FOUP確認Sensor 2,IN
+1,2202,Shelf_44_Sensor_1,Stocker部 44 FOUP確認Sensor 1,IN
+1,2203,Shelf_44_Sensor_2,Stocker部 34 FOUP確認Sensor 2,IN
+1,2204,Shelf_35_Sensor_1,Stocker部 35 FOUP確認Sensor 1,IN
+1,2205,Shelf_35_Sensor_2,Stocker部 35 FOUP確認Sensor 2,IN
+1,2206,Shelf_45_Sensor_1,Stocker部 45 FOUP確認Sensor 1,IN
+1,2207,Shelf_45_Sensor_2,Stocker部 45 FOUP確認Sensor 2,IN
+1,2208,Shelf_36_Sensor_1,Stocker部 36 FOUP確認Sensor 1,IN
+1,2209,Shelf_36_Sensor_2,Stocker部 36 FOUP確認Sensor 2,IN
+1,2210,Shelf_46_Sensor_1,Stocker部 46 FOUP確認Sensor 1,IN
+1,2211,Shelf_46_Sensor_2,Stocker部 46 FOUP確認Sensor 2,IN

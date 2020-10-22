@@ -17,6 +17,7 @@ using MiniStockerIV.UI_Update;
 using System.Configuration;
 using System.Net;
 using SanwaMarco;
+using Microsoft.VisualBasic.PowerPacks;
 
 namespace MiniStockerIV
 {
@@ -41,9 +42,13 @@ namespace MiniStockerIV
         string macroName = "";
         string index = "";
         Boolean isAdmin = false;
-        Dictionary<string, string> error_codes = new Dictionary<string, string>();
-        string defaultMarcoPath = "";
 
+        DateTime robotGetPutSTime;
+        DateTime scriptSTime;
+
+        public static int maxFloorNo = 5;
+        Dictionary<string, string> error_codes = new Dictionary<string, string>();
+        
         private void setIsRunning(Boolean isRun)
         {
             //isScriptRunning = isRun;
@@ -53,10 +58,86 @@ namespace MiniStockerIV
         public FormMain()
         {
             InitializeComponent();
+
+            this.tabSetting.Parent = null;//隱藏
+
             XmlConfigurator.Configure();//Log4N 需要
             InitCtrlGUI();
             //init marco
+            Marco.ReceivedEventMessage += ReceviedEventMessage;
             Marco.ConnDevice();//連接設備
+        }
+
+        public void ReceviedEventMessage(object sender, string Message)
+        {
+            int cmdheadLength = Message.IndexOf(":");
+            string cmdhead = Message.Substring(0, cmdheadLength);
+            cmdheadLength = cmdhead.Length;
+            cmdhead = cmdhead.Substring(2, cmdheadLength - 2);
+
+            int cmdLength = Message.LastIndexOf(":");
+            string cmd = Message.Substring(0, cmdLength);
+            cmdLength = cmd.Length;
+            cmd = cmd.Substring(Message.IndexOf(":") + 1, cmdLength - Message.IndexOf(":") - 1);
+
+            int contentLength = Message.LastIndexOf(":");
+            string content = Message.Substring(contentLength + 1);
+
+            switch (cmdhead)
+            {
+                case "EVT":
+                    switch (cmd)
+                    {
+                        case "PGSTS":
+
+                            //$1EVT:PGSTS:15,0
+                            string[] PGSTS;
+                            PGSTS = content.Split(',');
+
+                            FormMainUpdate.N2PurgeEnabledStatusUpdate(PGSTS[0], PGSTS[1]);
+                            break;
+                        case "O2STS":
+                            string[] O2STS;
+                            O2STS = content.Split(',');
+
+                            FormMainUpdate.O2MonitorUpdate(O2STS[0]);
+                            break;
+                        case "N2LOW":
+                            //"EVT:N2LOW:N2 Pressure is too low"
+                            FormMainUpdate.RecevicedEvtUpdate(content);
+                            break;
+
+                        default:
+                            FormMainUpdate.RecevicedEvtUpdate(content);
+                            break;
+                    }
+                    break;
+                case "FIN":
+                    switch (cmd)
+                    {
+                        case "O2STS":
+                            //$1FIN: O2STS: 1,00000000,0
+                            string[] O2STS;
+                            O2STS = content.Split(',');
+
+                            FormMainUpdate.O2ValueUpdate(O2STS[2]);
+                            break;
+                        case "PGSTS":
+                            //$1FIN: PGSTS: 1,00000000,36,0,0,0
+                            //xxxxx: xxxxx: x,xxxxxxxx,stage,流量,開啟時間,啟用
+                            string[] PGSTS;
+                            PGSTS = content.Split(',');
+                            //FormMainUpdate.N2PurgeStatusUpdate(plate, stage, PGSTS[3], PGSTS[5], PGSTS[4], false);
+                            FormMainUpdate.N2PurgeGetStatusUpdate(PGSTS[2], PGSTS[3], PGSTS[4], PGSTS[5]);
+
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }                                                                                                                                  
         }
 
         private void InitCtrlGUI()
@@ -300,10 +381,10 @@ namespace MiniStockerIV
                         }
                         break;
                     case "EVT"://事件發報
-                        showError(replyMsg);
-                        setIsRunning(false);//CAN  or  NAK stop script
-                        isScriptRunning = false;
-                        Marco.runMode = Marco.RunMode.Normal;
+                        if (!isScriptRunning)
+                        {
+                            setIsRunning(false);
+                        }
                         isCmdFin = true;
                         break;
                     case "ACK"://動作開始執行
@@ -327,6 +408,12 @@ namespace MiniStockerIV
                             case "CHECK_DNM_SLAVE":
                                 logUpdate("Device Net Slave OK");
                                 break;
+                            case "ROBOT_GETPUT":
+                                FormMainUpdate.RobotGetPutFinishUpdate(robotGetPutSTime);
+                                break;
+                            default:
+                                break;
+
                         }
                         if (!isScriptRunning)
                         {
@@ -626,9 +713,22 @@ namespace MiniStockerIV
             else
             {
                 MessageBox.Show("USB Key Owner: " + msg, "Welcom", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Text = this.Text + " (Version: " + version + ") User: " + msg;
+                string mctype = "";
+
+                if (Marco.machineType == Marco.MachineType.Normal)
+                {
+                    mctype = "Mini Stocker Test Utility(18 port)";
+                }
+                else
+                {
+                    mctype = "Mini Stocker Test Utility(26 port)";
+                }
+
+                this.Text = mctype + " (Version: " + version + ") User: " + msg;
             }
             
+
+
 
             //GUI 訊息處理器
             GUICmdCtrl Comm = new GUICmdCtrl();
@@ -649,6 +749,58 @@ namespace MiniStockerIV
             Initial_Error();
             Initial_Command();
 
+            cbSource.Items.Clear();
+            cbDestination.Items.Clear();
+            cmbN2PurgeNo.Items.Clear();
+
+            //介面更新
+            string[] positions;
+            if (Marco.machineType == Marco.MachineType.Normal)
+            {
+                positions = new string[] { "ELPT1","ELPT2","ILPT1","ILPT2",
+                "SHELF1-1","SHELF1-2", "SHELF1-3", "SHELF1-4", "SHELF1-5",
+                "SHELF2-1","SHELF2-2", "SHELF2-3", "SHELF2-4", "SHELF2-5",
+                "SHELF3-1","SHELF3-2", "SHELF3-3", "SHELF3-4",
+                "SHELF4-1","SHELF4-2", "SHELF4-3", "SHELF4-4"};
+
+                pn18PortFoupPresence.Visible = true;
+                pn26PortFoupPresence.Visible = false;
+
+                tabStocker2.Parent = null;
+
+                maxFloorNo = 5;
+            }
+            else
+            {
+                positions = new string[] { "ELPT1","ELPT2","ILPT1","ILPT2",
+                "SHELF1-1","SHELF1-2", "SHELF1-3", "SHELF1-4", "SHELF1-5", "SHELF1-6","SHELF1-7",
+                "SHELF2-1","SHELF2-2", "SHELF2-3", "SHELF2-4", "SHELF2-5", "SHELF2-6","SHELF2-7",
+                "SHELF3-1","SHELF3-2", "SHELF3-3", "SHELF3-4", "SHELF3-5", "SHELF3-6",
+                "SHELF4-1","SHELF4-2", "SHELF4-3", "SHELF4-4", "SHELF4-5", "SHELF4-6"};
+
+                pn18PortFoupPresence.Visible = false;
+                pn26PortFoupPresence.Visible = true;
+
+                pn26PortFoupPresence.Location = new Point(pn18PortFoupPresence.Left, pn18PortFoupPresence.Top);
+
+                maxFloorNo = 7;
+            }
+
+            foreach (string itemname in positions)
+            {
+                cbSource.Items.Add(itemname);
+                cbDestination.Items.Add(itemname);
+
+                if (itemname.Contains("SHELF"))
+                {
+                    cmbN2PurgeNo.Items.Add(itemname);
+                }
+            }
+
+            cmbN2PurgeNo.SelectedIndex = 0;
+            cmbN2BlowTime.SelectedIndex = 0;
+            tbN2FlowControl.Text = tkbrN2FlowControl.Value.ToString();
+
             //Add IO From
             FormIO form = new FormIO();
             foreach (Control foo in pnlIO.Controls)
@@ -661,9 +813,9 @@ namespace MiniStockerIV
             pnlIO.Controls.Add(form);
             form.Show();
             ThreadPool.QueueUserWorkItem(new WaitCallback(runScript));// Script 執行續建立
-        }
 
-        
+            timerScript.Enabled = true;
+        }
 
         /// <summary>
         /// $1MCR:ELPT_MOVE/LTP/STATUS[CR]
@@ -899,16 +1051,126 @@ namespace MiniStockerIV
             //setFoupPresenceByFoups("$1FIN:MCR__:5,00000000,1,2,1,2,1,0,0,0,1,0,0,0,1,2,1,0,0,0,1,2,1");
             //setFoupPresenceByFoups("$1FIN:MCR__:5,00000000,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1");
         }
+        //$1EVT:PGSTS:15,0
+        private void receivedMFCStopEVT(string msg)
+        {
+            string[] receivedMsg;
+            receivedMsg = msg.Split(':');
+            //receivedMsg[0] = $1EVT
+            //receivedMsg[1] = PGSTS
+            //receivedMsg[2] = 15,0
+
+            string[] message;
+            message = receivedMsg[2].Split(',');
+
+            string areaID = message[0].Substring(0, 1);
+
+            string plateID = message[0].Substring(1, 1);
+
+            FormMainUpdate.N2PurgeStatusUpdate(Convert.ToInt32(plateID), Convert.ToInt32(areaID), "0", "0", "0", false);
+
+        }
+        //"指定 STAGE
+        //1. RSLT
+        //2. PLATE 
+        //3. STAGE
+        //4. MFC
+        //  目前流量設定
+        //5. STS 0: 關閉, 1: 開啟
+        //6. TIME 已開啟時間(ms)
+        /// xxxxxxxxxxxx/$1FIN:MCR__:00000000,PLATE,STAGE,MFC,STS,TIME
+        private void setN2PurgeStatus(string msg)
+        {
+            string results = msg.Substring(msg.LastIndexOf('/') + 1);
+            results = msg.Substring(msg.LastIndexOf(':') + 1);
+
+            //異常狀況不變化
+            if (!results.Contains("00000000")) return;
+
+            //將00000000,過濾掉
+            results = msg.Substring(msg.IndexOf(',') + 1);
+            results = results.Substring(0, results.Length - 1);//去掉結尾的 ;
+
+            string[] rsltPresence;
+            rsltPresence = results.Split(',');
+
+            int floor; //機架的編號與N2 Purge的編號是顛倒的
+            int plate;
+            int stage;
+
+            if (rsltPresence.Length == 5)   //僅回傳單一站資訊
+            {
+                if (!int.TryParse(rsltPresence[0], out plate))  return;
+                if (!int.TryParse(rsltPresence[1], out stage))  return;
+
+                floor = maxFloorNo - plate + 1;
+
+                //1.Floor
+                //2.STAGE
+                //3.MFC
+                //4.STS
+                //5.TIME
+                //6.SET(或者是GET)
+                FormMainUpdate.N2PurgeStatusUpdate(floor, stage,
+                                rsltPresence[2].Trim(), rsltPresence[3].Trim(), rsltPresence[4].Trim(), false);
+            }
+            else// 回傳所有站資訊
+            {
+                //0.PLATE
+                //1.MFC
+                //2.STS-N-1
+                //3.TIME-N-1
+                //4.STS-N-2
+                //5.TIME-N- 2
+                //6.STS-N-3
+                //7.TIME-N-3
+                //8.STS-N-4
+                //9.TIME-N-4
+
+                if (!int.TryParse(rsltPresence[0], out plate)) return;
+                floor = maxFloorNo - plate + 1;
+
+                string mfc = rsltPresence[1].Trim();
+
+                for (int i = 0; i<4; i++)
+                {
+                    //最高層只有兩區
+                    if (floor >= maxFloorNo && i> 2) break;
+
+                    FormMainUpdate.N2PurgeStatusUpdate(floor,  i+1,
+                                    mfc, rsltPresence[(i + 1)*2].Trim(), rsltPresence[(i + 1)* 2 + 1].Trim(), false);
+                }
+                
+            }
+
+        }
+
+        /// <summary>
         /// 0 = ALL        /// 1 = Robot Arm    /// 2 = ELPT1
         /// 3 = ELPT2      /// 4 = ILPT1        /// 5 = ILPT2
         /// 6~21 = SHELF1 ~SHLEF16
-        /// $1FIN:MCR__:5,00000000,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1
+        ///old $1FIN:MCR__:5,00000000,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1
+        /// xxxxxxxxxxxx/1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1
         private void setFoupPresenceByFoups(string msg)
         {
-            string[] rsltPresence = new string[23];
+            int ItemCount;
+            string[] rsltPresence;
+
+            if (Marco.machineType == Marco.MachineType.Normal)
+            {
+                ItemCount = 23;
+            }
+            else
+            {
+                ItemCount = 31;
+            }
+
+            rsltPresence = new string[ItemCount];
+
             string results = msg.Substring(msg.LastIndexOf('/') + 1);
             results = results.Substring(0, results.Length - 1);//去掉結尾的 ;
-            if (results.Length != 23)
+
+            if (results.Length != ItemCount)
                 return;
             int idx = 0;
             for (int i = 0; i < results.Length; i++, idx++)
@@ -961,6 +1223,45 @@ namespace MiniStockerIV
             }
         }
 
+        private Boolean checkN2Purge()
+        {
+            if (cmbN2PurgeNo.Text.Equals(""))
+            {
+                MessageBox.Show("請選擇 N2 Purge No.!!");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private Boolean checkN2BlowTime()
+        {
+            if (cmbN2BlowTime.Text.Equals(""))
+            {
+                MessageBox.Show("請選擇 N2 Blow Time!!");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private Boolean checkO2Threshold()
+        {
+            if (tbO2ThresholdLow.Text.Equals(""))
+            {
+                MessageBox.Show("輸入 O2 門檻值!!");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         /// <summary>
         /// PNO：P1 = ELPT1, P2 = ELPT2, P3 = ILPT1, P4 = ILPT2
         ///     BF11 = SHELF1, BF12 = SHELF2, BF13 = SHELF3, BF21 = SHELF4, BF31 = SHELF5
@@ -1001,6 +1302,12 @@ namespace MiniStockerIV
                 case Const.STK_SHELF1_5:
                     result = "BF15";
                     break;
+                case Const.STK_SHELF1_6:
+                    result = "BF16";
+                    break;
+                case Const.STK_SHELF1_7:
+                    result = "BF17";
+                    break;
                 case Const.STK_SHELF2_1:
                     result = "BF21";
                     break;
@@ -1016,6 +1323,12 @@ namespace MiniStockerIV
                 case Const.STK_SHELF2_5:
                     result = "BF25";
                     break;
+                case Const.STK_SHELF2_6:
+                    result = "BF26";
+                    break;
+                case Const.STK_SHELF2_7:
+                    result = "BF27";
+                    break;
                 case Const.STK_SHELF3_1:
                     result = "BF31";
                     break;
@@ -1027,6 +1340,12 @@ namespace MiniStockerIV
                     break;
                 case Const.STK_SHELF3_4:
                     result = "BF34";
+                    break;
+                case Const.STK_SHELF3_5:
+                    result = "BF35";
+                    break;
+                case Const.STK_SHELF3_6:
+                    result = "BF36";
                     break;
                 case Const.STK_SHELF4_1:
                     result = "BF41";
@@ -1040,24 +1359,30 @@ namespace MiniStockerIV
                 case Const.STK_SHELF4_4:
                     result = "BF44";
                     break;
-                //case Const.STK_SHELF5_1:
-                //    result = "BF51";
-                //    break;
-                //case Const.STK_SHELF5_2:
-                //    result = "BF52";
-                //    break;
-                //case Const.STK_SHELF5_3:
-                //    result = "BF53";
-                //    break;
-                //case Const.STK_SHELF6_1:
-                //    result = "BF61";
-                //    break;
-                //case Const.STK_SHELF6_2:
-                //    result = "BF62";
-                //    break;
-                //case Const.STK_SHELF6_3:
-                //    result = "BF63";
-                //    break;
+                case Const.STK_SHELF4_5:
+                    result = "BF45";
+                    break;
+                case Const.STK_SHELF4_6:
+                    result = "BF46";
+                    break;
+                    //case Const.STK_SHELF5_1:
+                    //    result = "BF51";
+                    //    break;
+                    //case Const.STK_SHELF5_2:
+                    //    result = "BF52";
+                    //    break;
+                    //case Const.STK_SHELF5_3:
+                    //    result = "BF53";
+                    //    break;
+                    //case Const.STK_SHELF6_1:
+                    //    result = "BF61";
+                    //    break;
+                    //case Const.STK_SHELF6_2:
+                    //    result = "BF62";
+                    //    break;
+                    //case Const.STK_SHELF6_3:
+                    //    result = "BF63";
+                    //    break;
             }
             return result;
         }
@@ -1820,9 +2145,12 @@ namespace MiniStockerIV
             }
             isScriptRunning = false;//取消 Script 執行中
             Thread.Sleep(500);
+
+            scriptSTime = DateTime.Now;
             setIsRunning(true);//set Script 執行中
             isScriptRunning = true;//set Script 執行中
             Marco.runMode = Marco.RunMode.SrcScriptRun;
+
             //ThreadPool.QueueUserWorkItem(new WaitCallback(runScript));
         }
 
@@ -2498,6 +2826,339 @@ namespace MiniStockerIV
                 sendCommand(cmd);
             }
             
+        }
+
+        private void tkbrN2FlowControl_ValueChanged(object sender, EventArgs e)
+        {
+            tbN2FlowControl.Text = tkbrN2FlowControl.Value.ToString();
+        }
+
+        private void btnPurgeOn_Click(object sender, EventArgs e)
+        {
+            if (checkN2Purge() && checkN2BlowTime())
+            {
+                string cmd;
+                cmd = "$1MCR:N2PURGE_ON/";
+
+                //機架位置與通訊的層數定義顛倒
+                int plateIDInStr = cmbN2PurgeNo.Text.Trim().IndexOf("-") + 1;
+                string plateId = cmbN2PurgeNo.Text.Trim().Substring(plateIDInStr);
+
+                //加入層數與區域編號
+                string areaId = getN2PurgeAreaId();
+                cmd = cmd + areaId + getN2PurgePlateId() + "/";
+
+                //加入流量控制
+                cmd = cmd + tkbrN2FlowControl.Value.ToString() + "/";
+
+                //加入時間控制
+                cmd = cmd + cmbN2BlowTime.Text.Trim().ToString() + ";";
+
+                sendCommand(cmd);
+
+                //更新介面
+                FormMainUpdate.N2PurgeStatusUpdate(int.Parse(plateId), int.Parse(areaId), 
+                            tkbrN2FlowControl.Value.ToString(), "1" ,cmbN2BlowTime.Text.Trim().ToString() ,true);
+
+            }
+        }
+
+        private string getN2PurgePlateId()
+        {
+            string shelfid;
+            int shelfIdx = cmbN2PurgeNo.Text.Trim().IndexOf("-");
+            shelfid = cmbN2PurgeNo.Text.Trim().Substring(shelfIdx + 1);
+
+            return shelfid.ToString();
+        }
+
+        private string getN2PurgeAreaId()
+        {
+            string returnid;
+
+            returnid = cmbN2PurgeNo.Text.Replace("SHELF", "").Trim();
+            returnid = returnid.Substring(0, returnid.IndexOf("-"));
+
+            return returnid;
+        }
+
+        private void btnPurgeOff_Click(object sender, EventArgs e)
+        {
+            if (checkN2Purge())
+            {
+                string cmd;
+                cmd = "$1MCR:N2PURGE_OFF/";
+
+                //機架位置與通訊的層數定義顛倒
+                int plateIndex = cmbN2PurgeNo.Text.Trim().IndexOf("-") + 1;
+                string plateId = cmbN2PurgeNo.Text.Trim().Substring(plateIndex);
+
+                //加入層數與區域編號
+                string areaId = getN2PurgeAreaId();
+                cmd = cmd + areaId + getN2PurgePlateId() + ";";
+
+                sendCommand(cmd);
+
+                //setN2PurgeStatus(cmbN2PurgeNo.Text.Trim(), false);
+
+                //更新介面
+                FormMainUpdate.N2PurgeStatusUpdate(int.Parse(plateId), int.Parse(areaId),
+                            tkbrN2FlowControl.Value.ToString(), "0", cmbN2BlowTime.Text.Trim().ToString(), true);
+            }
+        }
+
+        private void btnO2ThresholdSet_Click(object sender, EventArgs e)
+        {
+            if (checkO2Threshold())
+            {
+                tbO2ThresholdLow.BackColor = Color.White;
+                tbO2ThresholdHigh.BackColor = Color.White;
+
+                string cmd;
+                cmd = "$1MCR:O2_SET_THRESHOLD/";
+                cmd = cmd + tbO2ThresholdLow.Text.Trim() +"/"+ tbO2ThresholdHigh.Text.Trim() + ";";
+                sendCommand(cmd);
+            }
+        }
+
+        private void btnN2PurgeInit_Click(object sender, EventArgs e)
+        {
+            string cmd;
+            cmd = "$1MCR:N2PURGE_INIT;";
+            sendCommand(cmd);
+        }
+
+        private void btnGetN2PurgeStatus_Click(object sender, EventArgs e)
+        {
+            string cmd;
+            cmd = "$1MCR:N2PURGE_GET_STS/";
+
+            int plateIdx = cmbN2PurgeNo.Text.Trim().IndexOf("-") + 1;
+
+            //加入層數與區域編號
+            cmd = cmd + getN2PurgeAreaId() + getN2PurgePlateId() + ";";
+
+            sendCommand(cmd);
+        }
+
+        private void label33_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGetAllN2PurgeStatus_Click(object sender, EventArgs e)
+        {
+            string cmd;
+            cmd = "$1MCR:N2PURGE_GET_STS/";
+
+            //機架位置與通訊的層數定義顛倒
+            //int plateIdx = cmbN2PurgeNo.Text.Trim().IndexOf("-") + 1;
+
+            //加入層數與區域編號
+            cmd = cmd + getN2PurgePlateId() + "/0;";
+
+            sendCommand(cmd);
+        }
+
+        private void btnO2ThresholdGet_Click(object sender, EventArgs e)
+        {
+            string cmd;
+            cmd = "$1MCR:O2_GET_STS;";
+
+            sendCommand(cmd);
+        }
+
+        private void cmbN2PurgeNo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int plateIndex = cmbN2PurgeNo.Text.Trim().IndexOf("-") + 1;
+            string plateId = cmbN2PurgeNo.Text.Trim().Substring(plateIndex);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Marco.Test();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string cmd;
+
+            tbO2ThresholdLow.BackColor = Color.White;
+            tbO2ThresholdHigh.BackColor = Color.White;
+
+            cmd = "$1MCR:N2PURGE_RESET;";
+            sendCommand(cmd);
+        }
+
+        private void btnClearN2Result_Click(object sender, EventArgs e)
+        {
+            rtbExcuteN2Result.Clear();
+        }
+
+        private void rtbExcuteN2Result_TextChanged(object sender, EventArgs e)
+        {
+            rtbExcuteN2Result.SelectionStart = rtbExcuteN2Result.TextLength;
+            rtbExcuteN2Result.ScrollToCaret();
+        }
+
+        private void cmbMFCStage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMFCStage.SelectedIndex > -1 && cmbMFCBaudSetting.SelectedIndex > -1)
+            {
+                btnMFCSetting.Enabled = true;
+
+                switch (cmbMFCStage.SelectedIndex)
+                {
+                    case 0:
+                        pnMFCGroup1.BackColor = Color.GreenYellow;
+                        pnMFCGroup2.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup3.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup4.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup5.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup6.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup7.BackColor = Color.DarkSeaGreen;
+                        break;
+                    case 1:
+                        pnMFCGroup1.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup2.BackColor = Color.GreenYellow;
+                        pnMFCGroup3.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup4.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup5.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup6.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup7.BackColor = Color.DarkSeaGreen;
+                        break;
+                    case 2:
+                        pnMFCGroup1.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup2.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup3.BackColor = Color.GreenYellow;
+                        pnMFCGroup4.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup5.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup6.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup7.BackColor = Color.DarkSeaGreen;
+                        break;
+                    case 3:
+                        pnMFCGroup1.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup2.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup3.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup4.BackColor = Color.GreenYellow;
+                        pnMFCGroup5.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup6.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup7.BackColor = Color.DarkSeaGreen;
+                        break;
+                    case 4:
+                        pnMFCGroup1.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup2.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup3.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup4.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup5.BackColor = Color.GreenYellow;
+                        pnMFCGroup6.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup7.BackColor = Color.DarkSeaGreen;
+                        break;
+                    case 5:
+                        pnMFCGroup1.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup2.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup3.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup4.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup5.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup6.BackColor = Color.GreenYellow;
+                        pnMFCGroup7.BackColor = Color.DarkSeaGreen;
+                        break;
+                    case 6:
+                        pnMFCGroup1.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup2.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup3.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup4.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup5.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup6.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup7.BackColor = Color.GreenYellow;
+                        break;
+                    default:
+                        pnMFCGroup1.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup2.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup3.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup4.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup5.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup6.BackColor = Color.DarkSeaGreen;
+                        pnMFCGroup7.BackColor = Color.DarkSeaGreen;
+                        break;
+                }
+            }
+        }
+
+        private void btnMFCSetting_Click(object sender, EventArgs e)
+        {
+            string cmd = "$1MCR:N2PURGE_SETMFC";
+
+            if (cmbMFCBaudSetting.SelectedIndex == 0)
+            {
+                cmd += "/38400";
+            }
+            else
+            {
+                cmd += "/115200";
+            }
+
+            switch (cmbMFCStage.SelectedIndex)
+            {
+                case 0:
+                    cmd += "/1;";
+                    break;
+                case 1:
+                    cmd += "/2;";
+                    break;
+                case 2:
+                    cmd += "/3;";
+                    break;
+                case 3:
+                    cmd += "/4;";
+                    break;
+                case 4:
+                    cmd += "/5;";
+                    break;
+                case 5:
+                    cmd += "/6;";
+                    break;
+                case 6:
+                    cmd += "/7;";
+                    break;
+                default:
+                    break;
+            }
+
+            sendCommand(cmd);
+        }
+
+        private void btnGetAndPut_Click(object sender, EventArgs e)
+        {
+            if (checkFoupRobotSrc() && checkFoupRobotDest())
+            {
+                string cmd = "";
+                string sourcePosition = STK_GET_POSITION(cbSource.Text);
+                string destinationPosition = STK_GET_POSITION(cbDestination.Text);
+
+                if (sourcePosition != null && !sourcePosition.Trim().Equals("") &&
+                    destinationPosition != null && !destinationPosition.Trim().Equals(""))
+                {
+                    lbTaktTime.Text = "0.0";
+                    robotGetPutSTime = DateTime.Now;
+                    cmd = "$1MCR:ROBOT_GETPUT/" + sourcePosition + "/"+ destinationPosition + ";";
+                    sendCommand(cmd);
+                }
+            }
+        }
+
+        private void timerScript_Tick(object sender, EventArgs e)
+        {
+            if (Marco.runMode == Marco.RunMode.SrcScriptRun)
+            {
+                if(isScriptRunning)
+                {
+                    lbScriptDay.Text = (DateTime.Now - scriptSTime).Days.ToString();
+                    lbScriptHour.Text = (DateTime.Now - scriptSTime).Hours.ToString();
+                    lbScriptMintue.Text = (DateTime.Now - scriptSTime).Minutes.ToString();
+                    lbScriptSecond.Text = (DateTime.Now - scriptSTime).Seconds.ToString();
+                }
+            }
         }
     }
 }

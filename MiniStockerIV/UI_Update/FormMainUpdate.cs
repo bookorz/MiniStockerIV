@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SanwaMarco;
+using Microsoft.VisualBasic.PowerPacks;
 
 namespace MiniStockerIV.UI_Update
 {
@@ -22,6 +24,13 @@ namespace MiniStockerIV.UI_Update
 
         delegate void UpdateLog(string msg);
         delegate void UpdateIO(string msg);
+        delegate void UpdateN2PurgeStatus(int plate, int stage, string mfc, string enabled, string time, bool set);
+        delegate void UpdateN2PurgeGetStatus(string stagePlate, string mfc, string time, string enabled);
+        delegate void UpdateN2PurgeEnabledStatus(string stagePlate, string enabled);
+        delegate void UpdateO2Value(string value);
+        delegate void UpdateO2Monitor(string value);
+        delegate void UpdateRecevicedEvt(string value);
+        delegate void UpdateRobotGetPutFinish(DateTime startTime);
         delegate ArrayList RefreshIO(string tcName, string panelIn, string panelOut);
         delegate void UpdateAlarm(Boolean isAlarm);
         delegate void UpdateBtnEnable(Boolean isRun);
@@ -79,7 +88,7 @@ namespace MiniStockerIV.UI_Update
         public static void ChangeRunTab(int index)
         {
             Form form = Application.OpenForms["FormMain"];
-            TabControl tab = form.Controls.Find("tabMode", true).FirstOrDefault() as TabControl; 
+            TabControl tab = form.Controls.Find("tabMode", true).FirstOrDefault() as TabControl;
             if (form == null)
                 return;
 
@@ -280,12 +289,12 @@ namespace MiniStockerIV.UI_Update
 
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 logger.Info(e.StackTrace);
             }
         }
-        
+
         public static void IONameUpdate(string msg)
         {
             try
@@ -331,7 +340,6 @@ namespace MiniStockerIV.UI_Update
                 MessageBox.Show(e.StackTrace);
             }
         }
-
         public static void IOUpdate(string msg)
         {
             try
@@ -340,7 +348,7 @@ namespace MiniStockerIV.UI_Update
                 Form form = Application.OpenForms["FormMain"];
                 Label lbl_i = null;
                 Label lbl_o = null;
-                string address = msg.Substring(1,1);
+                string address = msg.Substring(1, 1);
                 //$1ACK:RIO__:no,vl[CR]
                 //AddressNo + "_" + ID + "_" + Type
                 //$1INF:GET_RELIO/103/0;
@@ -360,7 +368,7 @@ namespace MiniStockerIV.UI_Update
                 {
                     lbl_i = form.Controls.Find(id_i, true).FirstOrDefault() as Label;
                     lbl_o = form.Controls.Find(id_o, true).FirstOrDefault() as Label;
-                    if(lbl_i != null)
+                    if (lbl_i != null)
                     {
                         if (msg.EndsWith("1;"))
                             lbl_i.ForeColor = Color.LimeGreen;
@@ -376,12 +384,277 @@ namespace MiniStockerIV.UI_Update
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.StackTrace);
             }
         }
 
+        //plate:層數(以機架的編號來看)  
+        //stage:區域(Area)
+        //mfc:流量控制
+        //enabled:(是否啟用)
+        //time:(開啟氣閥時間)
+        //set:Set\Get
+        public static void N2PurgeStatusUpdate(int plate, int stage, string mfc, string enabled, string time, bool set)
+        {
+            if (plate < 1 || plate > FormMain.maxFloorNo) return;
+            if (stage < 1 || stage > 4) return;
+            if (!enabled.Equals("0") && !enabled.Equals("1")) return;
+
+            bool onoff = enabled.Equals("1") ? true : false;
+            try
+            {
+
+                string controlName;
+                string controlPurgeTime;
+                //string controlMFC;
+                //暫時針對26 Port
+                controlName = "tbN2Purge_" + stage.ToString() + "_" + plate.ToString();
+                controlPurgeTime = "N2_PurgeTime_" + stage.ToString() + "_" + plate.ToString();
+                //controlMFC = "tbN2PurgeMFC_" + plate.ToString();
+                string rectName = "rtN2Purge_" + stage.ToString() + "_" + plate.ToString();
+
+
+                Form form = Application.OpenForms["FormMain"];
+
+                if (form.InvokeRequired)
+                {
+                    UpdateN2PurgeStatus ph = new UpdateN2PurgeStatus(N2PurgeStatusUpdate);
+                    form.BeginInvoke(ph, plate, stage, mfc, enabled, time, set);
+                }
+                else
+                {
+
+                    TextBox tb = form.Controls.Find(controlName, true).FirstOrDefault() as TextBox;
+                    string msg;
+                    msg = stage.ToString() + "_" + plate.ToString() + ":";
+                    tb.Text = onoff ? "On" : "Off";
+                    tb.Text = msg + tb.Text;
+                    tb.ForeColor = onoff ? SystemColors.Highlight : Color.Red;
+                    tb.BackColor = onoff ? (set ? Color.White : Color.Lime) : (set ? Color.LightGray : Color.LimeGreen);
+
+                    Label lb = form.Controls.Find(controlPurgeTime, true).FirstOrDefault() as Label;
+                    lb.Text = time.ToString();
+
+                    //tb = form.Controls.Find(controlMFC, true).FirstOrDefault() as TextBox;
+                    ///tb.Text = mfc.ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+            }
+        }
+        public static void N2PurgeEnabledStatusUpdate(string stagePlate, string enabled)
+        {
+            int plate = Convert.ToInt32(stagePlate.Substring(1, 1));
+            int stage = Convert.ToInt32(stagePlate.Substring(0, 1));
+
+            if (plate < 1 || plate > FormMain.maxFloorNo) return;
+            if (stage < 1 || stage > 4) return;
+            if (!enabled.Equals("0") && !enabled.Equals("1")) return;
+
+            bool onoff = enabled.Equals("1") ? true : false;
+            try
+            {
+                Form form = Application.OpenForms["FormMain"];
+
+                if (form.InvokeRequired)
+                {
+                    UpdateN2PurgeEnabledStatus ph = new UpdateN2PurgeEnabledStatus(N2PurgeEnabledStatusUpdate);
+                    form.BeginInvoke(ph, stagePlate, enabled);
+                }
+                else
+                {
+                    string controlName = "tbN2Purge_" + stage.ToString() + "_" + plate.ToString();
+                    TextBox tb = form.Controls.Find(controlName, true).FirstOrDefault() as TextBox;
+                    string msg;
+                    msg = stage.ToString() + "_" + plate.ToString() + ":";
+                    tb.Text = onoff ? "On" : "Off";
+                    tb.Text = msg + tb.Text;
+                    tb.ForeColor = onoff ? SystemColors.Highlight : Color.Red;
+                    tb.BackColor = onoff ? Color.Lime : Color.LimeGreen;
+
+                    RichTextBox rtb = form.Controls.Find("rtbExcuteN2Result", true).FirstOrDefault() as RichTextBox;
+                    if (rtb.SelectionColor != Color.Blue)
+                        rtb.SelectionColor = Color.Blue;
+                    string showMsg = "";
+
+                    if (onoff)
+                    {
+                        showMsg = "N2 Purge 狀態: Plate " + plate.ToString() + ", Stage " + stage.ToString() + ", 開啟\r\n";
+                    }
+                    else
+                    {
+                        showMsg = "N2 Purge 狀態: Plate " + plate.ToString() + ", Stage " + stage.ToString() + ", 關閉\r\n";
+
+                        controlName = "N2_PurgeTime_" + stage.ToString() + "_" + plate.ToString();
+                        Label lb = form.Controls.Find(controlName, true).FirstOrDefault() as Label;
+                        lb.Text = "0";
+                    }
+
+                    rtb.AppendText(showMsg);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+            }
+        }
+        public static void N2PurgeGetStatusUpdate(string stagePlate, string mfc, string time, string enabled)
+        {
+            int plate = Convert.ToInt32(stagePlate.Substring(1, 1));
+            int stage = Convert.ToInt32(stagePlate.Substring(0, 1));
+
+            if (plate < 1 || plate > FormMain.maxFloorNo) return;
+            if (stage < 1 || stage > 4) return;
+            if (!enabled.Equals("0") && !enabled.Equals("1")) return;
+
+            bool onoff = enabled.Equals("1") ? true : false;
+            try
+            {
+                Form form = Application.OpenForms["FormMain"];
+
+                if (form.InvokeRequired)
+                {
+                    UpdateN2PurgeGetStatus ph = new UpdateN2PurgeGetStatus(N2PurgeGetStatusUpdate);
+                    form.BeginInvoke(ph, stagePlate, mfc, time, enabled);
+                }
+                else
+                {
+                    RichTextBox rtb = form.Controls.Find("rtbExcuteN2Result", true).FirstOrDefault() as RichTextBox;
+                    if (rtb.SelectionColor != Color.Blue)
+                        rtb.SelectionColor = Color.Blue;
+                    string showMsg = "";
+
+                    if (onoff)
+                    {
+                        showMsg = "N2 Purge 狀態(開啟): Plate " + plate.ToString() + ", Stage " + stage.ToString() + ", 流量 "+ mfc + ", 時間 "+ time + "(秒)\r\n";
+                    }
+                    else
+                    {
+                        showMsg = "N2 Purge 狀態(關閉): Plate " + plate.ToString() + ", Stage " + stage.ToString() + ", 流量 "+ mfc + ",時間 " + time + "(秒)\r\n";
+                    }
+
+                    rtb.AppendText(showMsg);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+            }
+
+
+        }
+        public static void O2MonitorUpdate(string value)
+        {
+            try
+            {
+                Form form = Application.OpenForms["FormMain"];
+
+                if (form.InvokeRequired)
+                {
+                    UpdateO2Monitor ph = new UpdateO2Monitor(O2MonitorUpdate);
+                    form.BeginInvoke(ph, value);
+                }
+                else
+                {
+                    TextBox tb1 = form.Controls.Find("tbO2ThresholdLow", true).FirstOrDefault() as TextBox;
+                    TextBox tb2 = form.Controls.Find("tbO2ThresholdHigh", true).FirstOrDefault() as TextBox;
+
+                    bool UpLimit = value.Equals("1") ? true : false;
+                    tb1.BackColor = UpLimit ? Color.White : Color.Red;
+                    tb2.BackColor = UpLimit ? Color.Red : Color.White;
+
+                    RichTextBox rtb = form.Controls.Find("rtbExcuteN2Result", true).FirstOrDefault() as RichTextBox;
+                    if (rtb.SelectionColor != Color.Red)
+                        rtb.SelectionColor = Color.Red;
+                    string showMsg = "";
+
+                    if (UpLimit)
+                    {
+                        showMsg = "O2 監控: 超過上限\r\n";
+                    }
+                    else
+                    {
+                        showMsg = "O2 監控: 超過下限\r\n";
+                    }
+
+                    rtb.AppendText(showMsg);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+            }
+        }
+        public static void O2ValueUpdate(string value)
+        {
+            try
+            {
+                Form form = Application.OpenForms["FormMain"];
+
+                if (form.InvokeRequired)
+                {
+                    UpdateO2Value ph = new UpdateO2Value(O2ValueUpdate);
+                    form.BeginInvoke(ph, value);
+                }
+                else
+                {
+                    TextBox tb = form.Controls.Find("tbO2Value", true).FirstOrDefault() as TextBox;
+                    tb.Text = value;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+            }
+        }
+        public static void RecevicedEvtUpdate(string value)
+        {
+            try
+            {
+                Form form = Application.OpenForms["FormMain"];
+
+                if (form.InvokeRequired)
+                {
+                    UpdateRecevicedEvt ph = new UpdateRecevicedEvt(RecevicedEvtUpdate);
+                    form.BeginInvoke(ph, value);
+                }
+                else
+                {
+                    RichTextBox rtb = form.Controls.Find("rtbMsg", true).FirstOrDefault() as RichTextBox;
+                    rtb.AppendText(value);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+            }
+        }
+        public static void RobotGetPutFinishUpdate(DateTime startTime)
+        {
+            try
+            {
+                Form form = Application.OpenForms["FormMain"];
+
+                if (form.InvokeRequired)
+                {
+                    UpdateRobotGetPutFinish ph = new UpdateRobotGetPutFinish(RobotGetPutFinishUpdate);
+                    form.BeginInvoke(ph, startTime);
+                }
+                else
+                {
+                    Label rtb = form.Controls.Find("lbTaktTime", true).FirstOrDefault() as Label;
+                    rtb.Text = (DateTime.Now - startTime).TotalSeconds.ToString();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.StackTrace);
+            }
+        }
         public static ArrayList getIORefreshCmds(string tcName, string pnlInName, string pnlOutName)
         {
                 try
@@ -578,12 +851,40 @@ namespace MiniStockerIV.UI_Update
 
         internal static void updateFoupPresenceByFoups()
         {
-            string[] positions = new string[] { "tbPresRobot","tbPresELPT1","tbPresELPT2","tbPresILPT1","tbPresILPT2",
-            "tbPresShelf1_1", "tbPresShelf1_2", "tbPresShelf1_3", "tbPresShelf1_4", "tbPresShelf1_5",
-            "tbPresShelf2_1", "tbPresShelf2_2", "tbPresShelf2_3", "tbPresShelf2_4", "tbPresShelf2_5",
-            "tbPresShelf3_1", "tbPresShelf3_2", "tbPresShelf3_3", "tbPresShelf3_4",
-            "tbPresShelf4_1", "tbPresShelf4_2", "tbPresShelf4_3", "tbPresShelf4_4"
-            };
+            //string[] positions = new string[] { "tbPresRobot","tbPresELPT1","tbPresELPT2","tbPresILPT1","tbPresILPT2",
+            //"tbPresShelf1_1", "tbPresShelf1_2", "tbPresShelf1_3", "tbPresShelf1_4", "tbPresShelf1_5",
+            //"tbPresShelf2_1", "tbPresShelf2_2", "tbPresShelf2_3", "tbPresShelf2_4", "tbPresShelf2_5",
+            //"tbPresShelf3_1", "tbPresShelf3_2", "tbPresShelf3_3", "tbPresShelf3_4",
+            //"tbPresShelf4_1", "tbPresShelf4_2", "tbPresShelf4_3", "tbPresShelf4_4"
+            //};
+            string[] positions;
+
+            if (Marco.machineType == Marco.MachineType.Normal)
+            {
+                positions = new string[] { "tbPresRobot","tbPresELPT1","tbPresELPT2","tbPresILPT1","tbPresILPT2",
+                                            "tbPresShelf1_1", "tbPresShelf1_2", "tbPresShelf1_3", "tbPresShelf1_4", "tbPresShelf1_5",
+                                            "tbPresShelf2_1", "tbPresShelf2_2", "tbPresShelf2_3", "tbPresShelf2_4", "tbPresShelf2_5",
+                                            "tbPresShelf3_1", "tbPresShelf3_2", "tbPresShelf3_3", "tbPresShelf3_4",
+                                            "tbPresShelf4_1", "tbPresShelf4_2", "tbPresShelf4_3", "tbPresShelf4_4"
+                                            };
+
+            }
+            else
+            {
+                positions = new string[] { "tbPresRobot","tbPresELPT1","tbPresELPT2","tbPresILPT1","tbPresILPT2",
+                                            "tb26P_PresShelf1_1", "tb26P_PresShelf1_2", "tb26P_PresShelf1_3", "tb26P_PresShelf1_4",
+                                            "tb26P_PresShelf1_5", "tb26P_PresShelf1_6", "tb26P_PresShelf1_7",
+                                            "tb26P_PresShelf2_1", "tb26P_PresShelf2_2", "tb26P_PresShelf2_3", "tb26P_PresShelf2_4",
+                                            "tb26P_PresShelf2_5", "tb26P_PresShelf2_6", "tb26P_PresShelf2_7",
+                                            "tb26P_PresShelf3_1", "tb26P_PresShelf3_2", "tb26P_PresShelf3_3", "tb26P_PresShelf3_4",
+                                            "tb26P_PresShelf3_5", "tb26P_PresShelf3_6",
+                                            "tb26P_PresShelf4_1", "tb26P_PresShelf4_2", "tb26P_PresShelf4_3", "tb26P_PresShelf4_4",
+                                            "tb26P_PresShelf4_5", "tb26P_PresShelf4_6"
+                                            };
+            }
+
+
+
             string[] presences = RsltPresence;
             Form form = Application.OpenForms["FormMain"];
             if (form == null)

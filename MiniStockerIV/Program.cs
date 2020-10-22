@@ -14,9 +14,15 @@ namespace MiniStockerIV
         [STAThread]
         static void Main()
         {
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            Application.Run(new FormMCType());
+
             Application.Run(new FormMain());
+            
         }
     }
 }
